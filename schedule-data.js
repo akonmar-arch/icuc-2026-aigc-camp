@@ -114,8 +114,10 @@ window.courseSchedule = [
       {
         "time": "09:00–12:00",
         "course": "music",
-        "focus": "声音概念、角色声音与音乐方向设定",
-        "teacherDelivery": "声音设计简报模板、配音样片标准和参考案例。"
+        "focus": "AI音频视觉创作导论",
+        "studentDescription": "赏析影视与动画案例，认识音乐可视化、配音、音效与配乐的完整链路，了解Gemini、MiniMax、Suno等工具及结业作品要求。",
+        "studentTask": "搜集1—2个喜欢的音乐可视化或动画配音案例，记录观感。",
+        "teacherDelivery": "工具全景、课程任务与案例赏析。"
       },
       {
         "time": "14:00–17:00",
@@ -156,8 +158,10 @@ window.courseSchedule = [
       {
         "time": "14:00–17:00",
         "course": "music",
-        "focus": "AI音乐生成与音乐可视化方法",
-        "teacherDelivery": "音乐草稿模板、提示词示例和版权使用说明。"
+        "focus": "Gemini音乐可视化：音乐节风格",
+        "studentDescription": "认识频率、振幅与频谱，学习提示词结构；用Gemini制作可上传音频、带粒子效果与交互控制的音乐节风格网页。",
+        "studentTask": "提交HTML文件、录屏和简短创作说明。",
+        "teacherDelivery": "音乐节风格网页示范、提示词模板和调试要点。"
       }
     ]
   },
@@ -167,8 +171,10 @@ window.courseSchedule = [
       {
         "time": "09:00–12:00",
         "course": "music",
-        "focus": "配音、音效与画面同步",
-        "teacherDelivery": "录音任务表、声音提示表和配音音效修改意见。"
+        "focus": "Gemini音乐可视化：文博叙事",
+        "studentDescription": "把文物造型、国风色彩与民乐节奏融入粒子动画，完成文博主题网页，并练习排查音频、性能与交互问题。",
+        "studentTask": "提交HTML文件、录屏、创作说明和问题记录。",
+        "teacherDelivery": "文博主题网页示范、故障排查与导出规范。"
       },
       {
         "time": "14:00–17:00",
@@ -226,8 +232,10 @@ window.courseSchedule = [
       {
         "time": "14:00–17:00",
         "course": "music",
-        "focus": "最终混音、音乐可视化与影像合成",
-        "teacherDelivery": "混音输出规范、最终声音审核和视频交接文件。"
+        "focus": "AI配音与环境音效实战",
+        "studentDescription": "用MiniMax、ElevenLabs或即梦制作角色台词与旁白，调整语气和节奏；再生成脚步、雨声等环境与动作音效。",
+        "studentTask": "选一段动画脚本，完成配音及配套音效。",
+        "teacherDelivery": "配音与音效工具示范、自然度调节及素材分类建议。"
       }
     ]
   },
@@ -290,8 +298,10 @@ window.courseSchedule = [
       {
         "time": "09:00–12:00",
         "course": "music",
-        "focus": "完善音乐可视化作品，整理最终展示文件",
-        "teacherDelivery": "最终声音文件、音乐可视化成片、版权说明与评分记录。"
+        "focus": "AI配乐与综合Demo制作",
+        "studentDescription": "用Suno、海绵音乐或Udio为场景生成配乐，调整人声、音效与音乐的比例，合成1—2个完整动画短片Demo。",
+        "studentTask": "提交完整Demo，并说明所用素材与工具。",
+        "teacherDelivery": "AI配乐与混音示范、Demo点评及提交标准。"
       }
     ]
   }

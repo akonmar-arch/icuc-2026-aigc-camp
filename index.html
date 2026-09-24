@@ -1042,8 +1042,8 @@
             <span class="course-toggle" aria-hidden="true">＋</span>
           </summary>
           <div class="course-content">
-            <div><h4>这门课会做什么</h4><p>尝试配音、音乐与音效，让画面拥有自己的节奏和情绪。</p></div>
-            <div><h4>阶段成果示例</h4><ul><li>角色配音或旁白样片</li><li>主题音乐与关键音效</li><li>应用于最终影像或互动作品的混音版本</li></ul></div>
+            <div><h4>这门课会做什么</h4><p>学习音乐可视化、AI配音、音效与配乐：用Gemini制作互动网页，再为动画片段完成声音设计与综合Demo。</p></div>
+            <div><h4>阶段成果示例</h4><ul><li>音乐节与文博主题音乐可视化网页及录屏</li><li>角色配音、旁白和场景音效</li><li>AI配乐与1—2个动画短片Demo</li></ul></div>
             <div class="teacher-plan" data-course-plan="music"></div>
           </div>
         </details>
@@ -1187,7 +1187,7 @@
     <span>本页帮助你了解课程与作品方向；具体授课、考核及结业要求以学院正式通知为准。</span>
   </footer>
 
-  <script src="schedule-data.js?v=20260924-heritage-details"></script>
+  <script src="schedule-data.js?v=20260924-music-plan"></script>
   <script>
     const catalog = window.courseCatalog;
     const schedule = window.courseSchedule;
@@ -1227,7 +1227,7 @@
         const parts = dateParts(session.date);
         return `<li class="teacher-session">
           <time datetime="${session.date}">${parts.full} · ${parts.weekday}<br><span>${session.time}</span></time>
-          <div><b>${session.focus}</b>${session.studentDescription ? `<p>${session.studentDescription}</p>` : ''}</div>
+          <div><b>${session.focus}</b>${session.studentDescription ? `<p>${session.studentDescription}</p>` : ''}${session.studentTask ? `<p><strong>课后任务：</strong>${session.studentTask}</p>` : ''}</div>
         </li>`;
       }).join('')}</ol>`;
     });
