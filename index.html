@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="了解ICUC 2026秋季学期AIGC实训营的上课时间、五门课程、创作路径与期末作品。">
+  <title>ICUC 2026秋季学期 AIGC实训营｜学生课程指南</title>
+  <style>
+    :root {
+      --paper: #ecebf1;
+      --surface: #f8f7fb;
+      --ink: #191641;
+      --muted: #5d5a78;
+      --accent: #6743ce;
+      --accent-deep: #292262;
+      --accent-soft: #ded8f4;
+      --silver: #857da9;
+      --line: #c9c5da;
+      --white: #ffffff;
+      --max: 1240px;
+      --shadow: 0 24px 80px rgba(25, 22, 65, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Arial", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    ::selection { color: var(--white); background: var(--accent-deep); }
+
+    .skip {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 30;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--ink);
+      transform: translateY(-160%);
+    }
+    .skip:focus { transform: translateY(0); }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 40;
+      width: 0;
+      height: 3px;
+      background: #d44f70;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      padding: 0 4vw;
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+      color: #fff;
+      background: rgba(25, 22, 65, .96);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    .topbar nav { display: flex; align-items: center; gap: 26px; }
+    .topbar nav a {
+      color: #d8d4f3;
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .topbar nav a:hover,
+    .topbar nav a:focus-visible { color: #87efd6; }
+    .copy-button {
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--accent);
+      border-radius: 0;
+      color: var(--accent-deep);
+      background: transparent;
+      cursor: pointer;
+    }
+    .copy-button:hover { color: var(--white); background: var(--accent-deep); }
+    .copy-button:focus-visible,
+    summary:focus-visible,
+    a:focus-visible { outline: 3px solid rgba(91, 125, 136, .34); outline-offset: 3px; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(380px, .9fr);
+      min-height: calc(100vh - 68px);
+      background: #a4a4ac;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7vw 4vw 7vw max(5vw, calc((100vw - var(--max)) / 2));
+    }
+    .eyebrow {
+      margin: 0 0 32px;
+      color: #fff;
+      width: fit-content;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: #d44f70;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(46px, 5.5vw, 82px);
+      font-weight: 900;
+      line-height: 1.03;
+      letter-spacing: -.065em;
+      text-wrap: balance;
+    }
+    .hero-lede {
+      max-width: 680px;
+      margin: 36px 0 0;
+      color: #282449;
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.65;
+      text-wrap: pretty;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 32px;
+      margin-top: 56px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(25, 22, 65, .28);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .hero-visual {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      background: #a4a4ac;
+    }
+    .hero-visual video {
+      width: 100%;
+      height: 100%;
+      max-height: calc(100vh - 68px);
+      object-fit: contain;
+      display: block;
+    }
+    .hero-print-poster { display: none; }
+
+    main { overflow: hidden; }
+    .section {
+      width: min(var(--max), calc(100% - 10vw));
+      margin: 0 auto;
+      padding: 112px 0;
+    }
+    .section + .section { border-top: 1px solid var(--line); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
+    .section-index {
+      color: var(--silver);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+    .section-title {
+      margin: -10px 0 0;
+      font-size: clamp(36px, 4.5vw, 62px);
+      line-height: 1.12;
+      letter-spacing: -.04em;
+      text-wrap: balance;
+    }
+    .section-intro {
+      max-width: 780px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      text-wrap: pretty;
+    }
+
+    .thesis {
+      padding: 96px 5vw;
+      color: #edf3f2;
+      background: var(--accent-deep);
+    }
+    .thesis blockquote {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      font-size: clamp(32px, 4.7vw, 66px);
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -.035em;
+      text-wrap: balance;
+    }
+    .thesis p {
+      width: min(1080px, 100%);
+      margin: 30px auto 0;
+      color: #c9d7d6;
+      font-size: 16px;
+    }
+
+    .output-focus {
+      padding: 116px 5vw 124px;
+      color: #edf3f2;
+      background: #304a53;
+    }
+    .output-focus-inner { width: min(var(--max), 100%); margin: 0 auto; }
+    .output-head {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+    .output-head .section-index { color: #a9bfc1; }
+    .output-head h2 {
+      max-width: 920px;
+      margin: -10px 0 0;
+      font-size: clamp(44px, 5.8vw, 78px);
+      line-height: 1.06;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+    .output-head p {
+      max-width: 820px;
+      margin: 24px 0 0;
+      color: #c9d7d6;
+      font-size: 18px;
+      text-wrap: pretty;
+    }
+    .output-equation {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 70px;
+      border-block: 1px solid rgba(237, 243, 242, .26);
+    }
+    .output-token { min-height: 220px; padding: 30px 26px 28px 0; }
+    .output-token + .output-token { padding-left: 26px; border-left: 1px solid rgba(237, 243, 242, .22); }
+    .output-token strong {
+      display: block;
+      color: #ffffff;
+      font: 650 clamp(68px, 8vw, 112px)/.9 "Aptos Display", "Microsoft YaHei", sans-serif;
+      letter-spacing: -.07em;
+    }
+    .output-token b { display: block; margin-top: 24px; color: #ffffff; font-size: 17px; }
+    .output-token span { display: block; margin-top: 6px; color: #b9cbcc; font-size: 13px; line-height: 1.55; }
+    .output-answer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      margin-top: 76px;
+    }
+    .output-panel { padding-top: 28px; border-top: 1px solid rgba(237, 243, 242, .28); }
+    .output-kicker { margin: 0 0 10px; color: #9fb9bc; font-size: 12px; font-weight: 700; letter-spacing: .15em; }
+    .output-panel h3 { margin: 0 0 24px; color: #ffffff; font-size: clamp(28px, 3vw, 40px); line-height: 1.2; }
+    .output-list { counter-reset: output; margin: 0; padding: 0; list-style: none; }
+    .output-list li {
+      counter-increment: output;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(237, 243, 242, .14);
+    }
+    .output-list li::before { content: "0" counter(output); color: #8eaaad; font-size: 12px; font-weight: 700; }
+    .output-list b { color: #ffffff; font-size: 15px; }
+    .output-list span { display: block; margin-top: 2px; color: #b9cbcc; font-size: 13px; }
+    .archive-note { margin: 18px 0 0; color: #a9bfc1; font-size: 13px; }
+    .report-run { margin-top: 76px; padding-top: 30px; border-top: 1px solid rgba(237, 243, 242, .28); }
+    .report-run-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
+    .report-run h3 { margin: 0; color: #ffffff; font-size: clamp(28px, 3vw, 40px); }
+    .report-run-head span { color: #9fb9bc; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+    .run-list { display: grid; grid-template-columns: repeat(4, 1fr); margin: 30px 0 0; padding: 0; list-style: none; }
+    .run-list li { padding: 0 24px 0 0; }
+    .run-list li + li { padding-left: 24px; border-left: 1px solid rgba(237, 243, 242, .2); }
+    .run-time { display: block; margin-bottom: 9px; color: #9fb9bc; font-size: 13px; font-weight: 700; }
+    .run-list b { display: block; color: #ffffff; font-size: 16px; }
+    .run-list p { margin: 7px 0 0; color: #b9cbcc; font-size: 13px; line-height: 1.6; }
+
+    .objective-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(460px, 1.08fr);
+      gap: 86px;
+      align-items: start;
+    }
+    .objective-positioning {
+      position: sticky;
+      top: 112px;
+      padding-top: 26px;
+      border-top: 2px solid var(--accent);
+    }
+    .objective-positioning h3 {
+      max-width: 610px;
+      margin: 0;
+      font-size: clamp(38px, 4.5vw, 64px);
+      line-height: 1.16;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+    .objective-positioning h3 em { color: var(--accent-deep); font-style: normal; }
+    .objective-positioning p { max-width: 600px; margin: 26px 0 0; color: var(--muted); font-size: 17px; text-wrap: pretty; }
+    .objective-result {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--accent-deep);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+    .objective-capabilities { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .objective-capabilities li {
+      display: grid;
+      grid-template-columns: 48px 160px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .objective-capabilities .ability-no { color: var(--silver); font-size: 13px; font-weight: 700; }
+    .objective-capabilities b { font-size: 17px; line-height: 1.45; }
+    .objective-capabilities span:last-child { color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    .levels { border-top: 1px solid var(--line); }
+    .level {
+      display: grid;
+      grid-template-columns: 100px minmax(170px, .7fr) 1.3fr;
+      gap: 30px;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .level-no { color: var(--silver); font: 600 34px/1 "Aptos Display", "Microsoft YaHei", sans-serif; }
+    .level h3 { margin: 0; font-size: 24px; line-height: 1.3; }
+    .level h3 small { display: block; margin-top: 8px; color: var(--accent); font-size: 13px; letter-spacing: .1em; }
+    .level p { max-width: 680px; margin: 0; color: var(--muted); }
+
+    .flow-figure {
+      margin: 0;
+      padding: 24px 0 0;
+    }
+    .flow-art {
+      display: flex;
+      align-items: center;
+      min-height: 320px;
+      padding: 50px 5%;
+      border-radius: 24px;
+      background: #a4a4ac;
+      overflow: hidden;
+    }
+    .flow-art-track { display: flex; width: 100%; align-items: center; }
+    .flow-art-module {
+      position: relative;
+      display: flex;
+      flex: 1 1 0;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      min-height: 140px;
+      padding: 20px 24px;
+      border: 2px solid rgba(255,255,255,.22);
+      border-radius: 28px 80px 80px 28px;
+      color: #fff;
+      background: #d44f70;
+      box-shadow: 10px 15px 0 rgba(25,22,65,.42), 16px 24px 25px rgba(25,22,65,.24);
+    }
+    .flow-art-module + .flow-art-module { margin-left: -14px; }
+    .flow-art-module:nth-child(2) { z-index: 1; background: #6743ce; transform: translateY(-24px); }
+    .flow-art-module:nth-child(3) { z-index: 2; background: #2939aa; transform: translateY(12px); }
+    .flow-art-module:nth-child(4) { z-index: 3; color: #191641; background: #8bebd5; transform: translateY(-18px); }
+    .flow-art-module:nth-child(5) { z-index: 4; background: #211b53; transform: translateY(16px); }
+    .flow-art-module small { font-size: 10px; font-weight: 800; letter-spacing: .15em; }
+    .flow-art-module b { margin-top: 7px; font-size: clamp(16px, 1.6vw, 23px); line-height: 1.2; }
+    .flow-figure figcaption { margin-top: 14px; color: var(--muted); font-size: 13px; }
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-top: 34px;
+      border-top: 1px solid var(--accent);
+    }
+    .flow-step { padding: 24px 18px 0 0; }
+    .flow-step + .flow-step { padding-left: 18px; border-left: 1px solid var(--line); }
+    .flow-step b { display: block; margin-bottom: 8px; color: var(--accent-deep); font-size: 14px; }
+    .flow-step span { color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+    .schedule-overview {
+      display: grid;
+      grid-template-columns: 1.1fr .7fr 1.2fr .55fr;
+      margin-bottom: 42px;
+      border-block: 1px solid var(--line);
+    }
+    .schedule-overview div { padding: 20px 22px 20px 0; }
+    .schedule-overview div + div { padding-left: 22px; border-left: 1px solid var(--line); }
+    .schedule-overview b { display: block; color: var(--accent-deep); font-size: 16px; }
+    .schedule-overview span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+    .schedule-art-frame { overflow-x: auto; margin: 30px 0 0; border-radius: 24px; box-shadow: var(--shadow); }
+    .schedule-art { width: 100%; min-width: 1000px; height: auto; }
+    .schedule-source { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+
+    .courses { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr) minmax(160px, 260px) 34px;
+      gap: 22px;
+      align-items: center;
+      min-height: 112px;
+      cursor: pointer;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .course-no { color: var(--silver); font-size: 14px; font-weight: 700; letter-spacing: .12em; }
+    .course-title { font-size: clamp(20px, 2.3vw, 30px); font-weight: 650; line-height: 1.3; }
+    .course-teacher { color: var(--muted); font-size: 14px; }
+    .course-toggle { color: var(--accent); font-size: 26px; transition: transform .2s ease; }
+    details[open] .course-toggle { transform: rotate(45deg); }
+    .course-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      padding: 0 34px 42px 94px;
+    }
+    .course-content p { margin: 0; color: var(--muted); }
+    .course-content h4 { margin: 0 0 12px; color: var(--accent-deep); font-size: 13px; letter-spacing: .08em; }
+    .course-content ul { margin: 0; padding-left: 20px; }
+    .course-content li + li { margin-top: 7px; }
+    .teacher-plan { grid-column: 1 / -1; margin-top: 10px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .teacher-plan-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 16px; }
+    .teacher-plan-head h4 { margin: 0; font-size: 15px; }
+    .teacher-plan-head p { margin: 0; color: var(--muted); font-size: 12px; }
+    .teacher-sessions { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .teacher-session {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .teacher-session + .teacher-session { margin-top: 0; }
+    .teacher-session time { color: var(--accent-deep); font-size: 13px; font-weight: 700; line-height: 1.5; }
+    .teacher-session time span { color: var(--muted); font-weight: 500; }
+    .teacher-session b { display: block; font-size: 15px; }
+    .teacher-session p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .teacher-session p strong { color: var(--accent-deep); }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 54px;
+      border-top: 1px solid var(--line);
+    }
+    .deliverable {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 18px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .deliverable-no { color: var(--accent); font-size: 13px; font-weight: 700; }
+    .deliverable h3 { margin: 0 0 8px; font-size: 21px; }
+    .deliverable p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .report-package {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .formula {
+      position: sticky;
+      top: 112px;
+      color: var(--accent-deep);
+      font: 650 clamp(82px, 12vw, 172px)/.9 "Aptos Display", "Microsoft YaHei", sans-serif;
+      letter-spacing: -.08em;
+    }
+    .formula small {
+      display: block;
+      margin-top: 22px;
+      color: var(--muted);
+      font: 400 15px/1.6 "Aptos", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+    }
+    .report-item {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 24px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+    .report-item:last-child { border-bottom: 1px solid var(--line); }
+    .report-key { color: var(--accent); font-size: 30px; font-weight: 650; }
+    .report-item h3 { margin: 0 0 8px; font-size: 23px; }
+    .report-item p { margin: 0; color: var(--muted); }
+
+    .rubric-wrap {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 68px;
+      align-items: start;
+    }
+    .certificate-gate {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 22px;
+      align-items: center;
+      margin-bottom: 24px;
+      padding: 22px 24px;
+      border-top: 2px solid var(--accent);
+      background: var(--accent-soft);
+    }
+    .gate-mark {
+      color: var(--accent-deep);
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: .12em;
+    }
+    .certificate-gate strong { display: block; margin-bottom: 6px; font-size: 20px; }
+    .certificate-gate p { margin: 0; color: var(--muted); font-size: 14px; }
+    .rubric-bar { display: flex; min-height: 82px; overflow: hidden; }
+    .rubric-bar span {
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .rubric-bar span:nth-child(1) { width: 25%; background: #405f69; }
+    .rubric-bar span:nth-child(2) { width: 15%; background: #55717b; }
+    .rubric-bar span:nth-child(3) { width: 15%; background: #6d8991; }
+    .rubric-bar span:nth-child(4) { width: 15%; background: #829ba0; }
+    .rubric-bar span:nth-child(5) { width: 15%; background: #9cabad; }
+    .rubric-bar span:nth-child(6) { width: 15%; color: var(--ink); background: #c6d0d0; }
+    .rubric-note { margin-top: 18px; color: var(--muted); font-size: 14px; }
+    .deadline-note { margin-top: 24px; padding: 22px 24px; border-left: 5px solid #d44f70; border-radius: 0 18px 18px 0; background: #f7e7ef; }
+    .deadline-note time { display: block; color: #b9355a; font-size: 30px; font-weight: 850; line-height: 1.15; letter-spacing: -.03em; }
+    .deadline-note strong { display: block; margin-top: 8px; font-size: 17px; }
+    .deadline-note p { margin: 5px 0 0; color: var(--muted); font-size: 14px; }
+    .learning-checklist h3 { margin: 0 0 14px; font-size: 20px; }
+    .metric-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .metric-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .metric-list span { color: var(--muted); }
+
+    .evidence-table { width: 100%; border-collapse: collapse; background: var(--surface); }
+    .evidence-table th,
+    .evidence-table td { padding: 18px 20px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .evidence-table th { color: var(--accent-deep); font-size: 13px; letter-spacing: .06em; }
+    .evidence-table td:first-child { width: 22%; font-weight: 650; }
+    .evidence-table td { color: var(--muted); }
+
+    .action-list { counter-reset: action; border-top: 1px solid var(--line); }
+    .action {
+      counter-increment: action;
+      display: grid;
+      grid-template-columns: 92px 180px 1fr;
+      gap: 24px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .action::before { content: "0" counter(action); color: var(--silver); font-weight: 700; }
+    .action b { color: var(--accent-deep); }
+    .action span { color: var(--muted); }
+
+    .closing {
+      padding: 108px 5vw;
+      color: var(--ink);
+      background: var(--accent-soft);
+      text-align: center;
+    }
+    .closing p {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -.03em;
+      text-wrap: balance;
+    }
+    .closing .copy-button { margin-top: 38px; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 34px 5vw;
+      color: var(--muted);
+      background: var(--surface);
+      font-size: 12px;
+    }
+
+    /* Shapes and colors follow the stacked modules in the ICUC 2026 film. */
+    .section-head, .output-head { grid-template-columns: 150px minmax(0, 1fr); }
+    .section-index {
+      width: fit-content;
+      padding: 6px 13px;
+      border-radius: 999px;
+      color: #fff;
+      background: #d44f70;
+      font-size: 11px;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+    .section-title, .output-head h2 { font-weight: 850; }
+    .thesis { background: #24205b; }
+    .thesis p { color: #dcd8f4; }
+    .output-focus { background: #211b53; }
+    .output-head .section-index { color: #fff; }
+    .output-head p, .output-token span, .output-list span,
+    .run-list p, .archive-note { color: #d2cdec; }
+    .output-token:nth-child(1) strong { color: #f17894; }
+    .output-token:nth-child(2) strong { color: #8bebd5; }
+    .output-token:nth-child(3) strong { color: #aaa0ff; }
+    .output-token:nth-child(4) strong { color: #8aa0ff; }
+    .courses { border-top: 0; }
+    .courses details { border-bottom: 0; }
+    .courses summary {
+      margin: 12px 0;
+      padding: 8px 24px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--surface);
+      transition: background .2s ease, transform .2s ease;
+    }
+    .courses summary:hover, .courses details[open] summary {
+      background: #e0daf7;
+      transform: translateX(4px);
+    }
+    .courses .course-no { color: #d44f70; }
+    .certificate-gate { border-radius: 20px; }
+    .formula { color: #d44f70; }
+    .rubric-bar { border-radius: 16px; }
+    .rubric-bar span:nth-child(1) { background: #5f39c2; }
+    .rubric-bar span:nth-child(2) { background: #d44f70; }
+    .rubric-bar span:nth-child(3) { background: #2939aa; }
+    .rubric-bar span:nth-child(4) { background: #288e82; }
+    .rubric-bar span:nth-child(5) { background: #7a45b9; }
+    .rubric-bar span:nth-child(6) { background: #a6a5ae; }
+    .closing { color: #fff; background: #5f39c2; }
+    .closing .copy-button { color: #fff; border-color: #fff; border-radius: 999px; }
+    .closing .copy-button:hover { color: var(--ink); background: #8bebd5; }
+    footer { color: #dcd8f4; background: #191641; }
+
+    @media (max-width: 900px) {
+      .topbar nav a { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { padding: 38px 7vw 64px; }
+      .hero-visual { order: -1; min-height: 0; height: min(70vh, 650px); }
+      .hero-visual video { max-height: 100%; }
+      .output-focus { padding: 84px 6vw 92px; }
+      .output-head { grid-template-columns: 1fr; gap: 10px; }
+      .output-equation { grid-template-columns: 1fr 1fr; }
+      .output-token:nth-child(3) { border-left: 0; }
+      .output-token:nth-child(n+3) { border-top: 1px solid rgba(237, 243, 242, .22); }
+      .output-answer { grid-template-columns: 1fr; gap: 54px; }
+      .run-list { grid-template-columns: 1fr 1fr; gap: 28px 0; }
+      .run-list li:nth-child(3) { padding-left: 0; border-left: 0; }
+      .section { width: min(100% - 12vw, var(--max)); padding: 82px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 10px; }
+      .objective-layout { grid-template-columns: 1fr; gap: 54px; }
+      .objective-positioning { position: static; }
+      .level { grid-template-columns: 58px 1fr; }
+      .level p { grid-column: 2; }
+      .flow-steps { grid-template-columns: 1fr; border-top: 0; }
+      .flow-step, .flow-step + .flow-step { padding: 18px 0; border-top: 1px solid var(--line); border-left: 0; }
+      .flow-art { padding: 34px 5%; }
+      .flow-art-track { display: grid; gap: 12px; }
+      .flow-art-module { min-height: 80px; padding: 15px 22px; border-radius: 20px 70px 70px 20px; }
+      .flow-art-module + .flow-art-module { margin-left: 0; }
+      .flow-art-module:nth-child(n) { transform: none; }
+      .flow-art-module:nth-child(even) { margin-left: 8%; }
+      .schedule-overview { grid-template-columns: 1fr 1fr; }
+      .schedule-overview div:nth-child(3) { padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
+      .schedule-overview div:nth-child(4) { border-top: 1px solid var(--line); }
+      summary { grid-template-columns: 52px 1fr 28px; }
+      .course-teacher { grid-column: 2; }
+      .course-toggle { grid-column: 3; grid-row: 1 / span 2; }
+      .course-content { grid-template-columns: 1fr; padding-left: 74px; }
+      .teacher-session { grid-template-columns: 145px 1fr; }
+      .deliverables { grid-template-columns: 1fr; }
+      .report-package, .rubric-wrap { grid-template-columns: 1fr; }
+      .formula { position: static; }
+      .action { grid-template-columns: 52px 1fr; }
+      .action span { grid-column: 2; }
+      footer { flex-direction: column; }
+    }
+
+    @media (max-width: 560px) {
+      .brand { max-width: none; white-space: normal; line-height: 1.25; }
+      .hero-copy { padding: 32px 6vw 64px; }
+      h1 { font-size: 44px; }
+      .hero-meta { margin-top: 36px; }
+      .hero-visual { height: min(64vh, 570px); }
+      .section { width: calc(100% - 12vw); }
+      .section-title { font-size: 36px; }
+      .schedule-overview { grid-template-columns: 1fr; }
+      .schedule-overview div, .schedule-overview div + div { padding: 15px 0; border-top: 1px solid var(--line); border-left: 0; }
+      .schedule-overview div:first-child { border-top: 0; }
+      .output-head h2 { font-size: 44px; }
+      .output-equation { grid-template-columns: 1fr; }
+      .output-token { min-height: 0; padding: 28px 0; }
+      .output-token + .output-token { padding-left: 0; border-top: 1px solid rgba(237, 243, 242, .22); border-left: 0; }
+      .output-token strong { font-size: 72px; }
+      .report-run-head { display: block; }
+      .report-run-head span { display: block; margin-top: 8px; }
+      .run-list { grid-template-columns: 1fr; }
+      .run-list li, .run-list li + li { padding: 0; border-left: 0; }
+      .level { grid-template-columns: 42px 1fr; gap: 16px; }
+      summary { gap: 12px; }
+      .course-content { padding-left: 0; }
+      .teacher-plan-head { display: block; }
+      .teacher-plan-head p { margin-top: 6px; }
+      .teacher-session { grid-template-columns: 1fr; gap: 6px; }
+      .objective-capabilities li { grid-template-columns: 36px 1fr; gap: 8px 14px; }
+      .objective-capabilities span:last-child { grid-column: 2; }
+      .deliverable { grid-template-columns: 40px 1fr; }
+      .report-item { grid-template-columns: 56px 1fr; }
+      .evidence-table { font-size: 13px; }
+      .evidence-table th, .evidence-table td { padding: 13px 10px; }
+      .rubric-bar { min-height: 240px; flex-direction: column; }
+      .rubric-bar span { width: 100% !important; min-height: 40px; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 14mm; }
+      body { color: #243238; background: #fff; font-size: 10.5pt; }
+      .topbar, .progress, .copy-button, .skip { display: none !important; }
+      .hero { min-height: 260mm; grid-template-columns: 1.08fr .92fr; break-after: page; }
+      .hero-copy { padding: 24mm 12mm; }
+      .hero-visual { min-height: 260mm; }
+      .hero-visual video { display: none; }
+      .hero-print-poster { display: block; width: 100%; height: 100%; object-fit: contain; }
+      .section { width: 100%; padding: 18mm 0; }
+      .section-head { margin-bottom: 12mm; }
+      .schedule-art-frame { overflow: visible; box-shadow: none; }
+      .schedule-art { min-width: 0; }
+      .thesis { margin-inline: -14mm; padding: 24mm 14mm; }
+      .output-focus { margin-inline: -14mm; padding: 22mm 14mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .output-equation { margin-top: 12mm; }
+      .output-token { min-height: 42mm; }
+      .output-answer, .report-run { margin-top: 12mm; }
+      details { break-inside: avoid; }
+      details:not([open]) > *:not(summary) { display: block; }
+      .formula { position: static; }
+      .schedule-art-frame, .teacher-session { break-inside: avoid; }
+      a { text-decoration: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .courses summary { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">ICUC 2026秋季学期 AIGC实训营</div>
+    <nav aria-label="页面导航">
+      <a href="#objectives">你将学会</a>
+      <a href="#final-output">期末作品</a>
+      <a href="#schedule">上课时间</a>
+      <a href="#courses">课程内容</a>
+      <a href="#report">作品展示</a>
+      <a href="#evaluation">结业说明</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">中国传媒大学国际传媒教育学院 · 2026秋季学期</p>
+        <h1 id="page-title">用五门课，把一个创意做成完整作品</h1>
+        <p class="hero-lede">从寻找资料、构思故事，到设计角色、制作影像与声音，再把作品放进自己的网站。每一次练习，都在为期末作品添上一块拼图。</p>
+        <div class="hero-meta">
+          <span>2026.10.11—2027.01.10</span>
+          <span>13个周六 + 2个周日 · 线上课程</span>
+          <span>五门课程 · 一个完整项目</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/ICUC_2026_video_poster.jpg" aria-label="ICUC 2026 彩色立体模块循环动画">
+          <source src="assets/ICUC_2026_reference_rebuild_v5.mp4" type="video/mp4">
+          您的浏览器不支持视频播放。
+        </video>
+        <img class="hero-print-poster" src="assets/ICUC_2026_video_poster.jpg" alt="ICUC 2026 红、紫、深蓝与薄荷绿立体模块">
+      </div>
+    </section>
+
+    <section class="thesis" aria-label="课程介绍">
+      <blockquote>会用 AI，只是起点。成为能实现想法的超级个体，才是目标。</blockquote>
+      <p>文案、图像、音乐和视频，都是表达想法的工具。五门课将带你学习如何提出问题、判断方向、组织创作，并把每一份课堂练习积累成最终作品，让 AI 真正放大你的创造力。</p>
+    </section>
+
+    <section class="section" id="objectives" aria-labelledby="objectives-title">
+      <header class="section-head">
+        <span class="section-index">01 / OBJECTIVE</span>
+        <div>
+          <h2 class="section-title" id="objectives-title">你将学会什么</h2>
+          <p class="section-intro">这门实训营会带你走过一个完整的创作过程：研究主题、讲好故事、建立视觉风格、完成影像与声音，并把作品发布出来。</p>
+        </div>
+      </header>
+
+      <div class="objective-layout">
+        <article class="objective-positioning">
+          <h3>从一个想法出发，做出<em>真正属于你的作品</em>。</h3>
+          <p>你会练习提出问题、筛选资料、组织故事、统一画面与声音，并在制作中判断AI生成内容是否准确、合适。工具可以帮你加速，但主题、审美和最后的选择仍由你决定。</p>
+          <div class="objective-result">你将练习：研究 × 叙事 × 视听创作 × 互动发布</div>
+        </article>
+
+        <ol class="objective-capabilities" aria-label="七项核心培养能力">
+          <li><span class="ability-no">01</span><b>找到值得做的主题</b><span>学习检索与分析资料，判断信息是否可靠，并把研究发现转化为清晰的创作方向。</span></li>
+          <li><span class="ability-no">02</span><b>把故事变成画面</b><span>从文字设定出发，设计角色、场景、道具和视觉风格，让不同媒介中的作品保持一致。</span></li>
+          <li><span class="ability-no">03</span><b>让影像和声音协作</b><span>尝试分镜、视频生成、配音、音乐和音效，让观众看得懂、听得进你的故事。</span></li>
+          <li><span class="ability-no">04</span><b>用AI辅助，而不放弃判断</b><span>学习拆解任务、选择工具、核查事实和修改结果，同时记录素材来源与AI的使用方式。</span></li>
+          <li><span class="ability-no">05</span><b>整理并展示作品</b><span>把创作过程与最终成果放进个人网站或作品集，清楚地向别人介绍你的项目。</span></li>
+          <li><span class="ability-no">06</span><b>成为能实现想法的超级个体</b><span>连接文案、图像、音乐、视频与网站等创作能力，借助 AI 把自己的想法一步步推进为完整作品。</span></li>
+          <li><span class="ability-no">07</span><b>用 AI 驱动 Blender 进行 3D 创作</b><span>学习借助 AI 控制 Blender 完成建模、场景搭建与动画，并将 3D 内容用于宣传片、游戏和趣味视频。</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="output-focus" id="final-output" aria-labelledby="final-output-title">
+      <div class="output-focus-inner">
+        <header class="output-head">
+          <span class="section-index">FINAL<br>OUTPUT</span>
+          <div>
+            <h2 id="final-output-title">一学期，完成一个贯穿五门课的作品</h2>
+            <p>你会围绕同一个主题持续创作。每门课都贡献新的内容，期末再把文字、视觉、3D、影像、声音和网站整理成一个完整项目。</p>
+          </div>
+        </header>
+
+        <div class="output-equation" aria-label="一个项目、五门课程、七类作品成果与持续迭代">
+          <article class="output-token"><strong>1</strong><b>个创作主题</b><span>用一个主题串起整个学期的练习与作品</span></article>
+          <article class="output-token"><strong>5</strong><b>门课程</b><span>研究、文博视觉、视频、音乐与程序开发共同推进</span></article>
+          <article class="output-token"><strong>7</strong><b>类作品成果</b><span>让剧本、视觉、3D、影像、声音、网站与衍生设计相互连接</span></article>
+          <article class="output-token"><strong>N</strong><b>次修改与成长</b><span>保留草稿、反馈和版本，看到自己的作品如何变好</span></article>
+        </div>
+
+        <div class="output-answer">
+          <article class="output-panel">
+            <p class="output-kicker">YOUR WORK</p>
+            <h3>你的项目可以包含什么</h3>
+            <ol class="output-list">
+              <li><div><b>创作策划与完整剧本</b><span>研究基础、世界观、角色小传、场景描述和剧本。</span></div></li>
+              <li><div><b>角色、场景与道具视觉</b><span>形成风格统一、能够进入影像制作的视觉资产。</span></div></li>
+              <li><div><b>Blender 3D宣传片与游戏内容</b><span>借助 AI 完成建模、场景与动画，制作 3D 宣传片、游戏素材或趣味视频。</span></div></li>
+              <li><div><b>AI短视频或微电影</b><span>从分镜和镜头测试逐步完成成片；时长建议2—5分钟。</span></div></li>
+              <li><div><b>配音、音乐与音效系统</b><span>完成声音设计、混音，并真实应用于最终作品。</span></div></li>
+              <li><div><b>个人及作品展示网站</b><span>集中呈现个人介绍、制作过程、作品播放和项目说明。</span></div></li>
+              <li><div><b>IP或文博衍生设计</b><span>包含设计理念、应用场景、效果图和延展方案。</span></div></li>
+            </ol>
+          </article>
+
+          <article class="output-panel">
+            <p class="output-kicker">YOUR PROCESS</p>
+            <h3>作品会怎样一步步完成</h3>
+            <ol class="output-list">
+              <li><div><b>确定主题与故事</b><span>用资料研究找到方向，形成世界观、角色和剧本。</span></div></li>
+              <li><div><b>建立视觉资产</b><span>设计角色、场景、道具和统一的画面风格。</span></div></li>
+              <li><div><b>用 AI 控制 Blender 制作 3D</b><span>把视觉设定转为模型、场景与动画，用于宣传片、游戏和趣味视频。</span></div></li>
+              <li><div><b>制作影像与声音</b><span>完成分镜、镜头、配音、音乐、音效与剪辑。</span></div></li>
+              <li><div><b>发布并介绍作品</b><span>把成果整理到网站，准备展示与讲述自己的创作选择。</span></div></li>
+            </ol>
+            <p class="archive-note">建议从第一节课起保存草稿、反馈、素材来源和修改记录。它们能帮你复盘，也能成为作品集的一部分。</p>
+          </article>
+        </div>
+
+        <div class="report-run">
+          <div class="report-run-head"><h3>怎样向别人介绍你的作品</h3><span>SHOW YOUR WORK</span></div>
+          <ol class="run-list">
+            <li><span class="run-time">01 · 起点</span><b>说清你的主题</b><p>你关注什么问题，为什么选择这个故事或方向？</p></li>
+            <li><span class="run-time">02 · 过程</span><b>展示关键选择</b><p>让观众看到你如何从资料走向角色、场景与视听风格。</p></li>
+            <li><span class="run-time">03 · 作品</span><b>播放与演示</b><p>展示成片、声音、网站以及最能代表你想法的设计。</p></li>
+            <li><span class="run-time">04 · 回看</span><b>讲讲你的收获</b><p>分享修改过什么、解决了什么问题，以及下一步想继续做什么。</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="system">
+      <header class="section-head">
+        <span class="section-index">02 / SYSTEM</span>
+        <div>
+          <h2 class="section-title">从每次练习到期末作品</h2>
+          <p class="section-intro">你不用等到最后一周才开始做大项目。课堂练习会逐步积累成阶段成果，再组合成完整作品。</p>
+        </div>
+      </header>
+      <div class="levels">
+        <article class="level">
+          <span class="level-no">01</span>
+          <h3>每次课：完成一小步<small>WEEKLY OUTPUT</small></h3>
+          <p>可能是一段研究摘要、一张角色草图、一次镜头测试、一段配音或一个网页模块。先把这一小步做好，再带到下一节课继续用。</p>
+        </article>
+        <article class="level">
+          <span class="level-no">02</span>
+          <h3>每门课：形成阶段成果<small>MODULE PACKAGE</small></h3>
+          <p>把这一门课的练习整理起来，留下初稿、修改稿和最终稿。你会更清楚地看见自己的想法如何成形。</p>
+        </article>
+        <article class="level">
+          <span class="level-no">03</span>
+          <h3>期末：展示完整作品<small>CAPSTONE PROJECT</small></h3>
+          <p>把同一主题下的剧本、角色与场景、影像、声音、网站及衍生设计整理成一个可以向别人完整介绍的项目。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="flow">
+      <header class="section-head">
+        <span class="section-index">03 / FLOW</span>
+        <div>
+          <h2 class="section-title">你的创作会怎样推进</h2>
+          <p class="section-intro">同一个主题会在五门课里不断长大：先找到内容，再建立画面、声音和互动呈现。</p>
+        </div>
+      </header>
+      <figure class="flow-figure">
+        <div class="flow-art" role="img" aria-label="红、紫、蓝、薄荷绿与深蓝五个立体模块，依次代表研究叙事、视觉系统、动态影像、声音表达和互动发布">
+          <div class="flow-art-track" aria-hidden="true">
+            <span class="flow-art-module"><small>01 / RESEARCH</small><b>研究叙事</b></span>
+            <span class="flow-art-module"><small>02 / DESIGN</small><b>视觉系统</b></span>
+            <span class="flow-art-module"><small>03 / MOTION</small><b>动态影像</b></span>
+            <span class="flow-art-module"><small>04 / SOUND</small><b>声音表达</b></span>
+            <span class="flow-art-module"><small>05 / RELEASE</small><b>互动发布</b></span>
+          </div>
+        </div>
+        <figcaption>同一个故事可以从文字走向视觉、影像、声音与网站，让不同课程的成果彼此连接。</figcaption>
+      </figure>
+      <div class="flow-steps" aria-label="五阶段课程路径">
+        <div class="flow-step"><b>研究与叙事</b><span>资料、主题、世界观、角色小传、场景描述与剧本</span></div>
+        <div class="flow-step"><b>视觉系统</b><span>角色、场景、道具、IP视觉、3D与文博衍生设计</span></div>
+        <div class="flow-step"><b>动态影像</b><span>分镜、镜头测试、粗剪和AI短视频或微电影</span></div>
+        <div class="flow-step"><b>声音表达</b><span>配音、音乐、音效、混音及音乐可视化</span></div>
+        <div class="flow-step"><b>互动与发布</b><span>个人网站、作品平台、互动体验、游戏或WebXR</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <header class="section-head">
+        <span class="section-index">04 / SCHEDULE</span>
+        <div>
+          <h2 class="section-title">什么时候上课</h2>
+          <p class="section-intro">课程计划从2026年10月11日（周日）开始，到2027年1月10日（周日）结束，共15个教学日、29个教学单元。具体日期与课程可以在下方课表中查看。</p>
+        </div>
+      </header>
+      <div class="schedule-overview" aria-label="课程时间概览">
+        <div><b>2026.10.11—2027.01.10</b><span>课程周期</span></div>
+        <div><b>13个周六 + 2个周日</b><span>共15个教学日</span></div>
+        <div><b>09:00–12:00 / 14:00–17:00</b><span>上课时段</span></div>
+        <div><b>线上课程</b><span>授课方式</span></div>
+      </div>
+      <div class="schedule-art-frame"><img class="schedule-art" src="assets/course-schedule-2026.svg?v=20260924-student" alt="ICUC 2026秋季学期AIGC实训营课程时间表：15个教学日，上午及下午共29个教学单元" width="1840" height="1310"></div>
+      <p class="schedule-source">手机上可左右滑动查看完整课表。后续如有调整，请以学院正式通知为准。</p>
+      <div class="visually-hidden" id="schedule-list" aria-label="完整课程时间表"></div>
+    </section>
+
+    <section class="section" id="courses">
+      <header class="section-head">
+        <span class="section-index">05 / COURSES</span>
+        <div>
+          <h2 class="section-title">五门课，你会学什么</h2>
+          <p class="section-intro">点击课程名称，看看每门课会做什么、可以形成哪些作品，以及对应的上课日期与主题。</p>
+        </div>
+      </header>
+      <div class="courses">
+        <details open>
+          <summary>
+            <span class="course-no">01</span>
+            <span class="course-title">AIGC文献收集与智能分析</span>
+            <span class="course-teacher">Vincenzo De Masi教授 · 2学分</span>
+            <span class="course-toggle" aria-hidden="true">＋</span>
+          </summary>
+          <div class="course-content">
+            <div><h4>这门课会做什么</h4><p>学习寻找和分析资料，确定创作主题，再把研究发现变成故事与角色的起点。</p></div>
+            <div><h4>阶段成果示例</h4><ul><li>研究资料包与主题说明</li><li>剧本、世界观、角色小传与场景描述</li><li>AI使用记录及资料来源</li></ul></div>
+            <div class="teacher-plan" data-course-plan="literature"></div>
+          </div>
+        </details>
+        <details>
+          <summary>
+            <span class="course-no">02</span>
+            <span class="course-title">AI+IP设计、场景道具设计与3D数字文博应用</span>
+            <span class="course-teacher">马屹锴 · 3学分</span>
+            <span class="course-toggle" aria-hidden="true">＋</span>
+          </summary>
+          <div class="course-content">
+            <div><h4>这门课会做什么</h4><p>从IP设计原理出发，用AI设计角色、场景和道具，进一步尝试文创衍生品、3D制作与Vibe Coding网站设计。</p></div>
+            <div><h4>阶段成果示例</h4><ul><li>IP角色、场景与道具设计</li><li>文创衍生品方案与3D作品</li><li>个人作品展示网站原型</li></ul></div>
+            <div class="teacher-plan" data-course-plan="heritage"></div>
+          </div>
+        </details>
+        <details>
+          <summary>
+            <span class="course-no">03</span>
+            <span class="course-title">AI智能视频生成</span>
+            <span class="course-teacher">吴潇 · 3学分</span>
+            <span class="course-toggle" aria-hidden="true">＋</span>
+          </summary>
+          <div class="course-content">
+            <div><h4>这门课会做什么</h4><p>从分镜和镜头测试开始，把剧本、角色与场景做成能播放的动态影像。</p></div>
+            <div><h4>阶段成果示例</h4><ul><li>分镜表与镜头测试</li><li>粗剪版本和修改记录</li><li>2—5分钟AI短视频、动画或微电影</li></ul></div>
+            <div class="teacher-plan" data-course-plan="video"></div>
+          </div>
+        </details>
+        <details>
+          <summary>
+            <span class="course-no">04</span>
+            <span class="course-title">AI音乐可视化及创作</span>
+            <span class="course-teacher">吴孟娇 · 2学分</span>
+            <span class="course-toggle" aria-hidden="true">＋</span>
+          </summary>
+          <div class="course-content">
+            <div><h4>这门课会做什么</h4><p>尝试配音、音乐与音效，让画面拥有自己的节奏和情绪。</p></div>
+            <div><h4>阶段成果示例</h4><ul><li>角色配音或旁白样片</li><li>主题音乐与关键音效</li><li>应用于最终影像或互动作品的混音版本</li></ul></div>
+            <div class="teacher-plan" data-course-plan="music"></div>
+          </div>
+        </details>
+        <details>
+          <summary>
+            <span class="course-no">05</span>
+            <span class="course-title">AI程序开发</span>
+            <span class="course-teacher">张宇辰 · 2学分</span>
+            <span class="course-toggle" aria-hidden="true">＋</span>
+          </summary>
+          <div class="course-content">
+            <div><h4>这门课会做什么</h4><p>学习借助AI完成网页与互动功能，把前面课程的作品整合进个人展示网站。</p></div>
+            <div><h4>阶段成果示例</h4><ul><li>个人及作品展示网站</li><li>项目介绍、过程记录与作品播放模块</li><li>可访问链接或完整离线部署包</li></ul></div>
+            <div class="teacher-plan" data-course-plan="agent"></div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="capstone">
+      <header class="section-head">
+        <span class="section-index">06 / CAPSTONE</span>
+        <div>
+          <h2 class="section-title">你的期末作品可以包含什么</h2>
+          <p class="section-intro">下面六类内容可以帮助你整理一个完整项目。建议围绕同一个主题创作，让故事、画面、声音和展示方式彼此呼应。</p>
+        </div>
+      </header>
+      <div class="deliverables">
+        <article class="deliverable"><span class="deliverable-no">01</span><div><h3>创作策划与剧本</h3><p>研究基础、故事梗概、世界观、角色小传、场景描述和完整剧本。</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">02</span><div><h3>角色与场景视觉</h3><p>主要角色、关键场景、必要道具及视觉风格说明。</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">03</span><div><h3>AI影像作品</h3><p>建议为2—5分钟的短视频、动画短片或微电影，并保留分镜和版本过程。</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">04</span><div><h3>声音系统</h3><p>配音、主题音乐、音效和最终混音，并真正应用于影像或互动作品。</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">05</span><div><h3>个人与作品网站</h3><p>集中展示个人介绍、创作过程、阶段成果、最终作品和项目说明。</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">06</span><div><h3>IP或文博衍生设计</h3><p>设计理念、应用场景、效果图，以及它与整体项目的关系。</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="report">
+      <header class="section-head">
+        <span class="section-index">07 / SHOWCASE</span>
+        <div>
+          <h2 class="section-title">让你的作品被看见</h2>
+          <p class="section-intro">完成作品之后，还要让别人看懂它。把同一个项目整理成影像、网站和图文作品集，可以在不同场景中介绍自己的创作。</p>
+        </div>
+      </header>
+      <div class="report-package">
+        <div class="formula">1 → ∞<small>一个创作主题<br>多种展示方式<br>持续更新的作品</small></div>
+        <div>
+          <article class="report-item"><span class="report-key">01</span><div><h3>一个完整的个人项目</h3><p>用统一的主题、故事和视觉风格把五门课的成果连接起来，让观众看到你的创作想法。</p></div></article>
+          <article class="report-item"><span class="report-key">02</span><div><h3>多种展示方式</h3><p>用作品视频吸引观众，用个人网站集中展示，用图文作品集讲清研究与制作过程。</p></div></article>
+          <article class="report-item"><span class="report-key">03</span><div><h3>继续延展的可能</h3><p>你可以继续完善角色与世界观，把作品用于个人作品集、线上分享或后续创作。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="evaluation">
+      <header class="section-head">
+        <span class="section-index">08 / COMPLETION</span>
+        <div>
+          <h2 class="section-title">怎样完成课程与结业</h2>
+          <p class="section-intro">按时参加课程、完成各门课的正式作业与期末项目。下方列出证书和学分的评分构成；最终要求以学院正式通知为准。</p>
+        </div>
+      </header>
+      <div class="rubric-wrap">
+        <div>
+          <div class="certificate-gate" role="note" aria-label="证书与学分获得条件">
+            <span class="gate-mark">PASS</span>
+            <div><strong>拿证、拿学分需要满足什么</strong><p>按当前课程方案，总评达到60分及以上，所有正式作业须最迟于2027年2月21日提交，并经审核有效。截止日期之后提交的作业无效。最终以学院正式通知为准。</p></div>
+          </div>
+          <div class="rubric-bar" role="img" aria-label="证书与学分评分：考勤25%，文献课程15%，文博课程15%，音乐课程15%，Agent课程15%，视频课程15%">
+            <span>考勤<br>25%</span><span>文献<br>15%</span><span>文博<br>15%</span><span>音乐<br>15%</span><span>Agent<br>15%</span><span>视频<br>15%</span>
+          </div>
+          <p class="rubric-note">评分权重合计100%：考勤25%，五门课程各15%。正式作业全部提交是独立于总分之外的结业条件。</p>
+          <div class="deadline-note" role="note" aria-label="全部作业最终提交截止日期">
+            <time datetime="2027-02-21">2027年2月21日</time>
+            <strong>全部作业最终提交截止日</strong>
+            <p>请最迟于这一天提交所有正式作业；2027年2月21日之后提交的作业无效。</p>
+          </div>
+        </div>
+        <div class="learning-checklist">
+          <h3>学习时可以问问自己</h3>
+          <ul class="metric-list" aria-label="个人学习自查清单">
+            <li><b>我的主题是否清楚？</b><span>选题</span></li>
+            <li><b>资料来源可靠吗？</b><span>研究</span></li>
+            <li><b>角色与场景风格一致吗？</b><span>视觉</span></li>
+            <li><b>影像能讲清故事吗？</b><span>视频</span></li>
+            <li><b>声音有帮助表达吗？</b><span>音乐</span></li>
+            <li><b>网站能正常打开吗？</b><span>发布</span></li>
+            <li><b>我保存了修改过程吗？</b><span>复盘</span></li>
+            <li><b>素材与AI使用有记录吗？</b><span>规范</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="evidence">
+      <header class="section-head">
+        <span class="section-index">09 / PROCESS</span>
+        <div>
+          <h2 class="section-title">你的创作过程也很重要</h2>
+          <p class="section-intro">别只保存最后的成片。一路上的参考资料、草稿、测试与修改，既能帮你回顾学习，也能让作品集更有说服力。</p>
+        </div>
+      </header>
+      <table class="evidence-table">
+        <thead><tr><th>建议保存</th><th>它能帮你做什么</th></tr></thead>
+        <tbody>
+          <tr><td>选题与参考资料</td><td>回看最初的想法，说明你的故事、角色与视觉方向从哪里来。</td></tr>
+          <tr><td>草稿与测试</td><td>展示你怎样尝试不同方案，并从中找到更适合的表达方式。</td></tr>
+          <tr><td>反馈与修改版本</td><td>记录解决问题的过程，让别人看到作品是怎样一步步变好的。</td></tr>
+          <tr><td>素材来源与AI使用</td><td>清楚说明使用了哪些资料、素材和工具，方便检查引用与使用权限。</td></tr>
+          <tr><td>最终文件与链接</td><td>把成片、图像、声音、网站地址和备份放在一起，方便展示与继续更新。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="action">
+      <header class="section-head">
+        <span class="section-index">10 / NEXT STEPS</span>
+        <div>
+          <h2 class="section-title">从开课到结业，可以这样准备</h2>
+          <p class="section-intro">先熟悉课表，再用每周的小练习推进项目。为作品留出整理、修改和展示的时间。</p>
+        </div>
+      </header>
+      <div class="action-list">
+        <div class="action"><b>开课前</b><span>记下上课日期与时间，想一想自己感兴趣的主题，准备好存放资料和作品的文件夹。</span></div>
+        <div class="action"><b>每周课程</b><span>完成当次练习，及时保存源文件、参考资料和老师的反馈。</span></div>
+        <div class="action"><b>阶段节点</b><span>检查故事、视觉、影像和声音能否相互对应，发现问题就尽早修改。</span></div>
+        <div class="action"><b>最后两周</b><span>整理完整项目，测试网站与视频播放，准备好向别人介绍作品。</span></div>
+        <div class="action"><b>结课之后</b><span>保留可访问的作品链接和备份，把这次创作继续扩展成自己的作品集。</span></div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <p id="report-copy">从一个主题出发，用五门课程完成研究、视觉、影像、声音与网站，把创意做成可以展示的作品。</p>
+      <button class="copy-button" type="button" data-copy="#report-copy">复制课程介绍</button>
+    </section>
+  </main>
+
+  <footer>
+    <span>中国传媒大学国际传媒教育学院 · 数字创意与创作AIGC微专业课程</span>
+    <span>本页帮助你了解课程与作品方向；具体授课、考核及结业要求以学院正式通知为准。</span>
+  </footer>
+
+  <script src="schedule-data.js?v=20260924-heritage-details"></script>
+  <script>
+    const catalog = window.courseCatalog;
+    const schedule = window.courseSchedule;
+    const allSessions = schedule.flatMap(day => day.sessions.map(session => ({ ...session, date: day.date })));
+    const dateParts = date => {
+      const [year, month, day] = date.split('-');
+      const weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'][new Date(`${date}T00:00:00Z`).getUTCDay()];
+      return { year, month, day, weekday, full: `${Number(month)}月${Number(day)}日` };
+    };
+
+    document.querySelector('#schedule-list').innerHTML = schedule.map((day, index) => {
+      const parts = dateParts(day.date);
+      const sessions = day.sessions.map((session, sessionIndex) => {
+        const course = catalog[session.course];
+        const period = sessionIndex === 0 ? '上午' : '下午';
+        return `<article class="schedule-session" data-course="${session.course}">
+          <span class="session-time">${period} · ${session.time}</span>
+          <b>${course.shortName}</b>
+          <small>${course.teacher}</small>
+          <p>${session.focus}</p>
+        </article>`;
+      }).join('');
+      return `<article class="schedule-day">
+        <time class="schedule-date" datetime="${day.date}"><strong>${parts.day}</strong><span>${parts.year}.${parts.month}<br>${parts.weekday} · 第${String(index + 1).padStart(2, '0')}教学日</span></time>
+        ${sessions}
+      </article>`;
+    }).join('');
+
+    document.querySelectorAll('[data-course-plan]').forEach(plan => {
+      const courseKey = plan.dataset.coursePlan;
+      const sessions = allSessions.filter(session => session.course === courseKey);
+      plan.innerHTML = `<div class="teacher-plan-head">
+        <h4>上课日期与课堂主题</h4>
+        <p>共${sessions.length}个教学单元 · 课堂主题供参考，实际内容以任课教师通知为准</p>
+      </div>
+      <ol class="teacher-sessions">${sessions.map(session => {
+        const parts = dateParts(session.date);
+        return `<li class="teacher-session">
+          <time datetime="${session.date}">${parts.full} · ${parts.weekday}<br><span>${session.time}</span></time>
+          <div><b>${session.focus}</b>${session.studentDescription ? `<p>${session.studentDescription}</p>` : ''}</div>
+        </li>`;
+      }).join('')}</ol>`;
+    });
+
+    const progress = document.querySelector('.progress');
+    const copyButton = document.querySelector('[data-copy]');
+    const heroVideo = document.querySelector('#hero-video');
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    if (reducedMotion.matches) heroVideo.pause();
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches) heroVideo.pause();
+    });
+
+    addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = `${max > 0 ? scrollY / max * 100 : 0}%`;
+    }, { passive: true });
+
+    copyButton.addEventListener('click', async () => {
+      const target = document.querySelector(copyButton.dataset.copy);
+      const text = target.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (error) {
+        const helper = document.createElement('textarea');
+        helper.value = text;
+        helper.setAttribute('readonly', '');
+        helper.style.position = 'fixed';
+        helper.style.opacity = '0';
+        document.body.appendChild(helper);
+        helper.select();
+        document.execCommand('copy');
+        helper.remove();
+      }
+      const original = copyButton.textContent;
+      copyButton.textContent = '已复制';
+      setTimeout(() => { copyButton.textContent = original; }, 1600);
+    });
+
+    const expectedCourseCounts = { agent: 5, literature: 5, heritage: 7, video: 7, music: 5 };
+    const actualCourseCounts = allSessions.reduce((counts, session) => {
+      counts[session.course] = (counts[session.course] || 0) + 1;
+      return counts;
+    }, {});
+
+    console.assert(schedule.length === 15, 'Schedule day count mismatch');
+    console.assert(allSessions.length === 29, 'Schedule session count mismatch');
+    console.assert(schedule.every(day => [6, 0].includes(new Date(`${day.date}T00:00:00Z`).getUTCDay())), 'Non-weekend date found');
+    console.assert(Object.entries(expectedCourseCounts).every(([key, value]) => actualCourseCounts[key] === value), 'Course session count mismatch');
+    console.assert(document.querySelectorAll('.schedule-day').length === 15, 'Rendered schedule mismatch');
+    console.assert(document.querySelectorAll('.teacher-session').length === 29, 'Rendered teacher plans mismatch');
+    console.assert(document.querySelectorAll('.section').length === 10, 'Section count mismatch');
+    console.assert(document.querySelectorAll('.courses details').length === 5, 'Course count mismatch');
+    console.assert(document.querySelectorAll('.deliverable').length === 6, 'Deliverable count mismatch');
+  </script>
+</body>
+</html>
