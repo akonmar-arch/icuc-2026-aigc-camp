@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1A1A1A">
+<title>Interactive Music Visualizer with Gemini | UQ School of Music Teaching Edition</title>
+<meta name="description" content="The complete bilingual Day 3 music visualisation workshop: five exercises, three interactive cases, prompts, assessment and troubleshooting.">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============ Reset & Base (shared with index.html) ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+
+  :root {
+    --ink:      #1A1A1A;
+    --ink-2:    #2C2724;
+    --paper:    #FAF6F0;
+    --paper-2:  #F2EBDE;
+    --paper-3:  #ECE2D0;
+    --bronze:   #B08D57;
+    --bronze-d: #8C6D3F;
+    --bronze-l: #C9AB7C;
+    --jade:     #5B8C7E;
+    --jade-d:   #436B5F;
+    --mute:     #8B847B;
+    --line:     #D9D2C4;
+
+    --serif-en: "Cormorant Garamond", "Georgia", serif;
+    --serif-cn: "Noto Serif SC", "Songti SC", "STSong", serif;
+    --sans-en:  "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    --sans-cn:  "Noto Sans SC", "PingFang SC", "Heiti SC", sans-serif;
+    --mono:     ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    --w-max: 1180px;
+    --pad-x: clamp(20px, 5vw, 64px);
+
+    --shadow-soft: 0 12px 30px -10px rgba(0, 0, 0, 0.12);
+    --shadow-medium: 0 22px 50px -18px rgba(0, 0, 0, 0.18);
+  }
+
+  body {
+    font-family: var(--sans-en), var(--sans-cn);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* paper grain */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ============ Scroll progress ============ */
+  .progress {
+    position: fixed; top: 0; left: 0; height: 2px;
+    background: linear-gradient(90deg, var(--bronze), var(--bronze-l));
+    width: 0%;
+    z-index: 100;
+    transition: width 0.1s linear;
+  }
+
+  /* ============ Top Nav ============ */
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 246, 240, 0.85);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border-bottom: 1px solid var(--line);
+  }
+  .topnav-inner {
+    max-width: var(--w-max);
+    margin: 0 auto;
+    padding: 14px var(--pad-x);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    font-family: var(--serif-cn);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 10px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .brand .accent { color: var(--bronze); }
+  .nav-links {
+    display: flex; gap: clamp(12px, 2vw, 24px);
+    font-size: 13px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.72;
+    transition: opacity 0.2s, color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--bronze-d); }
+  .nav-links a.active { opacity: 1; color: var(--bronze-d); }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 50%;
+    transform: translateX(-50%);
+    width: 4px; height: 4px;
+    background: var(--bronze);
+    border-radius: 50%;
+  }
+  .nav-links a.home-link { color: var(--bronze-d); font-weight: 500; opacity: 1; }
+  @media (max-width: 760px) {
+    .nav-links li.opt { display: none; }
+  }
+
+  /* ============ Right-side TOC ============ */
+  .toc {
+    position: fixed;
+    right: 24px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    list-style: none;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .toc li { position: relative; }
+  .toc a {
+    display: block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--bronze);
+    background: transparent;
+    transition: all 0.25s ease;
+    text-decoration: none;
+  }
+  .toc a:hover { background: var(--bronze-l); transform: scale(1.25); }
+  .toc a.active { background: var(--bronze); transform: scale(1.4); }
+  .toc a::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 18px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--bronze-d);
+    background: rgba(250, 246, 240, 0.95);
+    padding: 4px 10px;
+    border-radius: 100px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .toc a:hover::after { opacity: 1; }
+  @media (max-width: 1080px) { .toc { display: none; } }
+
+  /* ============ Back to top ============ */
+  .back-top {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    z-index: 40;
+    width: 44px; height: 44px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none; border-radius: 50%;
+    cursor: pointer;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s, transform 0.25s;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    box-shadow: var(--shadow-medium);
+  }
+  .back-top.show { opacity: 1; pointer-events: auto; }
+  .back-top:hover { background: var(--bronze-d); transform: translateY(-2px); }
+
+  /* ============ Layout helpers ============ */
+  section { padding: clamp(56px, 8vw, 108px) var(--pad-x); position: relative; z-index: 2; }
+  .container { max-width: var(--w-max); margin: 0 auto; }
+
+  .eyebrow {
+    font-family: var(--sans-en);
+    font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--bronze-d);
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: var(--serif-cn);
+    font-weight: 800;
+    font-size: clamp(28px, 4.5vw, 42px);
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  .section-title .en {
+    display: block;
+    font-family: var(--serif-en);
+    font-weight: 500; font-style: italic;
+    font-size: 0.55em;
+    color: var(--mute);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+  .section-lead {
+    font-size: clamp(15px, 1.5vw, 17px);
+    color: #444;
+    max-width: 680px;
+    margin-bottom: 40px;
+  }
+
+  /* ============ Dividers ============ */
+  .divider { height: 60px; position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; }
+  .divider svg { height: 18px; width: auto; opacity: 0.35; }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative;
+    min-height: 78vh;
+    display: flex; align-items: center;
+    padding: clamp(96px, 16vw, 168px) var(--pad-x) clamp(64px, 10vw, 120px);
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: sepia(0.25) saturate(0.85) brightness(0.5) contrast(1.05);
+    animation: heroZoom 30s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(26,26,26,0.4), rgba(26,26,26,0.78) 70%),
+      linear-gradient(180deg, rgba(26,26,26,0.25), rgba(26,26,26,0.65));
+  }
+  .hero::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--bronze) 30%, var(--bronze) 70%, transparent);
+    opacity: 0.35; z-index: 1;
+  }
+  .hero-inner { max-width: var(--w-max); margin: 0 auto; position: relative; z-index: 2; color: var(--paper); }
+  .hero .eyebrow { color: var(--bronze-l); animation: fadeUp 1.1s ease 0.1s both; }
+  .hero h1 {
+    font-family: var(--serif-en);
+    font-weight: 500; font-style: italic;
+    font-size: clamp(40px, 7.5vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+    color: var(--paper);
+  }
+  .hero h1 span { display: block; animation: fadeUp 1.1s ease both; }
+  .hero h1 .l1 { color: var(--paper); animation-delay: 0.25s; }
+  .hero h1 .l2 { color: var(--bronze); animation-delay: 0.4s; }
+  .hero h1 .l3 { color: var(--bronze-l); animation-delay: 0.55s; }
+  .hero-cn {
+    font-family: var(--serif-cn);
+    font-weight: 600;
+    font-size: clamp(20px, 3vw, 32px);
+    letter-spacing: 0.08em;
+    margin-bottom: 30px;
+    color: var(--paper);
+    animation: fadeUp 1.1s ease 0.7s both;
+  }
+  .hero-cn .sep { color: var(--bronze); margin: 0 0.25em; }
+  .hero-tagline {
+    max-width: 620px;
+    font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.75;
+    color: rgba(250, 246, 240, 0.82);
+    margin-bottom: 14px;
+    animation: fadeUp 1.1s ease 0.85s both;
+  }
+  .hero-tagline.cn { font-family: var(--sans-cn); color: rgba(250, 246, 240, 0.55); margin-bottom: 48px; animation-delay: 0.95s; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: clamp(16px, 3vw, 36px);
+    padding-top: 36px;
+    border-top: 1px solid rgba(176, 141, 87, 0.4);
+    animation: fadeUp 1.1s ease 1.1s both;
+  }
+  .stat .n { font-family: var(--serif-en); font-weight: 600; font-size: clamp(32px, 5vw, 50px); line-height: 1; color: var(--bronze-l); }
+  .stat .label { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250, 246, 240, 0.7); margin-top: 8px; }
+  .stat .label .cn { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: none; color: rgba(250, 246, 240, 0.5); margin-top: 4px; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ============ Course flow ============ */
+  #spine { background: var(--paper-2); }
+  .spine-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 12px; align-items: stretch;
+    margin: 36px 0 12px;
+  }
+  @media (max-width: 820px) {
+    .spine-flow { grid-template-columns: 1fr; }
+    .spine-arrow { transform: rotate(90deg); margin: 2px auto; }
+  }
+  .spine-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 26px 22px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .spine-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
+  .spine-card .ico { font-family: var(--serif-cn); font-size: 34px; font-weight: 600; color: var(--bronze); line-height: 1; margin-bottom: 12px; }
+  .spine-card .day { font-family: var(--serif-en); font-style: italic; font-size: 13px; color: var(--bronze-d); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .spine-card h4 { font-family: var(--serif-cn); font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+  .spine-card .en { font-family: var(--serif-en); font-style: italic; color: var(--mute); font-size: 13px; margin-bottom: 12px; }
+  .spine-card .out { font-size: 12.5px; color: #555; line-height: 1.5; border-top: 1px dashed var(--line); padding-top: 12px; }
+  .spine-card .out b { color: var(--jade-d); font-weight: 600; }
+  .spine-arrow { align-self: center; color: var(--bronze); font-size: 20px; line-height: 1; }
+  .spine-note {
+    border-left: 3px solid var(--bronze);
+    padding: 16px 22px;
+    margin-top: 26px;
+    background: var(--paper);
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+    border-radius: 0 4px 4px 0;
+  }
+  .spine-note .cn { display: block; font-family: var(--serif-cn); font-style: normal; color: var(--mute); font-size: 13px; margin-top: 8px; }
+
+  /* ============ Course band (section intro) ============ */
+  .course[data-course="product"] { background: var(--paper); }
+  .course[data-course="text"]   { background: var(--paper); }
+  .course[data-course="music"]  { background: var(--paper-2); }
+  .course[data-course="visual"] { background: var(--paper); }
+
+  .course-band { display: grid; grid-template-columns: auto 1fr; gap: clamp(20px, 4vw, 44px); align-items: start; }
+  @media (max-width: 680px) { .course-band { grid-template-columns: 1fr; } }
+  .course-num {
+    font-family: var(--serif-en);
+    font-weight: 300;
+    font-size: clamp(72px, 12vw, 150px);
+    line-height: 0.8;
+    color: var(--bronze);
+    opacity: 0.85;
+  }
+  .course-meta .tag {
+    display: inline-block;
+    font-family: var(--sans-en);
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--bronze-d);
+    border: 1px solid var(--bronze);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 14px;
+  }
+  .course-meta h2 { font-family: var(--serif-cn); font-weight: 800; font-size: clamp(26px, 4vw, 38px); line-height: 1.2; margin-bottom: 6px; }
+  .course-meta h2 .en { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 500; font-size: 0.5em; color: var(--mute); margin-top: 6px; }
+  .course-meta .lead { font-size: 15.5px; color: #444; max-width: 640px; margin: 14px 0 0; line-height: 1.7; }
+
+  .deliver-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 22px;
+    background: var(--paper-3);
+    border-left: 3px solid var(--jade);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 18px;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .deliver-pill b { font-family: var(--serif-cn); color: var(--jade-d); }
+
+  /* ============ Two-column: objectives | tools ============ */
+  .cols { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 4vw, 48px); margin-top: 44px; align-items: start; }
+  @media (max-width: 820px) { .cols { grid-template-columns: 1fr; } }
+
+  .block-title {
+    font-family: var(--serif-cn);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--bronze-d);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--bronze);
+  }
+  .block-title .en { font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 13px; color: var(--mute); margin-left: 8px; }
+
+  .obj-list { list-style: none; }
+  .obj-list li { position: relative; padding: 9px 0 9px 26px; font-size: 14.5px; color: #3c3c3c; line-height: 1.55; border-bottom: 1px dashed var(--line); }
+  .obj-list li:last-child { border-bottom: none; }
+  .obj-list li::before { content: '✦'; position: absolute; left: 0; top: 9px; color: var(--bronze); font-size: 12px; }
+  .obj-list li .en { display: block; font-family: var(--serif-en); font-style: italic; color: var(--mute); font-size: 13px; }
+
+  /* tool table */
+  .tool-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .tool-table th {
+    text-align: left;
+    font-family: var(--sans-en);
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bronze-d);
+    padding: 8px 10px; border-bottom: 1px solid var(--bronze);
+  }
+  .tool-table td { padding: 10px; border-bottom: 1px dashed var(--line); color: #3c3c3c; vertical-align: top; line-height: 1.45; }
+  .tool-table tr:last-child td { border-bottom: none; }
+  .tool-table .cat { font-family: var(--sans-cn); font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .tool-table .name b { color: var(--bronze-d); }
+  .tool-table .cat .en, .tool-table .name .en { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 11.5px; color: var(--mute); margin-top: 3px; white-space: normal; }
+
+  /* ============ Schedule strip ============ */
+  .sched {
+    margin-top: 44px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 16px;
+    padding: clamp(24px, 4vw, 36px);
+    box-shadow: var(--shadow-medium);
+  }
+  .sched h3 { font-family: var(--serif-en); font-style: italic; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze-l); margin-bottom: 18px; }
+  .sched-list { list-style: none; font-size: 14px; }
+  .sched-list li {
+    display: grid; grid-template-columns: 116px 1fr; gap: 16px;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(250,246,240,0.12);
+    line-height: 1.5;
+    align-items: baseline;
+  }
+  .sched-list li:last-child { border-bottom: none; }
+  .sched-list time { font-family: var(--serif-en); font-style: italic; font-size: 13px; color: var(--bronze-l); white-space: nowrap; }
+  .sched-list .lab { color: rgba(250,246,240,0.9); }
+  .sched-list .lab b { color: var(--paper); font-weight: 600; }
+
+  /* ============ Exercises ============ */
+  .ex-head-line { display: flex; align-items: baseline; gap: 14px; margin: 52px 0 22px; }
+  .ex-head-line .k { font-family: var(--sans-en); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--bronze-d); }
+  .ex-head-line .ln { flex: 1; height: 1px; background: var(--line); }
+
+  .ex-list { display: grid; gap: 22px; }
+  .ex {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: clamp(22px, 3vw, 30px);
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+  .course[data-course="music"] .ex { background: var(--paper); }
+  .ex:hover { box-shadow: var(--shadow-soft); transform: translateY(-2px); }
+  .ex-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .ex-no {
+    font-family: var(--serif-en); font-style: italic; font-weight: 600;
+    font-size: 14px; color: var(--bronze);
+    letter-spacing: 0.05em;
+  }
+  .ex h4 { font-family: var(--serif-cn); font-weight: 700; font-size: 19px; line-height: 1.3; flex: 1; min-width: 220px; }
+  .ex h4 .en { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 500; font-size: 0.72em; color: var(--mute); margin-top: 2px; }
+  .ex .time {
+    font-family: var(--sans-en);
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--jade-d);
+    background: rgba(91, 140, 126, 0.12);
+    border-radius: 100px;
+    padding: 4px 12px;
+    white-space: nowrap;
+  }
+  .ex .goal { font-size: 14.5px; color: #3c3c3c; line-height: 1.6; margin: 10px 0 4px; }
+  .ex .goal b { font-family: var(--serif-cn); color: var(--bronze-d); }
+
+  /* copy-paste prompt box */
+  .prompt-box {
+    position: relative;
+    background: var(--ink-2);
+    color: #EDE6D8;
+    border-radius: 10px;
+    padding: 18px 18px 18px 20px;
+    margin: 16px 0;
+    border-left: 3px solid var(--bronze);
+    overflow: hidden;
+  }
+  .prompt-box .plabel {
+    display: block;
+    font-family: var(--sans-en);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--bronze-l);
+    margin-bottom: 10px;
+  }
+  .prompt-box pre {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #EDE6D8;
+  }
+  .prompt-box.alt { border-left-color: var(--jade); }
+
+  .ex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  @media (max-width: 640px) { .ex-grid { grid-template-columns: 1fr; } }
+  .ex-cell .h {
+    font-family: var(--sans-en);
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bronze-d);
+    margin-bottom: 8px;
+  }
+  .ex-cell .deliver { font-size: 13.5px; color: #3c3c3c; line-height: 1.55; }
+  .ex-cell ol { margin: 0; padding-left: 18px; font-size: 13.5px; color: #3c3c3c; line-height: 1.5; }
+  .ex-cell ol li { margin-bottom: 5px; }
+
+  /* step-by-step procedure inside an exercise */
+  .steps { margin: 16px 0 4px; background: var(--paper-2); border-radius: 10px; padding: 14px 18px; }
+  .course[data-course="music"] .steps { background: var(--paper-3); }
+  .steps .h { font-family: var(--sans-en); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze-d); margin-bottom: 10px; }
+  .steps ol { margin: 0; padding-left: 20px; font-size: 13.5px; color: #3c3c3c; line-height: 1.55; }
+  .steps ol li { margin-bottom: 6px; }
+  .steps ol li:last-child { margin-bottom: 0; }
+  .steps ol li b { color: var(--bronze-d); }
+  .steps ol li code { font-family: var(--mono); font-size: 12px; color: var(--bronze-d); }
+
+  /* ===== production-process strip (real images) ===== */
+  .process { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 20px 0 8px; }
+  @media (max-width: 900px) { .process { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .process { grid-template-columns: repeat(2, 1fr); } }
+  .pcard { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+  .pcard:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+  .pcard img.pthumb { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--paper-3); }
+  .pcard .pno { position: absolute; top: 8px; left: 8px; width: 24px; height: 24px; border-radius: 50%; background: var(--bronze); color: var(--paper); font-family: var(--serif-en); font-style: italic; font-size: 13px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+  .pcard .pbody { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
+  .pcard h5 { font-family: var(--serif-cn); font-weight: 700; font-size: 15px; line-height: 1.25; margin-bottom: 5px; }
+  .pcard h5 .en { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 12px; color: var(--mute); margin-top: 1px; }
+  .pcard p { font-size: 12.5px; color: #555; line-height: 1.5; }
+  .pcard .cred { font-size: 9.5px; color: var(--mute); margin-top: auto; padding-top: 8px; line-height: 1.35; opacity: .8; }
+
+  /* ===== lecture + live-demo block ===== */
+  .demo { margin: 30px 0 8px; background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--jade); border-radius: 0 14px 14px 0; padding: clamp(20px, 3vw, 30px); }
+  .demo .dh { font-family: var(--serif-cn); font-weight: 700; font-size: 19px; color: var(--jade-d); margin-bottom: 3px; }
+  .demo .dh .en { font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 13px; color: var(--mute); margin-left: 8px; }
+  .demo .dsub { font-size: 12.5px; letter-spacing: .04em; color: var(--mute); margin-bottom: 18px; }
+  .demo-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: clamp(20px, 3vw, 32px); align-items: start; }
+  @media (max-width: 760px) { .demo-grid { grid-template-columns: 1fr; } }
+  .demo ol.beats { margin: 0; padding-left: 4px; list-style: none; counter-reset: beat; }
+  .demo ol.beats li { position: relative; padding: 0 0 14px 30px; font-size: 14px; line-height: 1.6; color: #3c3c3c; }
+  .demo ol.beats li::before { counter-increment: beat; content: counter(beat); position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%; background: var(--jade); color: var(--paper); font-family: var(--serif-en); font-style: italic; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+  .demo ol.beats li:last-child { padding-bottom: 0; }
+  .demo ol.beats li b { font-family: var(--serif-cn); color: var(--bronze-d); }
+  .demo ol.beats li .say { display: block; font-style: italic; color: var(--jade-d); font-size: 13px; margin-top: 3px; }
+  .demo figure { margin: 0; }
+  .demo figure img { width: 100%; border-radius: 10px; border: 1px solid var(--line); display: block; }
+  .demo figure figcaption { font-size: 11px; color: var(--mute); margin-top: 7px; line-height: 1.45; }
+
+  /* ===== hand-off (receives -> this -> hands off) ===== */
+  .handoff { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; align-items: stretch; margin: 18px 0 8px; }
+  @media (max-width: 760px) { .handoff { grid-template-columns: 1fr; } .handoff .ho-arrow { transform: rotate(90deg); margin: 0 auto; } }
+  .ho-col { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .ho-col.ho-this { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .ho-h { font-family: var(--sans-en); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--bronze-d); margin-bottom: 9px; }
+  .ho-col.ho-this .ho-h { color: var(--bronze-l); }
+  .ho-col ul { list-style: none; margin: 0; }
+  .ho-col li, .ho-col p { font-size: 13px; line-height: 1.55; color: #3c3c3c; padding: 2px 0; }
+  .ho-col.ho-this p { color: rgba(250,246,240,.9); font-size: 14px; }
+  .ho-col code { font-family: var(--mono); font-size: 12px; color: var(--bronze-d); }
+  .ho-col.ho-this code { color: var(--bronze-l); }
+  .ho-arrow { align-self: center; color: var(--bronze); font-size: 22px; }
+
+  /* ===== effect-recipe grid + samples note ===== */
+  .recipes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 16px 0 4px; }
+  @media (max-width: 760px) { .recipes { grid-template-columns: 1fr; } }
+  .recipes .prompt-box { margin: 0; }
+  .recipes .prompt-box pre { white-space: pre-wrap; }
+  .samplenote { margin-top: 16px; background: var(--paper-2); border-left: 3px solid var(--jade); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 13.5px; line-height: 1.65; color: #3c3c3c; }
+  .samplenote b { font-family: var(--serif-cn); color: var(--jade-d); }
+  .samplenote code { font-family: var(--mono); font-size: 12px; color: var(--bronze-d); }
+
+  /* ===== bilingual secondary (English) inside instructional blocks ===== */
+  .goal .en, .deliver .en, .steps ol li .en, .ex-cell ol li .en, .teach .en,
+  .sched-list .lab .en, .beats li .en, .pcard p .en, .ho-col .en, .samplenote .en,
+  .mini-table td .en2 { display: block; font-style: normal; font-weight: 400; font-size: 12.5px;
+    line-height: 1.5; color: var(--mute); margin-top: 3px; }
+  .goal .en b, .teach .en b { color: var(--bronze-d); font-weight: 600; }
+
+  .teach {
+    margin-top: 16px;
+    background: var(--paper-2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #4a4a4a;
+    line-height: 1.55;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .course[data-course="music"] .teach { background: var(--paper-3); }
+  .teach .star { color: var(--bronze); flex-shrink: 0; font-size: 14px; line-height: 1.4; }
+  .teach b { font-family: var(--serif-cn); color: var(--bronze-d); }
+
+  /* mini-table inside exercises (interaction options etc.) */
+  .mini-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
+  .mini-table td { padding: 7px 10px; border-bottom: 1px dashed var(--line); vertical-align: top; line-height: 1.45; color: #3c3c3c; }
+  .mini-table tr:last-child td { border-bottom: none; }
+  .mini-table td:first-child { font-family: var(--sans-cn); font-weight: 500; white-space: nowrap; color: var(--ink); }
+  .mini-table .en { font-family: var(--mono); font-size: 11.5px; color: var(--bronze-d); }
+
+  /* ============ Shared elements (teams / assessment / risks) ============ */
+  #shared { background: var(--ink); color: var(--paper); }
+  #shared .eyebrow { color: var(--bronze-l); }
+  #shared .section-title { color: var(--paper); }
+  #shared .section-title .en { color: rgba(250,246,240,0.6); }
+  #shared .section-lead { color: rgba(250,246,240,0.72); }
+  .shared-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; margin-top: 16px; }
+  .shared-card {
+    background: rgba(250,246,240,0.04);
+    border: 1px solid rgba(176,141,87,0.3);
+    border-radius: 16px;
+    padding: 28px 26px;
+  }
+  .shared-card h3 { font-family: var(--serif-cn); font-weight: 700; font-size: 18px; color: var(--bronze-l); margin-bottom: 4px; }
+  .shared-card h3 .en { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 0.7em; color: rgba(250,246,240,0.55); margin-top: 2px; }
+  .shared-card p, .shared-card li { font-size: 13.5px; color: rgba(250,246,240,0.78); line-height: 1.6; }
+  .shared-card ul { list-style: none; margin-top: 14px; }
+  .shared-card ul li { padding: 7px 0 7px 20px; position: relative; border-bottom: 1px dashed rgba(250,246,240,0.12); }
+  .shared-card ul li:last-child { border-bottom: none; }
+  .shared-card ul li::before { content: '·'; position: absolute; left: 4px; color: var(--bronze-l); font-weight: 700; font-size: 18px; top: 4px; }
+
+  /* assessment bars */
+  .assess { margin-top: 14px; }
+  .assess-row { margin-bottom: 14px; }
+  .assess-row .top { display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 6px; }
+  .assess-row .top .zh { color: var(--paper); }
+  .assess-row .top .pct { font-family: var(--serif-en); font-style: italic; color: var(--bronze-l); }
+  .assess-row .bar { height: 6px; background: rgba(250,246,240,0.1); border-radius: 100px; overflow: hidden; }
+  .assess-row .bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--bronze), var(--bronze-l)); border-radius: 100px; }
+  .assess-row .en { font-family: var(--serif-en); font-style: italic; font-size: 12px; color: rgba(250,246,240,0.5); margin-top: 4px; display: block; }
+
+  /* ============ Footer ============ */
+  footer { background: var(--ink); color: var(--paper); padding: 64px var(--pad-x) 40px; position: relative; z-index: 2; border-top: 1px solid rgba(250,246,240,0.1); }
+  .foot-inner { max-width: var(--w-max); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+  @media (max-width: 700px) { .foot-inner { grid-template-columns: 1fr; gap: 24px; } }
+  footer h4 { font-family: var(--serif-en); font-style: italic; font-weight: 500; font-size: 14px; color: var(--bronze); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; }
+  footer p, footer li { font-size: 13px; line-height: 1.7; color: rgba(250, 246, 240, 0.72); }
+  footer ul { list-style: none; }
+  footer a { color: rgba(250, 246, 240, 0.72); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--bronze-l); }
+  .foot-brand { font-family: var(--serif-cn); font-weight: 800; font-size: 20px; color: var(--paper); letter-spacing: 0.08em; margin-bottom: 10px; }
+  .foot-brand .accent { color: var(--bronze); }
+  .foot-bottom { max-width: var(--w-max); margin: 44px auto 0; padding-top: 24px; border-top: 1px solid rgba(250, 246, 240, 0.15); font-size: 12px; color: rgba(250, 246, 240, 0.45); text-align: center; letter-spacing: 0.05em; }
+
+  /* ============ Reveal on scroll ============ */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+  @media print {
+    .topnav, .progress, .toc, .back-top, footer { display: none; }
+    body { background: white; } body::before { display: none; }
+    section { page-break-inside: avoid; padding: 30px; }
+    .ex, .sched, .shared-card { page-break-inside: avoid; }
+    .prompt-box { background: #f4efe6; color: #1A1A1A; }
+    .prompt-box pre, .prompt-box .plabel { color: #1A1A1A; }
+    .hero-bg img { filter: none; opacity: 0.3; }
+  }
+</style>
+<style>
+.course-back { position: relative; z-index: 3; padding: 18px var(--pad-x); background: var(--ink); }
+.course-back a { color: var(--paper); text-decoration: none; font-size: 14px; }
+.course-back img { display: block; width: auto; height: 32px; flex: none; padding: 3px; background: white; border-radius: 2px; }
+.course-back a { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.course-back small { display: block; margin-top: 10px; color: #c8becf; font: 12px/1.5 system-ui, sans-serif; }
+.course-back a:hover, .course-back a:focus-visible { color: var(--bronze-l); text-decoration: underline; }
+
+.uq-adaptation { box-sizing: border-box; max-width: 1180px; margin: 16px auto; padding: 11px 16px; border-left: 3px solid #51247a; background: #f4eef8; color: #35264a; font: 13px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.uq-adaptation strong { color: #32135c; }
+.uq-adaptation code { overflow-wrap: anywhere; }
+@media (max-width: 1220px) { .uq-adaptation { margin-left: 18px; margin-right: 18px; } }
+</style>
+</head>
+<body>
+<header class="course-back"><a href="index.html"><img src="assets/uq-logo.png" alt="The University of Queensland logo" width="742" height="205">← The University of Queensland School of Music · 返回课程首页 / Back to course home</a></header>
+<main>
+<aside class="uq-adaptation" aria-label="UQ teaching edition note"><strong>Desktop classroom edition / 桌面教室教学版</strong> — This stand-alone workshop uses one audio track you created or have permission to use. Bring an MP3 or other browser-supported audio file; no prior-course files are required. Work on a desktop browser, and test the finished page with UQ classmates or an audience you choose.<br>这是一节独立的桌面浏览器工作坊。请准备自己创作或已获使用许可的音频（MP3 或浏览器支持的格式）；无需其他课程的前置文件。完成后请让昆士兰大学同学或自选受众在桌面浏览器中试用。</aside>
+<section id="visual" class="course" data-course="visual">
+  <div class="container">
+
+    <div class="course-band">
+      <div class="course-num">01</div>
+      <div class="course-meta">
+        <span class="tag">Desktop workshop · Visual + UX · 桌面交互可视化</span>
+        <h2>用 Gemini 做音乐可视化<span class="en">Interactive Music Visualizer with Gemini — generative UI</span></h2>
+        <p class="lead">
+          The radical idea: students never write code. They describe what they want in
+          natural language and Gemini generates runnable HTML/JS; the student only iterates
+          the prompt and the aesthetics. They load a music track they created or may use,
+          make the visuals genuinely REACT to the sound (bass / mid / treble + beats),
+          restyle the result as expressive Chinese ink-wash, and share a working URL.<br />
+          核心思路：学员不写代码——用自然语言对 Gemini 描述，让它生成可运行 HTML，
+          自己负责迭代提示词与审美。载入自创或获授权的音乐，让画面<b>真正随声音反应</b>
+          （低/中/高频 + 节拍），再打磨为<b>有笔触和留白的水墨</b>，最后分享可运行链接。
+        </p>
+        <div class="deliver-pill"><b>当天产出 / Deliverable</b> — 可在浏览器打开的交互作品 + 课堂同学可访问的链接 + 30s 演示视频 + Prompt 日志（≥5 轮迭代）<br /><span style="opacity:.7;">A browser-openable interactive work + a class-accessible link + a 30s demo video + a prompt log (≥5 iterations).</span></div>
+      </div>
+    </div>
+
+    <div class="samplenote" style="border-left:3px solid #b06a57;">
+      <b>⚠️ 课前确认 3 件事 · Pre-flight (instructor and students)</b><br />
+      ① <b>音频有使用权吗?</b> 每位同学备一段自己创作或获授权的音频，并准备一段安静与高潮对比明显的片段。<span style="opacity:.7;">Bring a rights-cleared track with a quiet-to-loud contrast.</span><br />
+      ② <b>Google AI Studio 能登录吗?</b> 课前用教室网络打开并完成登录，保存一份正在运行的项目 ZIP 作为回滚点。<span style="opacity:.7;">Test classroom Wi-Fi and sign-in; save a working project ZIP checkpoint.</span><br />
+      ③ <b>本地服务器起了吗?</b> 麦克风和摄像头权限需要 <code>localhost</code> 或 HTTPS；用 <code>python3 -m http.server</code> 在桌面浏览器打开示例，不要从 <code>file://</code> 打开。<span style="opacity:.7;">Serve on <code>localhost</code> or HTTPS so mic/camera permissions work.</span>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="block-title">学习目标 <span class="en">Learning objectives</span></div>
+        <ul class="obj-list">
+          <li>掌握生成式 UI 编程范式：描述 → 预览 → 迭代<span class="en">Describe → preview → iterate</span></li>
+          <li>让画面随音乐多频段反应（低/中/高 + 节拍），做出炫酷效果<span class="en">React across bands + beats — flashy, alive</span></li>
+          <li>把「水墨」做成真水墨：渗墨 · 飞白 · 留白 · 泼墨<span class="en">Real ink-wash: bleed, flying-white, negative space, splashed ink</span></li>
+          <li>设计一种「招牌交互」；理解并调试 AI 生成的代码<span class="en">A signature interaction; understand &amp; debug AI code</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="block-title">工具 <span class="en">Tools</span></div>
+        <table class="tool-table">
+          <thead><tr><th>类别 Category</th><th>工具 Tools</th></tr></thead>
+          <tbody>
+            <tr><td class="cat">主力<span class="en">Main</span></td><td class="name"><b>Google AI Studio — Build</b>（生成网页应用、预览和代码文件）<span class="en">Generate a web app, inspect its preview and code files.</span></td></tr>
+            <tr><td class="cat">原课备选<span class="en">Original alternative</span></td><td class="name">Gemini App + Canvas（原教案列出的备选工具；本课跟做统一使用 AI Studio Build）<span class="en">Listed in the source lesson; this teaching edition follows AI Studio Build.</span></td></tr>
+            <tr><td class="cat">大陆备选<span class="en">Mainland alternatives</span></td><td class="name">豆包 AI 编程 · 通义千问 Artifacts · Trae<span class="en">Doubao AI coding · Qwen Artifacts · Trae.</span></td></tr>
+            <tr><td class="cat">分享 / 部署<span class="en">Share / deploy</span></td><td class="name">AI Studio Share · project ZIP · static hosting for static builds</td></tr>
+          </tbody>
+        </table>
+        <p class="lead" style="margin:10px 0 0;font-size:13px;max-width:800px;">本页保留原教案的「单文件 HTML」提示词作为课堂练习目标；当前 AI Studio Build 也可能生成多文件 React 项目。遇到这种情况，继续在预览与 Code 页面迭代，并按项目结构导出 ZIP。<span style="color:var(--mute)">The original prompts request a single HTML file. Current AI Studio Build may instead generate a multi-file React app; keep its working structure, iterate in Preview and Code, then export the project ZIP.</span></p>
+      </div>
+    </div>
+
+    <div class="ex-head-line"><span class="k">无障碍与安全 · Accessibility &amp; Safety（先读 · read first）</span><span class="ln"></span></div>
+    <p class="lead" style="margin:6px 0 10px;font-size:14px;max-width:780px;">本课默认有闪光、抖动、强对比脉冲——对光敏性癫痫是<b>真实风险</b>。下列约束<b>全程适用并计入评分</b>，括号内英文句可直接粘进 prompt。<span style="color:var(--mute)">Flashing/shake/high-contrast pulses are a real photosensitivity risk; these apply all day, are graded, and the English lines paste straight into prompts.</span></p>
+    <table class="mini-table">
+      <tr><td>防闪光 Anti-flash</td><td class="en">Cap any flash to under 3 per second, never a full-screen pure-white strobe; keep flashes local and brief.</td></tr>
+      <tr><td>减弱动效 Reduced motion</td><td class="en">Respect @media (prefers-reduced-motion: reduce): disable screen-shake and heavy bloom, soften pulses to opacity fades.</td></tr>
+      <tr><td>可暂停/静音 Pause &amp; mute</td><td class="en">Always keep a visible Pause and Mute control; nothing auto-plays loud.</td></tr>
+      <tr><td>对比度 Contrast</td><td class="en">Ensure text and the red seal meet WCAG AA contrast on the #FAF6F0 paper.</td></tr>
+      <tr><td>字幕 / 声明 Caption &amp; note</td><td>demo 视频加一行字幕；投屏前口头提示「含闪光与运动」。 One caption line on the clip; say "contains flashing &amp; motion" before the showcase.</td></tr>
+    </table>
+
+    <div class="sched">
+      <h3>当天流程 · Hour-by-hour（约 3 小时）</h3>
+      <ul class="sched-list">
+        <li><time>09:00–09:25</time><span class="lab"><b>讲座 + Demo</b> — Generative UI：在 Google AI Studio Build 中用语言生成可交互页面<span class="en">Lecture + Demo — generative UI: build an interactive page in Google AI Studio Build.</span></span></li>
+        <li><time>09:25–10:05</time><span class="lab"><b>Workshop 1</b> — 练习 1–2（Hello Canvas + 载入自备音频）<span class="en">Workshop 1 — Exercises 1–2 (Hello Canvas + your rights-cleared audio)</span></span></li>
+        <li><time>10:05–10:45</time><span class="lab"><b>Workshop 2</b> — 练习 3（加一种交互）<span class="en">Workshop 2 — Exercise 3 (add one interaction)</span></span></li>
+        <li><time>10:45–11:30</time><span class="lab"><b>Workshop 3</b> — 练习 4（水墨笔触、留白与节拍泼墨）<span class="en">Workshop 3 — Exercise 4 (ink strokes, negative space and beat-driven splashes)</span></span></li>
+        <li><time>11:30–12:00</time><span class="lab"><b>导出 → 部署 → Demo</b> — 练习 5（Ship It）<span class="en">Export → deploy → demo — Exercise 5 (Ship It)</span></span></li>
+      </ul>
+    </div>
+
+    <div class="ex-head-line"><span class="k">生产流程 · Production process</span><span class="ln"></span></div>
+    <div class="process">
+      <div class="pcard"><span class="pno">1</span><img class="pthumb" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Processing_4.0b1_Screenshot.png" alt="创意编程环境" loading="lazy"><div class="pbody"><h5>用语言生成<span class="en">Describe → code</span></h5><p>对 Gemini 描述，直接生成可运行 HTML。<span class="en">Describe it to Gemini; get runnable HTML directly.</span></p><span class="cred">© Processing Foundation · GPL · Wikimedia</span></div></div>
+      <div class="pcard"><span class="pno">2</span><img class="pthumb" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Voice_waveform_and_spectrum.png" alt="音频波形与频谱" loading="lazy"><div class="pbody"><h5>声音驱动画面<span class="en">Audio-reactive</span></h5><p>低/中/高三频段 + 节拍，各驱动不同炫酷效果。<span class="en">Bass/mid/treble + beats each drive a different flashy effect.</span></p><span class="cred">© Bob K · Public domain · Wikimedia</span></div></div>
+      <div class="pcard"><span class="pno">3</span><img class="pthumb" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Fractals_Geometric_Pattern_%288665018571%29.jpg" alt="生成式视觉" loading="lazy"><div class="pbody"><h5>加一种交互<span class="en">One interaction</span></h5><p>鼠标拖墨 / 点击冲击波——让人想再玩一次。<span class="en">Drag-to-ink / click shockwave — makes you want another go.</span></p><span class="cred">© Dilshan Jayakody · CC BY-SA 2.0 · Wikimedia</span></div></div>
+      <div class="pcard"><span class="pno">4</span><img class="pthumb" src="https://upload.wikimedia.org/wikipedia/commons/2/27/Sesshu_-_Haboku-Sansui.jpg" alt="水墨山水" loading="lazy"><div class="pbody"><h5>水墨风格<span class="en">Ink-wash style</span></h5><p>米纸底 + 水墨笔触 + 中轴线，风格即叙事。<span class="en">Rice-paper ground + ink strokes + a central axis — style as narrative.</span></p><span class="cred">© Sesshū Tōyō (1495) · Public domain · Wikimedia</span></div></div>
+      <div class="pcard"><span class="pno">5</span><img class="pthumb" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Chromium_web_browser.PNG" alt="浏览器中的网页" loading="lazy"><div class="pbody"><h5>发布分享<span class="en">Ship a URL</span></h5><p>导出 → 部署 → 公开链接，桌面浏览器可打开。<span class="en">Export → deploy → a public link that works in a desktop browser.</span></p><span class="cred">© Google · CC BY-SA 4.0 · Wikimedia</span></div></div>
+    </div>
+
+    <div class="demo">
+      <div class="dh">讲座 + Demo · 用语言「画」出网页<span class="en">Lecture + live demo</span></div>
+      <div class="dsub">09:00–09:25 · 约 25 分钟 · 教师演示 · ~25 min · teacher demo</div>
+      <div class="demo-grid">
+        <ol class="beats">
+          <li><b>生成式 UI 是什么</b> — <span class="say">「你不写代码，你描述；Gemini 写出可运行的 HTML。」</span><span class="en"><b>What is generative UI</b> — "You don't write code, you describe; Gemini writes the runnable HTML."</span></li>
+          <li><b>现场一条 prompt（约 5 分钟）</b> — 在 AI Studio Build 生成「音频反应的水墨泼墨 + 辉光粒子」页面，当场加载音频——低音一来，墨点炸开。<span class="en"><b>One prompt live (~5 min)</b> — use AI Studio Build for an "audio-reactive splashed-ink + glowing particles" page; load audio on the spot — when the bass hits, the ink bursts.</span></li>
+          <li><b>报错 = 沟通失败</b> — 故意触发一个错误，把报错原样粘回 Gemini 让它自己修。<span class="en"><b>A bug = a comms failure</b> — trigger an error on purpose; paste it back to Gemini and let it fix itself.</span></li>
+          <li><b>抛出今日任务</b> — 用自己的音乐做一张可分享的声音驱动水墨交互页面。<span class="en"><b>Set today's task</b> — turn your own music into a shareable, sound-reactive ink-wash experience.</span></li>
+        </ol>
+        <figure><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Fractals_Geometric_Pattern_%288665018571%29.jpg" alt="生成式视觉" loading="lazy"><figcaption>Generative / creative-coding visuals (illustrative)<br /><span style="opacity:.7;">生成式 / 创意编程视觉（示意）</span><br />© Dilshan Jayakody · CC BY-SA 2.0 · Wikimedia</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- ===== Decomposition method · step by step ===== -->
+    <style> .decomp .en2 { display:block; color:var(--mute); font-size:12.5px; line-height:1.55; margin-top:3px; } </style>
+    <div class="ex-head-line" id="decompose"><span class="k">拆解法 · 一步一步来 <span class="en">· Decompose, one step at a time</span></span><span class="ln"></span></div>
+    <p class="lead" style="margin:6px 0 2px;font-size:14.5px;max-width:840px;">不要一次让 AI 把整个页面做出来。把大目标拆成一串「单一目的」的小步骤——<b>一次只加一件事，加完就验证，能跑再加下一步</b>。下面这把「拆解阶梯」就是今天五个练习的主线，照着走，不会乱。<span style="color:var(--mute)">Never ask the AI for the whole page at once. Break the goal into a ladder of single-purpose steps — add one thing, verify it runs, then the next. This ladder is the spine of today's five exercises; follow it and you won't get lost.</span></p>
+    <div class="demo decomp" style="border-left-color:var(--bronze);">
+      <div class="dh">拆解阶梯<span class="en">The decomposition ladder</span></div>
+      <div class="dsub">骨架 → 反应 → 风格：先让它动，再让它「听」，最后才让它「美」。 Skeleton → reactions → style: make it move, then make it listen, and only then make it beautiful.</div>
+      <ol class="beats">
+        <li><b>搭骨架 Skeleton</b> — 一个 HTML 文件：全屏 canvas + 渲染循环 + 暂停/静音按钮。<span class="say">验证 check: 空白画布在持续刷新。 → Ex.1</span><span class="en2">One HTML file: a full-screen canvas, a render loop, and Pause/Mute. Check: the blank canvas keeps repainting.</span></li>
+        <li><b>进声音 Load the audio</b> — 载入并能播放/暂停一段本地 .mp3。<span class="say">验证: 能播、能停。 → Ex.2</span><span class="en2">Load a local .mp3 with play / pause. Check: it plays and pauses.</span></li>
+        <li><b>取一个数 One signal</b> — 接 FFT，先只把<b>低频</b>一个数字打在屏幕上。<span class="say">验证: 出声时数字在跳。 → Ex.2</span><span class="en2">Wire up the FFT and print just the BASS number on screen. Check: it jumps with sound.</span></li>
+        <li><b>一个映射 One mapping</b> — 让那一个数字驱动<b>一个</b>视觉（一个圆随低音缩放）。<span class="say">验证: 鼓点一来圆就涨。 → Ex.2</span><span class="en2">Let that one number drive ONE visual (a circle scales with the bass). Check: it pulses on every kick.</span></li>
+        <li><b>逐段添加 Add bands — one at a time</b> — 中频→涟漪，高频→粒子；<b>一次只加一段，加完再加下一段</b>。<span class="say">验证: 每段单独确认对了再继续。 → Ex.2</span><span class="en2">Mids → ripples, treble → particles — add ONE band at a time, confirming each before the next.</span></li>
+        <li><b>加节拍 Beats</b> — 检测重拍 → 闪一下 / 冲击波。<span class="say">验证: 重拍时画面闪一下。 → Ex.2</span><span class="en2">Detect strong onsets → one flash / shockwave. Check: it flashes on a strong beat.</span></li>
+        <li><b>抹平 Smooth</b> — 所有数值做 lerp 平滑。<span class="say">验证: 不再抖，像呼吸。 → Ex.2</span><span class="en2">Smooth every value with lerp. Check: no jitter — it breathes.</span></li>
+        <li><b>一种交互 One interaction</b> — 只选<b>一个</b>「招牌动作」做到爽。<span class="say">验证: 你会想再玩一次。 → Ex.3</span><span class="en2">Pick exactly ONE signature interaction and make it satisfying. Check: you want to do it again.</span></li>
+        <li><b>上风格 Style — last</b> — 最后才做水墨：渗墨·飞白·留白·印章，让音乐变化真正改变笔触。<span class="say">验证: 像真水墨，不是灰色几何。 → Ex.4</span><span class="en2">Only now the ink-wash pass — bleed, flying-white, negative space, a red seal; let musical changes shape the strokes. Check: real ink-wash, not grey shapes.</span></li>
+        <li><b>发布 Ship</b> — 导出 → 分享 → 课堂可访问的链接 + demo + prompt-log。<span class="say">验证: 在另一台桌面电脑打开能跑。 → Ex.5</span><span class="en2">Export → share → a class-accessible link + demo + prompt-log. Check: it runs in another desktop browser.</span></li>
+      </ol>
+    </div>
+    <div class="samplenote" style="border-left:3px solid var(--bronze);">
+      <b>四条铁律 · Four golden rules</b> — ① 先骨架，再血肉，最后皮肤（结构 → 反应 → 风格）。② 一次只改一个变量。③ 加完就验证，能跑再继续。④ 永远留一份「上一版能跑的」项目。<br />
+      <span style="opacity:.8;">① Skeleton → flesh → skin (structure → reactions → style). ② Change one variable at a time. ③ Verify after every step; only continue when it runs. ④ Always keep a last-known-good file — rolling back and re-describing IS the skill.</span>
+    </div>
+
+    <div class="ex-head-line"><span class="k">输入与交付 · Input and output</span><span class="ln"></span></div>
+    <div class="handoff">
+      <div class="ho-col ho-in"><div class="ho-h">带入课堂 · Bring</div><ul>
+        <li>自创或获授权的音频文件<span class="en">an original or rights-cleared audio track</span></li>
+        <li>一张水墨参考图或视觉关键词<span class="en">one ink-wash reference or a few visual keywords</span></li>
+      </ul></div>
+      <div class="ho-arrow">→</div>
+      <div class="ho-col ho-this"><div class="ho-h">本课 · Workshop</div><p>把低、中、高频与节拍映射为<b>水墨笔触、涟漪和泼墨</b>。<span class="en">Map bass, mids, treble and beats to <b>ink strokes, ripples and splashes</b>.</span></p></div>
+      <div class="ho-arrow">→</div>
+      <div class="ho-col ho-out"><div class="ho-h">带走 · Deliver</div><ul>
+        <li>可运行网页项目 + 课堂可访问链接<span class="en">a working web project + a class-accessible link</span></li>
+        <li><code>demo.mp4</code> + <code>prompt-log.md</code><span class="en">a demo clip + an iteration log</span></li>
+      </ul></div>
+    </div>
+
+    <div class="ex-head-line"><span class="k">一个可运行范例 · One live case study（demo · 靶子 · 二创底版 / demo · target · remix base）</span><span class="ln"></span></div>
+    <p class="lead" style="margin:6px 0 0;font-size:14px;max-width:800px;">先在 <code>localhost</code> 亲手玩 <a href="ink-wash-ring.html?v=three-ring-wave-2">「水墨圆环」</a>，再从效果倒推提示词。<span style="color:var(--mute)">Play the live Sumi-e example on <code>localhost</code>, then reverse-engineer its prompts.</span></p>
+    <div class="process">
+      <div class="pcard"><span class="pno">A</span><div class="pbody"><h5>水墨圆环 · Ink Wash Ring<span class="en">水墨 sumi-e · audio + mic/cam + ink</span></h5><p>FFT 取低音 → 墨点爆发；麦克风/摄像头/滚轮/拖拽体现「一个声音或动作数值 → 一个视觉参数」的映射。<br /><span style="opacity:.7;">Audio-reactive ink: one sound or interaction value drives one visual parameter.</span></p><span class="cred"><a href="ink-wash-ring.html?v=three-ring-wave-2">打开可交互示例 / Open live example</a></span></div></div>
+    </div>
+    <table class="mini-table" style="margin-top:14px;">
+      <tr><td><b>练习 Exercise</b></td><td><b>对照案例 · Aim for in the live case</b></td></tr>
+      <tr><td>Ex.2 声音驱动 Audio</td><td>FFT 三频段 + 节拍 + 半透明拖尾 + bloom<span class="en2">Three FFT bands, beats, translucent trails and bloom.</span></td></tr>
+      <tr><td>Ex.3 招牌交互 Interaction</td><td>冲击波、拖拽画墨或拍手炸墨，选一种做精。<span class="en2">Choose and refine a shockwave, drag-to-ink or clap-to-splash interaction.</span></td></tr>
+      <tr><td>Ex.4 水墨风格 Ink-wash</td><td>让渗墨、飞白与留白随音乐变化。<span class="en2">Make bleeding ink, dry-brush marks and negative space respond to the music.</span></td></tr>
+      <tr><td>Ex.5 发布 Ship It</td><td>输出可运行项目、课堂可访问链接、演示视频与提示词日志。<span class="en2">Ship the project, class-accessible link, demo clip and prompt log.</span></td></tr>
+    </table>
+
+    <div style="margin-top:22px; background:var(--ink); color:var(--paper); border-radius:16px; padding:clamp(22px,3vw,30px); box-shadow:var(--shadow-medium); display:flex; flex-wrap:wrap; gap:24px; align-items:center; justify-content:space-between;">
+      <div style="flex:1; min-width:280px;">
+        <div style="font-family:var(--sans-en); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--bronze-l); margin-bottom:10px;">深拆案例 A · Deep build · 11 steps</div>
+        <h4 style="font-family:var(--serif-cn); font-weight:700; font-size:20px; color:var(--paper); margin-bottom:8px;">一步步做出「水墨圆环」<span style="display:block; font-family:var(--serif-en); font-style:italic; font-weight:500; font-size:0.62em; color:rgba(250,246,240,0.6); margin-top:4px;">Build the Ink Wash Ring — one prompt at a time</span></h4>
+        <p style="font-size:14px; color:rgba(250,246,240,0.82); line-height:1.65; max-width:640px;">把案例 A 拆成 <b style="color:var(--bronze-l);">11 步</b>，每步一条可直接复制的 Gemini prompt——从一张空白宣纸，做到随声音泼墨、可拖动作画、麦克风/摄像头互动的成片。<br /><span style="color:rgba(250,246,240,0.55);">Case A, taken apart into 11 copy-paste prompts — blank rice paper to the finished sound-reactive page.</span></p>
+      </div>
+      <a href="build-sumi-e.html" style="white-space:nowrap; display:inline-flex; align-items:center; gap:8px; font-size:14px; text-decoration:none; padding:13px 24px; border-radius:100px; background:var(--bronze); color:var(--ink); font-weight:500; box-shadow:var(--shadow-soft);">看 11 步走报 Open the 11-step build →</a>
+    </div>
+
+    <div class="ex-head-line"><span class="k">效果配方 + 样例 · Effect recipes &amp; samples</span><span class="ln"></span></div>
+    <p class="lead" style="margin:6px 0 0;font-size:14px;max-width:760px;">想更炫？把下面的「配方」一条条加进同一个 Gemini 对话即可（可叠加）。<span style="color:var(--mute)">Stack these copy-paste recipes into the same chat to make it cooler.</span></p>
+    <div class="recipes">
+      <div class="prompt-box"><span class="plabel">辉光 / 泛光 · Bloom</span><pre>Add an additive bloom/glow pass so bright parts halo and bleed light into the paper.</pre></div>
+      <div class="prompt-box"><span class="plabel">节拍粒子 · Beat particles</span><pre>On each detected beat, emit ~30 glowing ink droplets that fly outward and fade.</pre></div>
+      <div class="prompt-box"><span class="plabel">拖尾 · Trails</span><pre>Don't fully clear the canvas each frame — fade it ~8% so motion leaves silky ink trails.</pre></div>
+      <div class="prompt-box"><span class="plabel">冲击波 · Shockwave</span><pre>On click or a strong onset, send an expanding ring that warps everything it passes.</pre></div>
+      <div class="prompt-box"><span class="plabel">景深 / 视差 · Parallax</span><pre>Layer 3 depths of strokes; move them at different speeds with the mouse for depth.</pre></div>
+    </div>
+    <div class="samplenote"><b>自备素材 / Bring your own</b> — 使用自己创作或获授权的音频；本站的 <a href="ink-wash-ring.html?v=three-ring-wave-2">水墨可视化示例</a>可作为视觉目标与二创参考。没有现成代码也可以从 Exercise 1 的提示词开始。<span style="color:var(--mute)">Use audio you created or may use. The live Sumi-e example is a visual target and remix reference; start from the Exercise 1 prompt if you have no code.</span></div>
+
+    <div class="ex-head-line"><span class="k">Gemini Visualizer Workshop · 5 道循序练习 <span class="en">· five sequential exercises</span></span><span class="ln"></span></div>
+    <div class="ex-list">
+
+      <div class="ex">
+        <div class="ex-top">
+          <div><span class="ex-no">Exercise 1</span> <h4>Hello Canvas<span class="en">第一段不写代码的代码</span></h4></div>
+          <span class="time">15 min</span>
+        </div>
+        <p class="goal"><b>目标</b> — 感受自然语言 → 可运行 HTML 的瞬间，建立信心。<span class="en"><b>Goal</b> — Feel the moment natural language becomes runnable HTML, and build confidence.</span></p>
+        <div class="prompt-box"><span class="plabel">Google AI Studio Build — first prompt</span><pre>Build a single-file HTML page with one centered black circle on a
+white background. When I click anywhere, the circle should bounce
+once (scale up to 1.5x and back). Use vanilla JS, no libraries.
+Make it elegant and minimal.</pre></div>
+        <div class="steps"><div class="h">步骤 · Steps</div><ol>
+          <li>打开 Google AI Studio 的 Build 模式，选择网页应用，贴第一个 prompt。<span class="en">Open Google AI Studio Build, choose a web app and paste the first prompt.</span></li>
+          <li>预览运行，点几下看交互。<span class="en">Run the preview; click around to see the interaction.</span></li>
+          <li>截图 + 存下这一版 HTML。<span class="en">Screenshot it and save this version of the HTML.</span></li>
+          <li>自问：你能用一句话描述它在做什么吗？<span class="en">Ask yourself: can you describe what it does in one sentence?</span></li>
+        </ol></div>
+        <div class="ex-grid">
+          <div class="ex-cell"><div class="h">产出 / Deliverable</div><div class="deliver">1 个能跑的 HTML 页面 + 截图。<span class="en">One working HTML page + a screenshot.</span></div></div>
+          <div class="ex-cell"><div class="h">讨论 / Discussion</div><ol><li>第一次「看到代码运行」是什么感觉？<span class="en">How did it feel to "see code run" for the first time?</span></li><li>Gemini 多给了 / 少给了什么？<span class="en">What did Gemini add / leave out?</span></li><li>这段代码你看得懂吗？需要看得懂吗？<span class="en">Can you read this code? Do you need to?</span></li></ol></div>
+        </div>
+        <div class="teach"><span class="star">✦</span><div><b>教学点</b> — vibe coding 范式下「看不懂代码」不是失败——<b>能描述、能验证</b>才是新技能。<span class="en"><b>Teaching point</b> — In the vibe-coding paradigm, "not reading the code" isn't failure — <b>describing and verifying</b> is the new skill.</span></div></div>
+      </div>
+
+      <div class="ex">
+        <div class="ex-top">
+          <div><span class="ex-no">Exercise 2</span> <h4>Audio Lives in the Page<span class="en">让声音住进页面</span></h4></div>
+          <span class="time">25 min</span>
+        </div>
+        <p class="goal"><b>目标</b> — 让画面<b>真正「听见」音乐</b>：不是一个圆变大，而是低/中/高三频段 + 节拍各自驱动不同效果。在 Ex.1 基础上同一对话迭代；报错就粘回 Gemini。<span class="en"><b>Goal</b> — Make the visuals <b>truly "hear" the music</b>: not one circle scaling, but bass / mid / treble + beats each driving a different effect. Iterate in the same chat from Ex.1; paste errors back to Gemini.</span></p>
+        <div class="prompt-box"><span class="plabel">Iterate in the same chat</span><pre>Now load a local .mp3 (small play/pause button) and drive everything with
+the Web Audio API in real time. Split the FFT into 3 bands and make AT
+LEAST 3 things react:
+  - BASS (low)    -> the core pulses / scales on every kick
+  - MIDS          -> concentric rings ripple outward
+  - TREBLE (high) -> a spray of small bright particles
+Add simple BEAT DETECTION: on a strong onset, fire a quick flash / shockwave.
+Add a soft additive GLOW (bloom) and short motion TRAILS so it feels alive,
+not jittery; smooth every value (lerp) so it breathes.
+Single HTML file, vanilla JS + canvas.</pre></div>
+        <div class="steps"><div class="h">步骤 · Steps</div><ol>
+          <li>同一对话继续迭代，贴入多频段 prompt，加载自己创作或获授权的音频。<span class="en">Keep iterating in the same chat; paste the multi-band prompt; load your own rights-cleared audio.</span></li>
+          <li>先跑通基础 FFT，再逐条加：低频脉冲 → 中频涟漪 → 高频粒子。<span class="en">Get a basic FFT working, then add one by one: bass pulse → mid ripple → treble particles.</span></li>
+          <li>再加节拍闪光 + 辉光(bloom) + 拖尾；所有数值做平滑(lerp)防抖。<span class="en">Then add beat flashes + bloom + trails; smooth every value (lerp) to stop jitter.</span></li>
+          <li>录 30s，确认「安静段安静、高潮段炸」；报错粘回 Gemini。<span class="en">Record 30s; confirm "quiet stays quiet, the climax explodes"; paste errors back to Gemini.</span></li>
+        </ol></div>
+        <div class="ex-grid">
+          <div class="ex-cell"><div class="h">产出 / Deliverable</div><div class="deliver">三频段 + 节拍反应、带辉光/拖尾的页面 + 30s 录屏（要含一段「安静 → 高潮」对比）。<span class="en">A page reacting across 3 bands + beats with bloom/trails + a 30s screen-recording (include a "quiet → climax" contrast).</span></div></div>
+          <div class="ex-cell"><div class="h">讨论 / Discussion</div><ol><li>安静段与高潮段的差别够大吗？<span class="en">Is the quiet-vs-climax difference big enough?</span></li><li>哪个频段最难「听对」？延迟 / 过激 / 麻木怎么调？<span class="en">Which band was hardest to get right — laggy / too jumpy / numb?</span></li><li>Gemini 哪一次给的代码错了？错在哪？<span class="en">Which Gemini output was buggy? Where?</span></li></ol></div>
+        </div>
+        <div class="teach"><span class="star">✦</span><div><b>教学点</b> — 别让<b>一个圆</b>代表整首歌——拆成低/中/高 + 节拍，画面才像在「听」。bug = 沟通失败，粘报错最高效。<span class="en"><b>Teaching point</b> — Don't let <b>one circle</b> stand for the whole song — split into bass/mid/treble + beats so the visuals seem to "listen." A bug = a comms failure; pasting the error is the fastest fix.</span></div></div>
+      </div>
+
+      <div class="ex">
+        <div class="ex-top">
+          <div><span class="ex-no">Exercise 3</span> <h4>Add One Interaction<span class="en">加一个交互</span></h4></div>
+          <span class="time">35 min</span>
+        </div>
+        <p class="goal"><b>目标</b> — 从「被动反应」变「主动可玩」。每人选 <b>1 种</b>作为你的「招牌动作」（宁精勿多），做得够爽。<span class="en"><b>Goal</b> — Move from "passive reaction" to "actively playable." Each person picks <b>one</b> as your signature move (quality over quantity) and makes it satisfying.</span></p>
+        <table class="mini-table">
+          <tr><td>鼠标</td><td class="en">"When I move the mouse, the circle follows my cursor with a 0.3s lag."</td></tr>
+          <tr><td>键盘</td><td class="en">"When I press SPACE, trigger a brief ink-ripple accent."</td></tr>
+          <tr><td>麦克风</td><td class="en">"When I make a sound into the mic, a smaller circle appears and pulses with my voice."</td></tr>
+          <tr><td>滚轮</td><td class="en">"Mouse-wheel up = warmer color tone; down = cooler tone."</td></tr>
+          <tr><td>摄像头</td><td class="en">"When my face moves left/right (webcam), the visuals shift left/right."</td></tr>
+          <tr><td>拖动画笔</td><td class="en">"Click-drag leaves a trailing ink brush-stroke that slowly fades."</td></tr>
+          <tr><td>点击冲击波</td><td class="en">"On click, emit a shockwave ring that warps everything it passes through."</td></tr>
+          <tr><td>拍手</td><td class="en">"On a loud clap, trigger an ink-splash explosion."</td></tr>
+        </table>
+        <div class="steps"><div class="h">步骤 · Steps</div><ol>
+          <li>从上表选 <b>1 种</b>交互（鼠标 / 键盘 / 麦克风 / 滚轮 / 摄像头）。<span class="en">Pick <b>one</b> interaction from the table (mouse / keyboard / mic / wheel / webcam).</span></li>
+          <li>用一句自然语言把它描述给 Gemini。<span class="en">Describe it to Gemini in one natural sentence.</span></li>
+          <li>跑通后自测：你会想「再用一次」吗？<span class="en">Once it works, self-test: do you want to do it again?</span></li>
+          <li>录一段带交互的 30s 演示。<span class="en">Record a 30s demo showing the interaction.</span></li>
+        </ol></div>
+        <div class="ex-grid">
+          <div class="ex-cell"><div class="h">产出 / Deliverable</div><div class="deliver">含一种交互的页面 + 30s 带交互演示视频。<span class="en">A page with one interaction + a 30s demo video of it.</span></div></div>
+          <div class="ex-cell"><div class="h">讨论 / Discussion</div><ol><li>你的交互「用一次就够」还是「想再用一次」？<span class="en">Is your interaction "once is enough" or "want to do it again"?</span></li><li>交互改变了观众听音乐的方式吗？<span class="en">Did it change how the audience listens?</span></li><li>给产品经理看，他会怎么改？<span class="en">Shown to a PM, how would they change it?</span></li></ol></div>
+        </div>
+        <div class="teach"><span class="star">✦</span><div><b>教学点</b> — 好的交互<b>让人想再做一次</b>。没有这个的交互只是装饰。<span class="en"><b>Teaching point</b> — A good interaction <b>makes you want to do it again</b>. Without that, it's just decoration.</span></div></div>
+      </div>
+
+      <div class="ex">
+        <div class="ex-top">
+          <div><span class="ex-no">Exercise 4</span> <h4>Style as Culture<span class="en">风格即文化</span></h4></div>
+          <span class="time">35 min</span>
+        </div>
+        <p class="goal"><b>目标</b> — 把视觉做成<b>真水墨</b>——渗墨、飞白、留白、泼墨，而不是「灰色几何形」。继续迭代，加入下面至少 3 项。<span class="en"><b>Goal</b> — Make the visuals <b>real ink-wash</b> — bleed, flying-white, negative space, splashed ink — not "grey shapes." Keep iterating; add at least 3 of the items below.</span></p>
+        <div class="prompt-box alt"><span class="plabel">Apply at least 3 of these</span><pre>Restyle it as REAL Chinese ink-wash (水墨 / sumi-e), not "grey shapes":
+1. Canvas = warm rice-paper cream (#FAF6F0) with a faint fibrous grain
+   and lots of empty space (留白 negative space).
+2. Brush strokes, NOT geometric shapes: tapered ends, varied width, wet
+   edges that BLEED softly into the paper (feathered alpha).
+3. Ink in tonal washes (dark -> pale, 墨分五色) + dry-brush "flying-white"
+   streaks (飞白) on fast strokes; ONE restrained accent only — a
+   cinnabar-red seal 印章 OR jade #5B8C7E.
+4. On a strong BEAT, throw a splashed-ink burst (泼墨): droplets scatter,
+   then DIFFUSE and dry into the paper over ~1s.
+5. The bass pulse should look like fresh ink BLOOMING on wet paper —
+   not a circle scaling.
+6. A single faint vertical centre line (Beijing Central Axis), a Chinese
+   serif (Noto Serif SC), and a small red seal in one corner.
+Reference look: Sesshu's "splashed-ink" (haboku) landscape.</pre></div>
+        <div class="steps"><div class="h">步骤 · Steps</div><ol>
+          <li>继续迭代，套用上方 ≥3 项水墨 / 中国风处理。<span class="en">Keep iterating; apply ≥3 of the ink-wash / Chinese-style treatments above.</span></li>
+          <li>删掉一个 AI 多给、不搭的元素。<span class="en">Delete one element the AI over-added that doesn't fit.</span></li>
+          <li>保留完整 Prompt Log（所有迭代）。<span class="en">Keep the full Prompt Log (every iteration).</span></li>
+        </ol></div>
+        <div class="ex-grid">
+          <div class="ex-cell"><div class="h">产出 / Deliverable</div><div class="deliver">视觉升级后的页面 + Prompt Log（保留所有迭代历史）。<span class="en">The restyled page + a Prompt Log (full iteration history).</span></div></div>
+          <div class="ex-cell"><div class="h">讨论 / Discussion</div><ol><li>这些视觉元素真的「中国」吗？还是只是符号？<span class="en">Are these visuals truly "Chinese," or just symbols?</span></li><li>你删掉了哪个 AI 给的元素？为什么？<span class="en">Which AI-added element did you cut? Why?</span></li><li>不懂中国文化的观众能感觉到「水墨」吗？<span class="en">Would a viewer new to Chinese culture feel the "ink-wash"?</span></li></ol></div>
+        </div>
+        <div class="teach"><span class="star">✦</span><div><b>教学点</b> — 水墨的关键不是「黑白」，而是<b>墨分五色 + 留白 + 笔触动态</b>；印章 / 中轴是点睛，不是堆砌。<span class="en"><b>Teaching point</b> — Ink-wash isn't about "black &amp; white" but <b>tonal range + negative space + brush dynamics</b>; the seal / central axis are finishing touches, not clutter.</span></div></div>
+      </div>
+
+      <div class="ex">
+        <div class="ex-top">
+          <div><span class="ex-no">Exercise 5</span> <h4>Ship It<span class="en">发布</span></h4></div>
+          <span class="time">30 min</span>
+        </div>
+        <p class="goal"><b>目标</b> — 让作品有课堂同学可访问的链接，能在桌面浏览器打开。选一条分享或部署路径。<span class="en"><b>Goal</b> — Give classmates access to a link they can open in a desktop browser. Choose a sharing or deployment route.</span></p>
+        <table class="mini-table">
+          <tr><td>A. AI Studio Share</td><td>最简单 — 使用 AI Studio 的分享功能，并确认访问权限<span class="en2">Easiest — use AI Studio sharing and check access permissions.</span></td></tr>
+          <tr><td>B. Project ZIP</td><td>下载完整代码归档；多文件项目需按生成的项目说明运行<span class="en2">Download the code ZIP; run a multi-file project using its generated instructions.</span></td></tr>
+          <tr><td>C. Netlify Drop</td><td>仅适用于已构建的静态网页输出<span class="en2">Only for a built static-site output.</span></td></tr>
+          <tr><td>D. GitHub Pages</td><td>仅适用于已构建的静态网页输出<span class="en2">Only for a built static-site output.</span></td></tr>
+        </table>
+        <div class="steps"><div class="h">步骤 · Steps</div><ol>
+          <li>选一条分享或部署路径（AI Studio Share / 静态网站托管）。若 Build 生成多文件项目，先按项目说明构建，不能直接上传源文件。<span class="en">Choose AI Studio Share or static hosting. If Build generated multiple files, follow its build instructions before uploading; source files alone are not a static site.</span></li>
+          <li>分享后在另一台桌面电脑以同学身份打开链接，检查访问权限和交互。<span class="en">After sharing, open the link as a classmate on another desktop browser and check access and interaction.</span></li>
+          <li>录 30s <code>demo.mp4</code>，整理 <code>prompt-log.md</code>（≥5 轮）。<span class="en">Record a 30s <code>demo.mp4</code>; tidy up <code>prompt-log.md</code> (≥5 rounds).</span></li>
+          <li>备份 <code>index.html</code>，把链接发群里。<span class="en">Back up <code>index.html</code>; post the link to the group.</span></li>
+        </ol></div>
+        <div class="ex-grid">
+          <div class="ex-cell"><div class="h">产出 / Deliverable</div><div class="deliver">✅ 课堂可访问链接 · ✅ <code>demo.mp4</code>（30s）· ✅ <code>prompt-log.md</code>（≥5 轮）· ✅ 项目 ZIP 备份。<span class="en">✅ a class-accessible link · ✅ <code>demo.mp4</code> (30s) · ✅ <code>prompt-log.md</code> (≥5 rounds) · ✅ a project ZIP backup.</span></div></div>
+          <div class="ex-cell"><div class="h">讨论 / Discussion</div><ol><li>在教室投屏和普通桌面窗口里都看得清吗？<span class="en">Is it legible on the classroom projector and in a regular desktop window?</span></li><li>请不在本组的同学打开链接，他会如何使用？<span class="en">Ask a classmate outside your group to open the link. How do they use it?</span></li><li>再改哪一件事最能改善作品？<span class="en">Which one change would most improve the work?</span></li></ol></div>
+        </div>
+        <div class="teach"><span class="star">✦</span><div><b>教学点</b> — 作品<b>只有公开了才算存在</b>。私有链接 = 没做过。收尾前确认另一台电脑能打开与操作。<span class="en"><b>Teaching point</b> — A work <b>only exists once it's shared and usable</b>. Verify it on another desktop computer before closing.</span></div></div>
+      </div>
+
+    </div>
+
+    <div class="ex-head-line"><span class="k">常见报错与急救 · Common failures &amp; fixes（对照水墨案例 / against the live Sumi-e case）</span><span class="ln"></span></div>
+    <table class="mini-table">
+      <tr><td>点了播放没声音 Silent on play</td><td class="en">Autoplay policy — create/resume the AudioContext inside the play / ENTER click; call resume() whenever state==='suspended'.</td></tr>
+      <tr><td>麦克风/摄像头被拒 Mic/cam denied</td><td class="en">getUserMedia needs HTTPS / localhost, not file://; try/catch and reset the toggle on failure.</td></tr>
+      <tr><td><code>createMediaElementSource</code> 报错</td><td class="en">Only once per &lt;audio&gt; — make the AudioContext + source a guarded singleton (if(audioCtx) return).</td></tr>
+      <tr><td>掉帧 Frame drops</td><td class="en">Cap rings/particles, shrink the frame-diff canvas (40×30), reuse one Uint8Array, disable shake/shadowBlur on weak devices.</td></tr>
+    </table>
+    <div class="samplenote" style="border-left:3px solid var(--jade);">
+      <b>🆘 Gemini 反复给坏结果 · escalation ladder</b> — 同一问题<b>试 3 次仍失败就换方法</b>，别死磕：① 报错原样粘回 + <code>return the full corrected HTML</code>；② 缩小范围 <code>Only change the audio part; keep the rest identical</code>；③ <b>回滚</b>到上一版能跑的 HTML，再只加一小步；④ 仍不行 → 叫老师 / 换更简单的交互 / 直接参考水墨案例二创。<b>铁律：永远留一份「上一版能跑的 HTML」。</b><br />
+      <span style="opacity:.8;">3 fails on one issue → change tactic: paste the error → narrow the scope → roll back to last-good → ask a human or remix the Sumi-e case. Always keep a last-known-good file — rolling back &amp; re-describing IS the skill.</span>
+    </div>
+
+  </div>
+</section>
+</main>
+<footer class="course-back"><a href="index.html">← 返回课程首页 / Back to course home</a><small>课程内容改编自中国传媒大学国际传媒教育学院原音乐可视化教学资料。 / Lesson content adapted from the original music-visualisation teaching material by the Faculty of International Media, Communication University of China.</small></footer>
+</body>
+</html>

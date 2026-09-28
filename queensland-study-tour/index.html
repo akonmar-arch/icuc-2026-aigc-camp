@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#51247a">
+  <meta name="description" content="A bilingual, hands-on music visualisation course for students of The University of Queensland School of Music. Build an interactive visualiser with Google AI Studio, one prompt at a time.">
+  <title>Music, made visible · 音乐，可被看见 | UQ School of Music teaching edition</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2351247a'/%3E%3Cpath d='M10 34h8l5-13 8 26 7-21 5 8h11' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=remove-sources-1">
+  <script defer src="app.js?v=ink-embed-1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content / 跳到正文</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="identity" href="#main" aria-label="Course home">
+        <img class="uq-logo" src="assets/uq-logo.png" alt="The University of Queensland logo">
+        <span class="identity-copy"><strong>School of Music</strong><small>The University of Queensland · 昆士兰大学音乐学院</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu · 菜单</button>
+      <nav id="site-nav" class="site-nav" aria-label="Course sections">
+        <a href="#why">Why / 为什么</a>
+        <a href="#history">History / 历程</a>
+        <a href="#workflows">People / 工种</a>
+        <a href="#applications">Uses / 应用</a>
+        <a href="#studio">Build / 制作</a>
+        <a href="#pathways">Case / 案例</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="opening" id="opening" aria-labelledby="opening-title">
+      <div class="opening-inner">
+        <p class="opening-kicker">MUSIC VISUALISATION · UQ SCHOOL OF MUSIC / 音乐可视化</p>
+        <h1 id="opening-title">Music becomes visible.<br><em>Musicians decide how.</em></h1>
+        <p class="opening-subtitle">让音乐被看见，由音乐人决定如何呈现。</p>
+        <div class="opening-copy">
+          <p lang="en">A recording, a voice or a gesture can become colour and motion. In this class, you will decide what an image should reveal about the music, then use Google AI Studio to build an interactive browser work—one tested prompt at a time.</p>
+          <p lang="zh-CN">录音、人声与动作可以转译成色彩和运动。在这节课里，你先判断画面应呈现音乐的哪些特征，再用 Google AI Studio 逐步做出可交互的浏览器作品，并在每一步亲自验证。</p>
+        </div>
+        <div class="opening-rule" aria-hidden="true"></div>
+        <div class="opening-stats" aria-label="Course at a glance / 课程概览">
+          <div><strong>3</strong><span>FREQUENCY BANDS<small>低 · 中 · 高频</small></span></div>
+          <div><strong>2</strong><span>EXERCISES<small>两项课堂练习</small></span></div>
+          <div><strong>11</strong><span>BUILD PROMPTS<small>十一条实作提示词</small></span></div>
+          <div><strong>3h</strong><span>STUDIO TIME<small>三小时工作坊</small></span></div>
+        </div>
+        <a class="opening-next" href="#bridge">Follow the question <span>顺着这个问题继续 ↓</span></a>
+      </div>
+    </section>
+
+    <section class="opening-bridge" id="bridge" aria-labelledby="bridge-title">
+      <div class="opening-bridge-inner">
+        <p class="bridge-kicker">FROM LISTENING TO LOOKING / 从聆听走向观看</p>
+        <div class="bridge-grid">
+          <h2 id="bridge-title">Before we build the image,<br><em>what in the music deserves to be seen?</em><span lang="zh-CN">在制作画面之前，音乐里什么值得被看见？</span></h2>
+          <div class="bridge-copy">
+            <p lang="en">Start with a beat, a breath, or a shift in timbre. Decide why that moment matters; then choose how colour, shape and motion should respond.</p>
+            <p lang="zh-CN">从一次重拍、一口呼吸或一次音色变化开始。先判断它为什么重要，再决定色彩、形状和运动如何回应。</p>
+            <a href="#why">See how sound becomes image <span>看声音如何转译为画面 ↓</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="why" aria-labelledby="why-title">
+      <div class="section-wrap">
+        <div class="section-heading"><p class="chapter">01 / THE IDEA · 概念</p><h2 id="why-title">What is music visualisation?<span>什么是音乐可视化？</span></h2></div>
+        <div class="paired introduction">
+          <p lang="en">Music visualisation translates changing musical features and performance gestures into moving images. It can reveal waveforms, spectra and rhythmic patterns, or become an interactive artwork shared with an audience. The musician still decides which sonic events matter and how they should look.</p>
+          <p lang="zh-CN">音乐可视化把随时间变化的声音特征与表演动作转译为动态图像。它既能帮助我们观察波形、频谱和节奏，也能成为与听众共同参与的视觉作品。音乐人仍然决定哪些声音事件重要，以及它们应该如何呈现。</p>
+        </div>
+        <article class="video-case" id="video-case" aria-labelledby="video-case-title">
+          <div class="video-case-screen">
+            <div class="video-case-poster">
+              <span class="video-case-poster-label">CLASSROOM CASE · VIMEO / 课堂案例 · VIMEO</span>
+              <button class="video-case-load" type="button" aria-label="Play the selected music visualisation case / 播放选定的音乐可视化案例"><span aria-hidden="true">▶</span><strong>See sound take shape<small>播放案例视频 · Vimeo</small></strong></button>
+              <span class="video-case-poster-foot">LISTEN → OBSERVE → DESIGN / 聆听 → 观察 → 设计</span>
+            </div>
+            <iframe data-src="https://player.vimeo.com/video/363819046?autoplay=1" title="Selected music visualisation case on Vimeo" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; picture-in-picture; fullscreen" allowfullscreen hidden></iframe>
+            <a class="video-case-playback-link" href="https://vimeo.com/363819046" target="_blank" rel="noopener">Open original video ↗<span>播放器空白时，打开原视频</span></a>
+          </div>
+          <div class="video-case-copy">
+            <p class="video-case-kicker">SELECTED EXAMPLE / 选定案例</p>
+            <h3 id="video-case-title">Music, made visible<span>Watch a visual work, then decide what your own music should change. / 先看一段视觉作品，再决定自己的音乐要改变什么。</span></h3>
+            <p lang="en">Watch the selected Vimeo case once for the overall experience. On a second viewing, notice a moment when the sound changes and describe what happens on screen. Separate what you can observe from what you infer about the system behind it.</p>
+            <p lang="zh-CN">先完整观看这段选定的 Vimeo 案例，感受整体体验；再看一遍，找出一次声音变化，并描述画面随之发生了什么。区分你实际看到的现象，以及你对背后系统的推测。</p>
+            <div class="video-case-question"><strong>Watch for / 观看任务</strong><p lang="en">Which sound event would you choose as an input for your own visualiser? What visible response would make that choice clear to an audience?</p><p lang="zh-CN">如果制作自己的可视化软件，你会选哪种声音事件作为输入？怎样的画面反馈能让观众看懂这个选择？</p></div>
+            <div class="video-case-links"><a href="https://vimeo.com/363819046" target="_blank" rel="noopener">Watch on Vimeo / 外部播放 ↗</a></div>
+            <p class="video-case-credit">Vimeo video selected for this class. Internet connection required for playback. / 本课程选用的 Vimeo 视频；播放需要网络连接。</p>
+          </div>
+        </article>
+        <div class="mapping-strip" aria-label="Sound to image mapping">
+          <div><span class="mapping-symbol">♪</span><strong>Sound / 声音</strong><small>recording · voice · instrument<br>录音 · 人声 · 乐器</small></div>
+          <span class="mapping-arrow" aria-hidden="true">→</span>
+          <div><span class="mapping-symbol">≋</span><strong>Features / 特征</strong><small>loudness · spectrum · rhythm<br>响度 · 频谱 · 节奏</small></div>
+          <span class="mapping-arrow" aria-hidden="true">→</span>
+          <div><span class="mapping-symbol">◉</span><strong>Decisions / 设计</strong><small>shape · colour · motion<br>形状 · 颜色 · 运动</small></div>
+          <span class="mapping-arrow" aria-hidden="true">→</span>
+          <div><span class="mapping-symbol">✳</span><strong>Experience / 体验</strong><small>screen · stage · interaction<br>屏幕 · 舞台 · 交互</small></div>
+        </div>
+        <div class="reason-intro"><p class="chapter">WHY MUSIC STUDENTS · 为何面向音乐学生</p><h3>Why teach this to musicians?<span>为什么要教音乐专业学生？</span></h3></div>
+        <div class="reason-grid">
+          <article><span class="reason-mark">A</span><h3>Listen with another sense<span>换一种感官去听</span></h3><p lang="en">Compare timbre, dynamics and form through visible evidence. The image can start a musical question; it is not a substitute for listening.</p><p lang="zh-CN">借助可见的线索比较音色、力度和曲式，让图像成为提出音乐问题的起点，并保留聆听本身的判断。</p></article>
+          <article><span class="reason-mark">B</span><h3>Author the mapping<span>由音乐人定义映射</span></h3><p lang="en">A crescendo need not simply make everything bigger. You can choose to show tension through density, distance, colour, or stillness.</p><p lang="zh-CN">渐强不一定只是“所有东西变大”。你可以用密度、距离、色彩，甚至静止来表达张力。</p></article>
+          <article><span class="reason-mark">C</span><h3>Make a working prototype<span>做出可运行原型</span></h3><p lang="en">AI Studio lowers the barrier to a browser prototype, so a performer or composer can test an idea and discuss it with a visual collaborator.</p><p lang="zh-CN">AI Studio 降低浏览器原型的制作门槛，让演奏者或作曲者先验证想法，再与视觉合作者讨论和完善。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section history-section" id="history" aria-labelledby="history-title">
+      <div class="section-wrap">
+        <div class="section-heading"><p class="chapter">02 / LINEAGE · 历程</p><h2 id="history-title">From painted frames to live systems<span>从逐帧绘制到实时响应</span></h2></div>
+        <div class="timeline">
+          <article><span class="era">1920s–40s</span><div><h3>Visual music by hand <small>手工视觉音乐</small></h3><p lang="en">Walter Ruttmann's <em>Lichtspiel: Opus I</em> (1921) set abstract forms in motion. Oskar Fischinger later painted <em>Motion Painting No. 1</em> (1947) frame by frame to Bach.</p><p lang="zh-CN">瓦尔特·鲁特曼的《光影：作品一号》（1921）让抽象形态动了起来；奥斯卡·费钦格后来逐帧绘制《动态绘画一号》（1947），配以巴赫的音乐。</p><a href="https://commons.wikimedia.org/wiki/File:Lichtspiel_Opus_I_(1921).webm" target="_blank" rel="noopener">Opus I ↗</a> <a href="https://www.moma.org/collection/works/315486" target="_blank" rel="noopener">MoMA ↗</a></div><figure class="timeline-media"><a href="https://commons.wikimedia.org/wiki/File:Lichtspiel_Opus_I_(1921).webm" target="_blank" rel="noopener" aria-label="See the source film Lichtspiel: Opus I"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Lichtspiel_Opus_I_%281921%29.webm/330px--Lichtspiel_Opus_I_%281921%29.webm.jpg" alt="Abstract forms in Walter Ruttmann's Lichtspiel: Opus I" loading="lazy" decoding="async"></a><figcaption><strong>Ruttmann · <em>Opus I</em>, 1921 / 鲁特曼《作品一号》</strong><span>Film frame · public domain / 电影画面 · 公有领域</span></figcaption></figure></article>
+          <article><span class="era">Video era</span><div><h3>Audio drives animation <small>音频驱动动画</small></h3><p lang="en">In pre-rendered video, motion designers turned audio into amplitude keyframes or spectrum graphics, then polished each shot before export. The pictured After Effects template is one example.</p><p lang="zh-CN">在预先渲染的视频流程中，动态图形设计师可把音频转换成音量关键帧或频谱图形，再逐镜头修整和导出。右图是 After Effects 模板案例。</p><a href="https://helpx.adobe.com/after-effects/desktop/animate-in-after-effects/assorted-animation-tools/assorted-animation-tools.html" target="_blank" rel="noopener">Adobe After Effects ↗</a> <a href="https://freestockfootagearchive.com/basic-audio-spectrum-template/" target="_blank" rel="noopener">Example ↗</a></div><figure class="timeline-media"><a href="https://freestockfootagearchive.com/basic-audio-spectrum-template/" target="_blank" rel="noopener" aria-label="See the Basic Audio Spectrum Template source"><img src="https://i.ytimg.com/vi/5WzCx0RX-IQ/hqdefault.jpg" alt="Audio spectrum visualisation made with an After Effects template" loading="lazy" decoding="async"></a><figcaption><strong>Basic Audio Spectrum Template / 音频频谱模板</strong><span>Free Stock Footage Archive · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0 ↗</a></span></figcaption></figure></article>
+          <article><span class="era">Live systems</span><div><h3>Visuals perform with music <small>视觉随演出运行</small></h3><p lang="en">Video Jockeys (VJs) and show teams work with BPM, audio analysis, controllers and timecode to keep images responsive during a performance. Rosa Menkman's improvisation with pianist Nils Frahm shows the live setting.</p><p lang="zh-CN">现场视觉师（VJ，即 Video Jockey）和演出视觉团队利用 BPM、音频分析、控制器及时间码，使影像在现场与演出同步变化。右图记录了 Rosa Menkman 与钢琴家 Nils Frahm 的即兴现场。</p><a href="https://resolume.com/support/parameter-animation" target="_blank" rel="noopener">Resolume audio analysis ↗</a></div><figure class="timeline-media"><a href="https://commons.wikimedia.org/wiki/File:Rosa_Menkman_visuals_for_Nils_Frahm.jpg" target="_blank" rel="noopener" aria-label="See Rosa Menkman's photo of her live visuals for Nils Frahm"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Rosa_Menkman_visuals_for_Nils_Frahm.jpg" alt="Live visuals by Rosa Menkman during a performance with Nils Frahm" loading="lazy" decoding="async"></a><figcaption><strong>Rosa Menkman × Nils Frahm, 2012 / 现场即兴</strong><span>Photo: Rosa Menkman · cropped / 已裁切 · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0 ↗</a></span></figcaption></figure></article>
+          <article><span class="era">Web + AI</span><div><h3>Interactive work in the browser <small>浏览器中的交互作品</small></h3><p lang="en">The Web Audio API can supply time-domain and frequency data to Canvas. Google AI Studio Build mode now helps musicians prototype the surrounding web app through iterative prompts. The pictured ink-wash prototype is available as an interactive work below.</p><p lang="zh-CN">Web Audio API 可以把时域和频域数据送给 Canvas；Google AI Studio 的 Build 模式让音乐人通过逐轮提示快速制作网页原型。右图所示的水墨原型可以在下方直接交互体验。</p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API" target="_blank" rel="noopener">MDN ↗</a> <a href="https://ai.google.dev/gemini-api/docs/aistudio-build-mode" target="_blank" rel="noopener">Google AI Studio ↗</a></div><figure class="timeline-media timeline-media--web"><a href="#live-demo" aria-label="Try the interactive ink-wash music visualisation"><img src="steps/11.png" alt="Ink-wash browser prototype with three audio-reactive rings and controls" loading="lazy" decoding="async"></a><figcaption><strong>Ink-wash browser prototype / 水墨网页原型</strong><span>Step 11 result · built for this course / 第 11 步结果 · 本课程制作</span></figcaption></figure></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="workflows" aria-labelledby="workflow-title">
+      <div class="section-wrap">
+        <div class="section-heading"><p class="chapter">03 / BEFORE THE AI ERA · AI 时代之前</p><h2 id="workflow-title">Who made music visuals before AI?<span>AI 时代之前，由哪些职业制作音乐可视化？</span></h2></div>
+        <div class="workflow-rows">
+          <article><div class="workflow-label"><span>TRACK 01 · TYPICAL ROLES / 典型岗位</span><h3>Pre-rendered video<span>预先制作的影像</span></h3></div><div class="workflow-steps"><div><b>Composer<span lang="zh-CN">作曲家</span></b><small>music and creative intent<br>音乐内容与表达方向</small></div><div><b>Audio engineer<span lang="zh-CN">音频工程师</span></b><small>mix, stems, cue points<br>混音、分轨、时间点</small></div><div><b>Motion designer<span lang="zh-CN">动态图形设计师</span></b><small>storyboard, keyframes, render<br>分镜、关键帧、渲染</small></div><div><b>Video editor<span lang="zh-CN">视频剪辑师</span></b><small>picture–sound sync, export<br>声画同步与成片导出</small></div></div></article>
+          <article><div class="workflow-label"><span>TRACK 02 · TYPICAL ROLES / 典型岗位</span><h3>Live or interactive<span>现场或交互作品</span></h3></div><div class="workflow-steps"><div><b>Musical director<span lang="zh-CN">音乐总监</span></b><small>performance plan and cues<br>演出结构与音乐提示</small></div><div><b>Creative technologist<span lang="zh-CN">创意技术师</span></b><small>audio / MIDI to visual mapping<br>音频／MIDI 到画面的映射</small></div><div><b>Video Jockey (VJ)<span lang="zh-CN">现场视觉师</span></b><small>live visual mixing and playback<br>实时画面混合与播放</small></div><div><b>Lighting designer<span lang="zh-CN">舞台灯光设计师</span></b><small>lighting cues and rehearsal<br>灯光提示与现场联排</small></div></div></article>
+        </div>
+        <p class="workflow-input" lang="en">These are typical job titles; one person may cover several roles. In interactive work, audience gestures and performers’ sound can be inputs to the system.</p><p class="workflow-input workflow-input-zh" lang="zh-CN">以上是典型制作岗位，一人也可能兼任多职。在交互作品中，观众的动作与演奏者的声音可以成为系统输入。</p>
+        <div class="workflow-note"><strong>Your role today / 今天你的角色</strong><p lang="en">AI-assisted coding lets you test a mapping yourself before handing it to a production team. Musical judgement, visual design, accessibility and technical checks still need people.</p><p lang="zh-CN">AI 辅助编程让你先亲手验证映射，再交给制作团队扩展。音乐判断、视觉设计、无障碍体验和技术检查依然需要人的参与。</p></div>
+      </div>
+    </section>
+
+    <section class="section applications-section" id="applications" aria-labelledby="applications-title">
+      <div class="section-wrap">
+        <div class="section-heading"><p class="chapter">04 / FOR MUSICIANS · 音乐人的应用</p><h2 id="applications-title">Where could you use it?<span>音乐专业学生能用在哪里？</span></h2></div>
+        <p class="section-deck" lang="en">These are project directions for School of Music students, not claims about existing UQ productions.</p><p class="section-deck zh" lang="zh-CN">以下是面向音乐学院学生的创作方向，并非昆士兰大学已有项目的陈述。</p>
+        <div class="application-grid">
+          <article><span>PERFORMANCE / 演出</span><h3>A visual partner on stage<span>舞台上的视觉合奏者</span></h3><p lang="en">Map a live solo, ensemble, or electronic set to projected movement that follows the performance rather than a fixed video.</p><p lang="zh-CN">把独奏、重奏或电子音乐现场映射成随演出变化的投影，而不是播放固定视频。</p></article>
+          <article><span>COMPOSITION / 创作</span><h3>Show the structure of a piece<span>呈现作品结构</span></h3><p lang="en">Prototype how motifs, texture and dynamics unfold, then include the visual piece in a portfolio or installation.</p><p lang="zh-CN">把动机、织体、力度的展开做成原型，用于作品集或装置作品。</p></article>
+          <article><span>EDUCATION / 教学</span><h3>Make listening discussable<span>让聆听更可讨论</span></h3><p lang="en">Let students compare rhythmic accents, phrase shapes or spectra while they listen, perform and question what the display omits.</p><p lang="zh-CN">让学生边听、边演奏、边比较节奏重音、乐句轮廓和频谱，并讨论图像未呈现的部分。</p></article>
+          <article><span>RESEARCH / 研究</span><h3>Build a testable interface<span>制作可测试界面</span></h3><p lang="en">Explore audience response, multimodal interpretation or performance interaction through a small prototype before a larger study.</p><p lang="zh-CN">用小型原型探索观众反应、多模态理解或演出交互，为后续研究提供可测试界面。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section studio-section" id="studio" aria-labelledby="studio-title">
+      <div class="section-wrap">
+        <div class="section-heading"><p class="chapter">05 / THE STUDIO · 动手制作</p><h2 id="studio-title">Build it in Google AI Studio<span>用 Google AI Studio 逐步制作</span></h2></div>
+        <div class="studio-intro"><p lang="en">Open <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio ↗</a>, choose <strong>Build</strong>, and request a web app. Work in small, testable prompts. Inspect the preview and Code tab after every change; download the project ZIP when it works. Build may create a React app with several files, so keep its working structure.</p><p lang="zh-CN">打开 <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio ↗</a>，进入 <strong>Build</strong> 并选择网页应用。每次只提出一项可验证的改动；每轮检查预览和 Code 页面，确认可用后下载项目 ZIP。Build 可能生成多文件 React 应用，请保留已经运行正常的项目结构。</p></div>
+        <div class="studio-demo" id="live-demo">
+          <div class="studio-demo-copy">
+            <p class="chapter">LIVE STUDY · 实时示范</p>
+            <h3>Hear it.<br><em>See it move.</em><span>听见声音，看见变化。</span></h3>
+            <p lang="en">Try the finished ink-wash work here. Play its built-in music or choose your own MP3; change the ink colour and drag across the canvas to paint. The rings respond to sound as you interact.</p>
+            <p lang="zh-CN">直接在这里试用水墨圆环成品：播放内置音乐或选择自己的 MP3，切换墨色，在画布上拖动作画；墨环会随声音实时变化。</p>
+            <a class="demo-open-link" href="ink-wash-ring.html?v=three-ring-wave-2" target="_blank" rel="noopener">Open the full canvas / 打开完整画布 ↗</a>
+          </div>
+          <div class="demo-panel">
+            <div class="demo-head"><span>LIVE STUDY / 实时示范</span><span class="live-indicator"><i></i> INTERACTIVE INK / 交互水墨</span></div>
+            <iframe class="demo-frame" src="ink-wash-ring.html?v=three-ring-wave-2" title="Live interactive ink-wash music visualisation / 水墨圆环实时音乐可视化" allow="microphone; camera; autoplay; fullscreen" allowfullscreen loading="eager"></iframe>
+          </div>
+        </div>
+        <div class="studio-learning" id="learning-goals">
+          <section class="learning-objectives" aria-labelledby="learning-title">
+            <div class="learning-heading"><p class="chapter">COURSE OUTCOMES / 课堂收获</p><h3 id="learning-title">学习目标 <span>Learning objectives</span></h3></div>
+            <ol class="learning-list">
+              <li><span class="learning-number">01</span><div><strong>掌握生成式 UI 编程范式：描述 → 预览 → 迭代</strong><small lang="en">Describe → preview → iterate; test each change before moving on.</small></div></li>
+              <li><span class="learning-number">02</span><div><strong>让画面随音乐多频段反应（低／中／高＋节拍），做出炫酷效果</strong><small lang="en">React across low, mid and high bands plus beats; make the response feel musical.</small></div></li>
+              <li><span class="learning-number">03</span><div><strong>把「水墨」做成真水墨：渗墨、飞白、留白、泼墨</strong><small lang="en">Make ink-wash feel real: bleed, flying white, negative space and splashed ink.</small></div></li>
+              <li><span class="learning-number">04</span><div><strong>设计一种「招牌交互」；理解并调试 AI 生成的代码</strong><small lang="en">Design a signature interaction; understand and debug AI-generated code.</small></div></li>
+            </ol>
+          </section>
+          <aside class="learning-tools" aria-labelledby="learning-tools-title">
+            <div class="learning-heading"><p class="chapter">YOUR WORKSPACE / 工作台</p><h3 id="learning-tools-title">课堂工具 <span>Tools</span></h3></div>
+            <div class="learning-tool-labels" aria-hidden="true"><span>CATEGORY / 类别</span><span>TOOLS / 工具</span></div>
+            <dl class="learning-tool-list">
+              <div><dt>主力<small>Main</small></dt><dd><strong>Google AI Studio — Build</strong><span lang="zh-CN">生成网页应用，逐轮查看预览与代码。</span><small lang="en">Generate a web app, inspect its preview and code after each prompt.</small></dd></div>
+              <div><dt>音乐<small>Audio</small></dt><dd><strong>你自己的音乐 / Your music</strong><span lang="zh-CN">用 AI 生成自己的音乐，或使用自己创作、获得授权的音频。</span><small lang="en">Use music you made with AI, composed yourself, or have permission to use.</small></dd></div>
+              <div><dt>测试<small>Test</small></dt><dd><strong>桌面浏览器 · localhost / HTTPS</strong><span lang="zh-CN">先测播放和画面；麦克风与摄像头由本人主动授权。</span><small lang="en">Test playback and visuals first; opt in to mic or webcam permissions.</small></dd></div>
+              <div><dt>分享／部署<small>Share / deploy</small></dt><dd><strong>AI Studio Share · project ZIP</strong><span lang="zh-CN">保留可运行的项目结构；静态项目可用静态托管分享。</span><small lang="en">Keep the working project structure; static builds can use static hosting.</small></dd></div>
+            </dl>
+          </aside>
+        </div>
+        <div class="preflight"><h3>Before class / 课前准备</h3><ul><li><span>A Google account and AI Studio access</span><small>Google 账号与 AI Studio 使用权限</small></li><li><span>An AI music tool, or a short audio file you may use</span><small>可使用的 AI 音乐工具，或一段有使用权的短音频</small></li><li><span>Headphones and a modern browser</span><small>耳机与现代浏览器</small></li><li><span>For microphone tests: HTTPS or localhost, and your permission</span><small>测试麦克风需 HTTPS 或 localhost，并由本人授权</small></li></ul></div>
+        <div class="class-plan" id="class-plan" aria-label="Three-hour class plan">
+          <div class="class-plan-head"><div><span>THE THREE-HOUR SCORE / 三小时课堂节拍</span><h3>Five exercises build one work.<small>五个练习，完成一件作品。</small></h3></div><p lang="en">Adapted for UQ music students: this timetable adds an AI music creation segment to the source lesson. The six Build prompts below are a fresh, Google AI Studio-specific scaffold.</p></div>
+          <div class="class-plan-row"><time>09:00–09:20</time><strong>Show &amp; decompose <small>演示与拆解</small></strong><span>Observe input → feature → image → interaction. / 观察输入、特征、图像与交互。</span></div>
+          <div class="class-plan-row"><time>09:20–10:20</time><strong>Make your own music with AI <small>用 AI 生成你自己的音乐</small></strong><span>Set mood, tempo and instruments; generate a 30–60-second piece, listen, revise once and export the audio. / 设定情绪、速度与配器，生成 30–60 秒音乐；聆听、修改一次并导出音频。</span></div>
+          <div class="class-plan-row"><time>10:20–10:50</time><strong>Ex 1–2 · Canvas + audio <small>画布与声音</small></strong><span>Use your new track to drive one responsive shape; then add low/mid/high bands and beat. / 用刚生成的音乐驱动一个形状，再加入三频段与节拍。</span></div>
+          <div class="class-plan-row"><time>10:50–11:10</time><strong>Ex 3 · One interaction <small>加入一种交互</small></strong><span>Choose mouse, keyboard or microphone; record 30 seconds. / 选择鼠标、键盘或麦克风，录制 30 秒。</span></div>
+          <div class="class-plan-row"><time>11:10–11:40</time><strong>Ex 4 · Visual language <small>建立视觉语言</small></strong><span>Apply three purposeful style choices; remove excess AI effects. / 至少做三项有意图的风格选择，并删去多余效果。</span></div>
+          <div class="class-plan-row"><time>11:40–12:00</time><strong>Ex 5 · Test &amp; share <small>测试与分享</small></strong><span>Test on the classroom computer and projector; submit a working page, 30-second demo, five prompt iterations and backup. / 在课堂电脑和投影上测试；交页面、30 秒演示、至少五轮提示记录和备份。</span></div>
+        </div>
+        <section class="production-process" id="production-process" aria-labelledby="production-title">
+          <div class="production-heading"><div><p class="chapter">PRODUCTION PROCESS / 生产流程</p><h3 id="production-title">From a description to a shared work.<small>从一句描述，到可分享的作品。</small></h3></div><p>Five decisions take the idea from a prompt to a page people can see, hear and use.<span lang="zh-CN">五个决定，把灵感变成能看、能听、能操作的网页。</span></p></div>
+          <div class="production-grid">
+            <article class="production-card"><div class="production-image"><img src="assets/production/processing-code.png" alt="创意编程环境中的代码界面" loading="lazy"><span>01</span></div><div class="production-copy"><h4>用语言生成<small>Describe → code</small></h4><p lang="zh-CN">对 Gemini 描述，直接生成可运行 HTML。</p><p lang="en">Describe it to Gemini; get runnable HTML directly.</p><small class="production-credit">© Processing Foundation · GPL · Wikimedia</small></div></article>
+            <article class="production-card"><div class="production-image"><img src="assets/production/audio-waveform.png" alt="声音的波形与频谱图" loading="lazy"><span>02</span></div><div class="production-copy"><h4>声音驱动画面<small>Audio-reactive</small></h4><p lang="zh-CN">低／中／高三频段＋节拍，各驱动不同炫酷效果。</p><p lang="en">Bass, mid, treble and beats each drive a different visual effect.</p><small class="production-credit">© Bob K · Public domain · Wikimedia</small></div></article>
+            <article class="production-card"><div class="production-image"><img src="assets/production/generative-fern.jpg" alt="蕨叶形态的生成式视觉作品" loading="lazy"><span>03</span></div><div class="production-copy"><h4>加一种交互<small>One interaction</small></h4><p lang="zh-CN">鼠标拖墨／点击冲击波——让人想再玩一次。</p><p lang="en">Drag to paint ink or click for a shockwave — an action worth repeating.</p><small class="production-credit">© Dilshan Jayakody · CC BY-SA 2.0 · Wikimedia</small></div></article>
+            <article class="production-card"><div class="production-image"><img src="assets/production/ink-wash-landscape.jpg" alt="雪舟的泼墨山水画" loading="lazy"><span>04</span></div><div class="production-copy"><h4>水墨风格<small>Ink-wash style</small></h4><p lang="zh-CN">米纸底＋水墨笔触＋中轴线，风格即叙事。</p><p lang="en">Rice-paper ground, ink strokes and a central axis — style as narrative.</p><small class="production-credit">© Sesshū Tōyō (1495) · Public domain · Wikimedia</small></div></article>
+            <article class="production-card"><div class="production-image"><img src="assets/production/chromium-browser.png" alt="浏览器中打开的网页" loading="lazy"><span>05</span></div><div class="production-copy"><h4>发布分享<small>Ship a URL</small></h4><p lang="zh-CN">导出 → 部署 → 公开链接，桌面浏览器可打开。</p><p lang="en">Export, deploy and share a link that opens in a desktop browser.</p><small class="production-credit">© Google · CC BY-SA 4.0 · Wikimedia</small></div></article>
+          </div>
+        </section>
+        <section class="lecture-demo" id="lecture-demo" aria-labelledby="lecture-title">
+          <div class="lecture-header"><div><p class="chapter">LECTURE + LIVE DEMO / 讲座＋现场演示</p><h3 id="lecture-title">用语言「画」出网页<small>Draw a web page with words.</small></h3></div><p>09:00–09:20 · 约 20 分钟 · 教师演示<br><span lang="en">~20 min · teacher demo</span></p></div>
+          <div class="lecture-grid">
+            <ol class="lecture-points">
+              <li><span class="lecture-number">01</span><div><strong>生成式 UI 是什么</strong><p lang="zh-CN">「你不写代码，你描述；Gemini 写出可运行的 HTML。」</p><p lang="en">You describe the page; Gemini generates the runnable HTML.</p></div></li>
+              <li><span class="lecture-number">02</span><div><strong>现场一条 prompt（约 5 分钟）</strong><p lang="zh-CN">在 AI Studio Build 生成「音频反应的水墨泼墨＋辉光粒子」页面，当场加载音频；低音一来，墨点炸开。</p><p lang="en">Build an audio-reactive ink-and-particles page, then load music live and watch the bass trigger ink bursts.</p></div></li>
+              <li><span class="lecture-number">03</span><div><strong>报错 = 沟通失败</strong><p lang="zh-CN">故意触发一个错误，把报错原样粘回 Gemini，让它自己修。</p><p lang="en">Trigger an error on purpose; paste the exact message back into Gemini and ask for a fix.</p></div></li>
+              <li><span class="lecture-number">04</span><div><strong>抛出今日任务</strong><p lang="zh-CN">用自己的音乐，做一张可分享的声音驱动水墨交互页面。</p><p lang="en">Turn your own music into a shareable, sound-reactive ink-wash experience.</p></div></li>
+            </ol>
+            <figure class="lecture-visual"><img src="assets/production/generative-fern.jpg" alt="蕨叶形态的生成式视觉示意" loading="lazy"><figcaption>Generative / creative-coding visuals (illustrative)<span lang="zh-CN">生成式／创意编程视觉（示意）</span><small>© Dilshan Jayakody · CC BY-SA 2.0 · Wikimedia</small></figcaption></figure>
+          </div>
+        </section>
+        <div class="build-steps">
+          <article class="build-step" id="step-1"><div class="step-index"><span>01</span><small>CANVAS</small></div><div class="step-body"><h3>Start with a visible scene<span>先做出可见画面</span></h3><p lang="en">Ask for one responsive page and one animated canvas. Check that it fills the available space before adding sound.</p><p lang="zh-CN">先要求一个响应式页面和一张会动的 Canvas；确认布局正常，再接入音乐。</p><div class="prompt-box"><div class="prompt-head"><span>PASTE INTO BUILD / 复制到 BUILD</span><button type="button" class="copy-prompt">Copy prompt / 复制提示词</button></div><pre>Create a responsive single-page web app for an interactive music visualiser. Use HTML Canvas for the main artwork. Begin with a calm animated scene and a clear title, Play button, and mode selector. Use no external API or paid service. Keep the code readable and add an accessible label for the canvas. Do not add audio yet.</pre></div><p class="check"><b>Check / 检查</b> Resizing keeps the scene visible; no errors appear. / 缩放窗口后画面仍完整，且没有报错。</p></div></article>
+          <article class="build-step" id="step-2"><div class="step-index"><span>02</span><small>AUDIO</small></div><div class="step-body"><h3>Let a local recording drive it<span>让本地音乐驱动画面</span></h3><p lang="en">Load the music you just made with AI, or another recording you may use. Add playback and an <code>AnalyserNode</code>; audio stays in the student's browser.</p><p lang="zh-CN">载入刚用 AI 生成的音乐，或其他有使用权的录音；加入播放控制和 <code>AnalyserNode</code>，音频在学生浏览器内处理。</p><div class="prompt-box"><div class="prompt-head"><span>PASTE INTO BUILD / 复制到 BUILD</span><button type="button" class="copy-prompt">Copy prompt / 复制提示词</button></div><pre>Add a local audio-file picker and Play/Pause control. Use the Web Audio API: connect the selected audio element to an AnalyserNode, read frequency and waveform data every animation frame, and animate the canvas from real audio data. Keep the file local in the browser. Show a helpful empty state before a file is chosen. Preserve the current layout.</pre></div><p class="check"><b>Check / 检查</b> Silence and music look different; pause freezes the response. / 静音与音乐的画面不同，暂停后响应停止。</p></div></article>
+          <article class="build-step" id="step-3"><div class="step-index"><span>03</span><small>MAPPING</small></div><div class="step-body"><h3>Make musical choices explicit<span>明确声音如何变成图像</span></h3><p lang="en">Separate low, middle and high frequency energy. Ask for each band to control a different visual property, then judge the result by ear.</p><p lang="zh-CN">把低、中、高频能量分开，为每段设计不同的视觉属性，再用耳朵判断映射是否合理。</p><div class="prompt-box"><div class="prompt-head"><span>PASTE INTO BUILD / 复制到 BUILD</span><button type="button" class="copy-prompt">Copy prompt / 复制提示词</button></div><pre>Keep the working audio upload. Split the analyser's frequency data into low, mid and high bands. Map low energy to the main shape's size, mid energy to its movement, and high energy to fine details. Smooth the values so the visuals do not flicker. Put three small labelled meters on screen so I can verify the mapping. Change only the visual mapping and meters.</pre></div><p class="check"><b>Check / 检查</b> Try contrasting tracks or clap and hum; can you predict which element changes? / 换不同音乐、拍手或哼唱，能否预测哪一部分会变化？</p></div></article>
+          <article class="build-step" id="step-4"><div class="step-index"><span>04</span><small>CONTROL</small></div><div class="step-body"><h3>Give the audience agency<span>让观众参与</span></h3><p lang="en">Add one interaction first: pointer movement, drag-to-paint, a mode switch or a sensitivity slider.</p><p lang="zh-CN">先增加一种交互：指针移动、拖动画墨、模式切换或灵敏度滑块。</p><div class="prompt-box"><div class="prompt-head"><span>PASTE INTO BUILD / 复制到 BUILD</span><button type="button" class="copy-prompt">Copy prompt / 复制提示词</button></div><pre>Add a mode selector with three views: waveform, frequency spectrum and expressive ink. Add a sensitivity slider that changes how strongly the artwork reacts, and support mouse dragging to leave a short visual trace. Keep all existing audio controls working. Give each control a visible label and keyboard access.</pre></div><p class="check"><b>Check / 检查</b> All three views respond to the same file; mouse and keyboard controls work. / 三种视图都能响应同一段音频，鼠标和键盘可以操作。</p></div></article>
+          <article class="build-step" id="step-5"><div class="step-index"><span>05</span><small>POLISH</small></div><div class="step-body"><h3>Make it safe to perform<span>让作品适合现场使用</span></h3><p lang="en">Add microphone as an opt-in input, then test permission denial and reduced motion. Keep a mute control and a clear stop state.</p><p lang="zh-CN">把麦克风作为主动选择的输入方式，测试拒绝授权和减少动态效果；保留静音与停止控制。</p><div class="prompt-box"><div class="prompt-head"><span>PASTE INTO BUILD / 复制到 BUILD</span><button type="button" class="copy-prompt">Copy prompt / 复制提示词</button></div><pre>Add an optional microphone input that starts only after I press a clearly labelled button. In Google AI Studio Build, add "microphone" to requestFramePermissions in metadata.json so the preview can ask for permission. If permission is denied, explain how to use local audio instead. Add Mute, Stop and Reduced motion controls. Respect prefers-reduced-motion. Do not use the camera or upload recordings. Keep the existing file mode and visual modes intact.</pre></div><p class="check"><b>Check / 检查</b> Approve the AI Studio preview acknowledgement, then deny browser microphone permission and try a local file; the app still works. / 先确认 AI Studio 预览中的权限提示，再拒绝浏览器麦克风授权并改用本地文件，软件仍可运行。</p></div></article>
+          <article class="build-step" id="step-6"><div class="step-index"><span>06</span><small>SHIP</small></div><div class="step-body"><h3>Test, revise, download<span>测试、修改、导出</span></h3><p lang="en">Use the preview and Code tab to resolve one error at a time. Keep the last working version. Download the project ZIP; a multi-file app needs its project run commands and a localhost development server for final device tests.</p><p lang="zh-CN">通过预览和 Code 页面逐个修复错误，保留上一个可运行版本。下载项目 ZIP；若生成多文件应用，请按项目的运行命令启动 localhost 开发服务器，再做设备权限测试。</p><div class="prompt-box"><div class="prompt-head"><span>PASTE INTO BUILD / 复制到 BUILD</span><button type="button" class="copy-prompt">Copy prompt / 复制提示词</button></div><pre>Audit this music visualiser without redesigning it. Fix console errors, check that file audio, microphone permission denial, three visual modes, keyboard controls, Mute and Reduced motion all work. Explain each changed file briefly. Preserve the last working behavior and make only targeted fixes.</pre></div><p class="check"><b>Deliver / 交付</b> A working link or ZIP, one audio example, a 30-second screen recording, and a short mapping explanation. / 可运行链接或 ZIP、一段示例音频、30 秒录屏与简短映射说明。</p></div></article>
+        </div>
+        <div class="assessment"><div><span>ASSESSMENT / 评价建议</span><h3>A clear musical idea matters as much as code.<small>清晰的音乐意图与代码同样重要。</small></h3><p lang="en">Adapted from the original course's shared rubric for a music-student audience.</p><p lang="zh-CN">由原课程通用评分结构改写，适用于音乐专业课堂。</p></div><ul><li><b>30%</b><span>Musical and cultural grounding<br><small>音乐与文化理解</small></span></li><li><b>30%</b><span>Prompting and iteration<br><small>提示词与迭代</small></span></li><li><b>25%</b><span>Communication and accessibility<br><small>表达清晰度与无障碍</small></span></li><li><b>15%</b><span>Originality<br><small>原创性</small></span></li></ul></div>
+        <div class="studio-next"><div><strong>Want the exact source lesson?</strong><span>想按原课完整推进？</span><p>Read the full three-hour lesson, including its schedule, five exercises, prompts, troubleshooting and teaching examples. / 原课的三小时流程、五个练习、提示词、故障处理和教学案例均已收入本站。</p></div><a class="button light" href="courses.html#visual">Complete lesson / 完整课程 →</a></div>
+      </div>
+    </section>
+
+    <section class="section pathways-section" id="pathways" aria-labelledby="pathways-title">
+      <div class="section-wrap">
+        <div class="section-heading"><p class="chapter">06 / FOLLOW A FINISHED CASE · 跟着案例做</p><h2 id="pathways-title">One work, eleven prompts<span>一件作品，十一条提示词</span></h2></div>
+        <div class="pathway-grid">
+          <article class="pathway-card"><div class="pathway-art ink-art" aria-hidden="true"><span></span><i></i><b>墨</b></div><div class="pathway-content"><p class="pathway-kicker">STEP-BY-STEP / 逐步制作</p><h3>Sumi-e visualiser<span>「水墨圆环」音乐可视化</span></h3><p lang="en">From rice paper and one brush ring to bass motion, beat splashes, pointer painting, microphone, webcam and a built-in synth. All eleven copyable prompts show their stage results beside the instructions.</p><p lang="zh-CN">从宣纸和第一道墨环开始，逐步加入低音起伏、重拍泼墨、拖动作画、麦克风、摄像头和内置合成器；11 条可复制提示词均配有并排结果图。</p><div class="pathway-actions"><a href="build-sumi-e-results.html#steps">Visual step guide / 步骤图文对照 ↗</a></div></div></article>
+          <article class="pathway-card gallery-card"><div class="pathway-preview"><iframe src="ink-wash-ring.html?v=three-ring-wave-2" title="Finished interactive ink-wash music visualisation / 完成案例：交互水墨音乐可视化" allow="microphone; camera; autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div><div class="pathway-content"><p class="pathway-kicker">FINISHED EXAMPLE / 完成案例</p><h3>Play the finished work<span>试用完整作品</span></h3><p lang="en">Try the work above: choose an MP3 or play the built-in music, change the ink colour and drag to paint. For a larger canvas, open the full page.</p><p lang="zh-CN">直接操作上方作品：选择 MP3 或播放内置音乐，切换墨色、拖动作画；需要更大的画布时，可打开完整页面。</p><div class="pathway-actions"><a href="visualizers.html">Open guided demo / 打开案例说明 ↗</a><a href="ink-wash-ring.html?v=three-ring-wave-2">Run fullscreen / 全屏体验 ↗</a></div></div></article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer"><div><img src="assets/uq-logo.png" alt="The University of Queensland logo"><p>Music, made visible. / 音乐，可被看见。</p></div><a href="#main">Back to top / 返回顶部 ↑</a></footer>
+</body>
+</html>

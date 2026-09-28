@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1A1A1A" />
+<meta name="robots" content="index, follow" />
+
+<title>水墨音乐可视化 · 11 步结果对照 | UQ School of Music</title>
+<meta name="description" content="11 步水墨音乐可视化图文对照：每一步的提示词、验证方法与阶段结果截图并排呈现。A desktop visual guide pairing all 11 Sumi-e visualiser prompts with their stage screenshots." />
+<meta name="author" content="Faculty of International Media, CUC" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="灵境工坊 · Miracle Craft Workshop" />
+<meta property="og:title" content="水墨音乐可视化 · 11 步结果对照" />
+<meta property="og:description" content="11 步提示词与验证，全部 11 步结果截图并排对照。" />
+<meta property="og:locale" content="zh_CN" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23FAF6F0'/><path d='M32 12 C34 24, 40 30, 52 32 C40 34, 34 40, 32 52 C30 40, 24 34, 12 32 C24 30, 30 24, 32 12 Z' fill='%23B08D57'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============ Reset & tokens (shared with the rest of the site) ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+
+  :root {
+    --ink: #1A1A1A; --ink-2: #2C2724;
+    --paper: #FAF6F0; --paper-2: #F2EBDE; --paper-3: #ECE2D0;
+    --bronze: #B08D57; --bronze-d: #8C6D3F; --bronze-l: #C9AB7C;
+    --jade: #5B8C7E; --jade-d: #436B5F;
+    --mute: #8B847B; --line: #D9D2C4;
+    --serif-en: "Cormorant Garamond", "Georgia", serif;
+    --serif-cn: "Noto Serif SC", "Songti SC", "STSong", serif;
+    --sans-en:  "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    --sans-cn:  "Noto Sans SC", "PingFang SC", "Heiti SC", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --w-max: 1180px; --pad-x: clamp(20px, 5vw, 64px);
+    --shadow-soft: 0 12px 30px -10px rgba(0, 0, 0, 0.12);
+    --shadow-medium: 0 22px 50px -18px rgba(0, 0, 0, 0.18);
+  }
+
+  body {
+    font-family: var(--sans-en), var(--sans-cn);
+    color: var(--ink); background: var(--paper);
+    line-height: 1.6; font-weight: 400; overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; opacity: 0.05; z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--bronze), var(--bronze-l)); width: 0%; z-index: 100; transition: width 0.1s linear; }
+
+  /* ============ Top nav ============ */
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(250,246,240,0.85); backdrop-filter: blur(12px) saturate(120%); -webkit-backdrop-filter: blur(12px) saturate(120%); border-bottom: 1px solid var(--line); }
+  .topnav-inner { max-width: var(--w-max); margin: 0 auto; padding: 14px var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { font-family: var(--serif-cn); font-weight: 800; font-size: 18px; letter-spacing: 0.05em; display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+  .brand .mark-icon { width: 22px; height: 22px; display: inline-block; color: var(--bronze); }
+  .brand .accent { color: var(--bronze); }
+  .nav-links { display: flex; gap: clamp(12px, 2vw, 24px); font-size: 13px; list-style: none; }
+  .nav-links a { color: var(--ink); text-decoration: none; opacity: 0.72; transition: opacity 0.2s, color 0.2s; }
+  .nav-links a:hover { opacity: 1; color: var(--bronze-d); }
+  .nav-links a.home-link { color: var(--bronze-d); font-weight: 500; opacity: 1; }
+  @media (max-width: 760px) { .nav-links li.opt { display: none; } }
+
+  /* ============ Layout ============ */
+  section { padding: clamp(40px, 6vw, 80px) var(--pad-x); position: relative; z-index: 2; }
+  .container { max-width: var(--w-max); margin: 0 auto; }
+  .eyebrow { font-family: var(--sans-en); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--bronze-d); margin-bottom: 18px; }
+
+  /* ============ Hero ============ */
+  .hero { padding-top: clamp(48px, 7vw, 96px); padding-bottom: clamp(28px, 4vw, 56px); }
+  .hero h1 { font-family: var(--serif-cn); font-weight: 800; font-size: clamp(30px, 5vw, 50px); line-height: 1.2; margin-bottom: 12px; }
+  .hero h1 .en { display: block; font-family: var(--serif-en); font-weight: 500; font-style: italic; font-size: 0.5em; color: var(--mute); margin-top: 8px; letter-spacing: 0.01em; }
+  .hero .lead { font-size: clamp(15px, 1.6vw, 17px); color: #444; max-width: 740px; margin-bottom: 8px; }
+  .hero .lead.cn { color: var(--mute); font-size: 14.5px; max-width: 740px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .pill-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; text-decoration: none; padding: 10px 18px; border-radius: 100px; border: 1px solid var(--bronze); color: var(--bronze-d); transition: background 0.2s, color 0.2s, transform 0.2s; }
+  .pill-link:hover { background: var(--bronze); color: var(--paper); transform: translateY(-2px); }
+  .pill-link.solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .pill-link.solid:hover { background: var(--bronze-d); border-color: var(--bronze-d); }
+
+  /* ============ Prereq / loop note ============ */
+  .note-card { background: var(--paper-2); border-left: 3px solid var(--jade); border-radius: 0 12px 12px 0; padding: 20px 24px; margin-top: 30px; }
+  .note-card h3 { font-family: var(--serif-cn); font-weight: 700; font-size: 16px; color: var(--jade-d); margin-bottom: 10px; }
+  .note-card h3 .en { font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 13px; color: var(--mute); margin-left: 8px; }
+  .note-card ul { list-style: none; }
+  .note-card li { position: relative; padding: 7px 0 7px 24px; font-size: 14px; color: #3c3c3c; line-height: 1.55; border-bottom: 1px dashed var(--line); }
+  .note-card li:last-child { border-bottom: none; }
+  .note-card li::before { content: '✦'; position: absolute; left: 0; top: 7px; color: var(--bronze); font-size: 12px; }
+  .note-card li b { color: var(--bronze-d); font-family: var(--serif-cn); }
+  .note-card li .en { color: var(--mute); }
+  .note-card code { font-family: var(--mono); font-size: 12.5px; color: var(--bronze-d); background: var(--paper-3); padding: 1px 6px; border-radius: 4px; }
+  .loop-line { margin-top: 14px; font-family: var(--serif-en); font-style: italic; font-size: 15px; color: var(--ink); }
+  .loop-line b { color: var(--bronze-d); font-style: normal; font-family: var(--sans-cn); font-weight: 600; }
+
+  /* ============ Steps ============ */
+  #steps { background: var(--paper-2); }
+  .ladder-title { font-family: var(--serif-cn); font-weight: 800; font-size: clamp(22px, 3.2vw, 30px); margin-bottom: 6px; }
+  .ladder-title .en { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 500; font-size: 0.52em; color: var(--mute); margin-top: 6px; }
+  .ladder-sub { font-size: 14.5px; color: #555; max-width: 720px; margin: 8px 0 36px; }
+
+  .step-list { display: grid; gap: 22px; counter-reset: step; }
+  .step { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 3vw, 30px); transition: box-shadow 0.25s, transform 0.25s; }
+  .step:hover { box-shadow: var(--shadow-soft); transform: translateY(-2px); }
+  .step-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 6px; }
+  .step-no { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif-en); font-style: italic; font-size: 17px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-soft); }
+  .step-h h3 { font-family: var(--serif-cn); font-weight: 700; font-size: 19px; line-height: 1.3; }
+  .step-h h3 .en { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 500; font-size: 0.74em; color: var(--mute); margin-top: 2px; }
+  .step .goal { font-size: 14.5px; color: #3c3c3c; line-height: 1.6; margin: 12px 0 4px; }
+  .step .goal b { font-family: var(--serif-cn); color: var(--bronze-d); }
+  .step .goal .en { display: block; color: var(--mute); font-size: 13.5px; margin-top: 2px; }
+
+  /* prompt box (matches courses.html) */
+  .prompt-box { position: relative; background: var(--ink-2); color: #EDE6D8; border-radius: 10px; padding: 16px 18px 18px 20px; margin: 16px 0 14px; border-left: 3px solid var(--bronze); overflow: hidden; }
+  .prompt-box .plabel { display: block; font-family: var(--sans-en); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze-l); margin-bottom: 10px; padding-right: 84px; }
+  .prompt-box pre { font-family: var(--mono); font-size: 12.5px; line-height: 1.62; white-space: pre-wrap; word-break: break-word; color: #EDE6D8; }
+  .copy-btn { position: absolute; top: 12px; right: 12px; font-family: var(--sans-en); font-size: 11px; letter-spacing: 0.05em; color: var(--bronze-l); background: rgba(255,255,255,0.06); border: 1px solid rgba(201,171,124,0.4); border-radius: 100px; padding: 5px 12px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  .copy-btn:hover { background: var(--bronze); color: var(--ink); border-color: var(--bronze); }
+
+  /* verify + under-the-hood */
+  .step-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 6px; }
+  @media (max-width: 680px) { .step-grid { grid-template-columns: 1fr; } }
+  .cell .h { font-family: var(--sans-en); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze-d); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .verify ul { list-style: none; }
+  .verify li { position: relative; padding: 5px 0 5px 22px; font-size: 13.5px; color: #3c3c3c; line-height: 1.5; }
+  .verify li::before { content: '✓'; position: absolute; left: 0; top: 5px; color: var(--jade-d); font-weight: 700; }
+  .verify li .en { display: block; color: var(--mute); font-size: 12.5px; }
+  .under { background: var(--paper-2); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #4a4a4a; line-height: 1.55; }
+  .under b { font-family: var(--serif-cn); color: var(--bronze-d); }
+  .under .en { display: block; color: var(--mute); font-size: 12px; margin-top: 3px; }
+  .under code { font-family: var(--mono); font-size: 11.5px; color: var(--bronze-d); }
+
+  /* ============ Closing ============ */
+  #closing { background: var(--ink); color: var(--paper); }
+  #closing .eyebrow { color: var(--bronze-l); }
+  #closing h2 { font-family: var(--serif-cn); font-weight: 800; font-size: clamp(24px, 3.4vw, 34px); margin-bottom: 8px; }
+  #closing h2 .en { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 500; font-size: 0.5em; color: rgba(250,246,240,0.6); margin-top: 6px; }
+  #closing p { color: rgba(250,246,240,0.82); font-size: 15px; max-width: 720px; line-height: 1.75; margin-bottom: 8px; }
+  #closing p.cn { color: rgba(250,246,240,0.55); font-size: 14px; }
+  #closing .hero-actions { margin-top: 28px; }
+  #closing .pill-link { border-color: var(--bronze-l); color: var(--bronze-l); }
+  #closing .pill-link:hover { background: var(--bronze-l); color: var(--ink); }
+  #closing .pill-link.solid { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  #closing .pill-link.solid:hover { background: var(--bronze-l); border-color: var(--bronze-l); }
+
+  /* ============ Footer ============ */
+  footer { background: var(--ink); color: var(--paper); padding: 48px var(--pad-x) 36px; position: relative; z-index: 2; border-top: 1px solid rgba(250,246,240,0.1); }
+  .foot-inner { max-width: var(--w-max); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: baseline; }
+  .foot-brand { font-family: var(--serif-cn); font-weight: 800; font-size: 18px; color: var(--paper); letter-spacing: 0.08em; }
+  .foot-brand .accent { color: var(--bronze); }
+  footer a { color: rgba(250,246,240,0.72); text-decoration: none; transition: color 0.2s; font-size: 13px; }
+  footer a:hover { color: var(--bronze-l); }
+  .foot-bottom { max-width: var(--w-max); margin: 28px auto 0; padding-top: 20px; border-top: 1px solid rgba(250,246,240,0.15); font-size: 12px; color: rgba(250,246,240,0.45); text-align: center; letter-spacing: 0.05em; }
+
+  /* ============ Reveal / motion ============ */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .reveal { opacity: 1; transform: none; } }
+  @media print { .topnav, .progress, footer { display: none; } body { background: white; } body::before { display: none; } .step, .note-card { page-break-inside: avoid; } .prompt-box { background: #f4efe6; color: #1A1A1A; } .prompt-box pre, .prompt-box .plabel { color: #1A1A1A; } .copy-btn { display: none; } }
+
+/* UQ teaching edition context; source credits and lesson content remain below. */
+.uq-context-bar {
+  box-sizing: border-box; min-height: 44px; padding: 6px clamp(12px, 3vw, 28px);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: #fff; color: #32135c; border-bottom: 1px solid #e7e0ee;
+  font: 500 12px/1.35 system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0; text-align: left;
+}
+.uq-context-bar .uq-context-identity { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.uq-context-bar img { display: block; width: auto; height: 26px; max-width: none; flex: none; }
+.uq-context-bar .uq-context-label { display: block; min-width: 0; }
+.uq-context-bar a { color: #32135c; flex: none; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.uq-context-bar a:hover { color: #60389c; }
+.uq-context-bar a:focus-visible { outline: 2px solid #60389c; outline-offset: 3px; }
+@media (max-width: 620px) {
+  .uq-context-bar { flex-wrap: wrap; gap: 4px 8px; font-size: 10px; min-height: 52px; }
+  .uq-context-bar .uq-context-identity { flex: 1 1 100%; gap: 8px; }
+  .uq-context-bar img { height: 18px; }
+  .uq-context-bar a { font-size: 10px; margin-left: auto; }
+}
+
+
+.uq-adaptation { box-sizing: border-box; max-width: 1180px; margin: 16px auto; padding: 11px 16px; border-left: 3px solid #51247a; background: #f4eef8; color: #35264a; font: 13px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.uq-adaptation strong { color: #32135c; }
+.uq-adaptation code { overflow-wrap: anywhere; }
+@media (max-width: 1220px) { .uq-adaptation { margin-left: 18px; margin-right: 18px; } }
+
+/* UQ classroom atlas: one teaching page, full uncropped evidence, no duplicate lesson route. */
+.results-page { --ink:#271733; --ink-2:#2b1c39; --paper:#fffdfd; --paper-2:#f2ecf5; --paper-3:#e9e0ef; --line:#d9cce3; --mute:#685b72; --w-max:1380px; --pad-x:clamp(28px,5vw,78px); }
+.results-page .lesson-header { position:sticky; top:0; z-index:80; background:rgba(255,253,255,.96); border-bottom:1px solid #ded4e6; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+.results-page .lesson-header-inner { max-width:1500px; margin:auto; padding:13px var(--pad-x); display:flex; align-items:center; justify-content:space-between; gap:30px; }
+.results-page .school-lockup { display:flex; align-items:center; gap:17px; min-width:0; color:#281a35; text-decoration:none; }
+.results-page .school-lockup img { display:block; width:auto; height:38px; flex:none; }
+.results-page .school-course { display:flex; flex-direction:column; justify-content:center; gap:2px; padding-left:17px; border-left:1px solid #d6c8df; white-space:nowrap; }
+.results-page .school-course strong { font:700 13px/1.3 var(--sans-en),var(--sans-cn); }
+.results-page .school-course small { color:#765c88; font:600 9px/1.4 var(--mono); letter-spacing:.07em; }
+.results-page .lesson-nav { display:flex; align-items:center; gap:clamp(15px,2vw,32px); white-space:nowrap; }
+.results-page .lesson-nav a { color:#3a2946; text-decoration:none; font:600 12px/1.3 var(--sans-cn); border-bottom:1px solid transparent; padding-bottom:3px; }
+.results-page .lesson-nav a span { color:#836c92; font:500 11px var(--sans-en); margin-left:2px; }
+.results-page .lesson-nav a:hover { color:#51247a; border-color:#51247a; }
+.results-page .hero { color:#fff; background:radial-gradient(circle at 83% 43%,#463057 0,#2c1b3e 38%,#23142f 76%); padding-top:clamp(56px,6vw,92px); padding-bottom:clamp(56px,6vw,92px); overflow:hidden; }
+.results-page .hero-layout { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr); gap:clamp(40px,6vw,90px); align-items:center; min-height:560px; }
+.results-page .hero-copy { position:relative; z-index:2; }
+.results-page .hero .eyebrow { color:#d7b988; font:700 11px/1.4 var(--mono); letter-spacing:.17em; margin-bottom:23px; }
+.results-page .hero h1 { font-family:var(--serif-cn); font-size:clamp(37px,4.3vw,67px); line-height:1.24; font-weight:800; margin-bottom:28px; letter-spacing:-.025em; }
+.results-page .hero h1 em { color:#d9b985; font-style:normal; }
+.results-page .hero h1 .en { color:#d9cbe3; font-size:clamp(19px,1.9vw,26px); line-height:1.23; margin-top:23px; max-width:540px; }
+.results-page .hero .lead { color:#f1eaf4; font-size:16px; line-height:1.85; max-width:640px; margin-bottom:9px; }
+.results-page .hero .lead.cn { color:#cabed3; font-size:14px; line-height:1.75; max-width:640px; }
+.results-page .hero-actions { margin-top:29px; gap:12px; }
+.results-page .hero .pill-link { border-radius:3px; border-color:#b8a0c9; color:#f7f1fb; padding:12px 16px; font-weight:600; }
+.results-page .hero .pill-link span { font-weight:400; font-size:12px; opacity:.85; }
+.results-page .hero .pill-link.solid { background:#fff9f2; color:#291835; border-color:#fff9f2; }
+.results-page .hero .pill-link:hover { background:#d9b985; border-color:#d9b985; color:#251536; }
+.results-page .hero-proof { border-top:1px solid #6c597a; padding-top:20px; margin-top:38px; color:#c9b6d4; font:600 12px/1.5 var(--mono); letter-spacing:.04em; }
+.results-page .hero-art { position:relative; height:520px; min-width:0; }
+.results-page .hero-art::before { content:""; position:absolute; inset:2% 6% 7% 4%; border:1px solid rgba(219,190,228,.28); border-radius:50%; transform:rotate(-18deg); }
+.results-page .hero-art::after { content:""; position:absolute; left:47%; top:-8%; height:115%; border-left:1px dashed rgba(217,185,133,.35); }
+.results-page .hero-preview { position:absolute; padding:8px 8px 0; background:#fffdfb; box-shadow:0 28px 65px rgba(0,0,0,.24); }
+.results-page .hero-preview img { display:block; width:100%; height:auto; }
+.results-page .hero-preview figcaption { display:flex; gap:12px; align-items:center; color:#51247a; padding:8px 5px 10px; font:700 13px var(--mono); }
+.results-page .hero-preview figcaption span { color:#6f6076; font:600 9px var(--mono); letter-spacing:.08em; }
+.results-page .hero-preview-start { width:55%; left:0; top:21%; transform:rotate(-8deg); z-index:1; }
+.results-page .hero-preview-finish { width:73%; right:0; top:4%; transform:rotate(5deg); z-index:2; }
+.results-page .preflight { background:#fffdfd; padding-top:64px; padding-bottom:64px; }
+.results-page .preflight-heading { display:grid; grid-template-columns:210px minmax(0,1fr); align-items:baseline; column-gap:30px; border-bottom:1px solid #d8cbe1; padding-bottom:19px; }
+.results-page .preflight-heading span { color:#51247a; font:700 11px var(--mono); letter-spacing:.08em; }
+.results-page .preflight-heading h2 { color:#281a36; font:800 clamp(26px,3vw,38px)/1.3 var(--serif-cn); }
+.results-page .preflight-heading p { grid-column:2; color:#74677c; font:400 14px var(--sans-en); margin-top:6px; }
+.results-page .note-card { background:none; border:0; border-radius:0; padding:0; margin:0; }
+.results-page .note-card ul { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; counter-reset:preflight; }
+.results-page .note-card li { counter-increment:preflight; padding:58px 22px 26px 0; margin-right:24px; border:0; color:#34283e; font-size:14px; line-height:1.65; }
+.results-page .note-card li + li { border-left:1px solid #e1d6e8; padding-left:24px; }
+.results-page .note-card li::before { content:counter(preflight,decimal-leading-zero); color:#51247a; top:19px; left:0; font:700 20px var(--serif-en); }
+.results-page .note-card li + li::before { left:24px; }
+.results-page .note-card li b { color:#51247a; font-family:var(--sans-cn); }
+.results-page .note-card li .en { display:block; color:#71657a; font-size:12px; line-height:1.6; margin-top:7px; }
+.results-page .note-card code { background:#f1eaf5; color:#51247a; }
+.results-page .note-card .loop-line { background:#f0e9f4; color:#2f213b; font:400 14px/1.65 var(--sans-cn); padding:20px 24px 0; margin:0; }
+.results-page .note-card .loop-line:first-of-type { border-top:2px solid #51247a; }
+.results-page .note-card .loop-line:last-of-type { padding-top:5px; padding-bottom:20px; }
+.results-page .note-card .loop-line b { color:#51247a; }
+.results-page .uq-adaptation { max-width:none; margin:20px 0 0; padding:0; border:0; background:none; color:#65586f; font-size:12px; line-height:1.65; }
+.results-page .uq-adaptation strong { color:#51247a; }
+.results-page .uq-adaptation span { display:block; color:#86788e; }
+.results-page .creative-brief { display:grid; grid-template-columns:210px minmax(0,1fr); gap:30px; margin-top:38px; padding-top:24px; border-top:2px solid #51247a; }
+.results-page .creative-brief-label { color:#51247a; font:700 11px/1.5 var(--mono); letter-spacing:.08em; padding-top:7px; }
+.results-page .creative-brief h3 { color:#281a36; font:800 clamp(24px,2.5vw,32px)/1.3 var(--serif-cn); margin-bottom:12px; }
+.results-page #creative-brief-title { scroll-margin-top:165px; }
+.results-page .creative-brief p { color:#3b2d48; font-size:15px; line-height:1.8; max-width:850px; }
+.results-page .creative-brief p[lang="en"] { color:#71657a; font-size:13px; margin-top:7px; }
+.results-page #steps { background:#f4eff7; padding-top:82px; }
+.results-page #steps .container { max-width:1500px; }
+.results-page .ladder-title { color:#271733; font-size:clamp(34px,4vw,50px); }
+.results-page .ladder-title .en { font-size:.42em; color:#6d5e78; }
+.results-page .ladder-sub { max-width:870px; font-size:15px; color:#4f4359; margin-bottom:32px; line-height:1.75; }
+.results-page .stage-index { position:sticky; top:64px; z-index:35; display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 38px; padding:11px 16px; border:1px solid #d6c8e1; background:rgba(255,253,255,.96); box-shadow:0 12px 30px -24px #271733; backdrop-filter:blur(12px); }
+.results-page .stage-index > span:first-child { color:#51247a; font:700 10px/1.4 var(--mono); letter-spacing:.07em; margin-right:13px; }
+.results-page .stage-index a { display:grid; place-items:center; width:36px; height:34px; color:#51247a; background:#f6f1f9; border:1px solid transparent; text-decoration:none; font:700 12px var(--mono); }
+.results-page .stage-index a:hover,.results-page .stage-index a:focus-visible,.results-page .stage-index a[aria-current="step"] { background:#51247a; color:#fff; }
+.results-page .step-list { display:block; }
+.results-page .phase-break { display:grid; grid-template-columns:210px minmax(0,1fr) minmax(0,1fr); align-items:baseline; gap:28px; border-top:2px solid #51247a; padding:21px 0 6px; margin-top:45px; color:#51247a; }
+.results-page .phase-break:first-child { margin-top:0; }
+.results-page .phase-break span { font:700 11px var(--mono); letter-spacing:.06em; }
+.results-page .phase-break strong { font:800 24px var(--serif-cn); }
+.results-page .phase-break small { font:italic 18px var(--serif-en); color:#7c6b88; }
+.results-page .step { background:transparent; border:0; border-bottom:1px solid #d4c4de; border-radius:0; box-shadow:none; }
+.results-page .step:hover { transform:none; box-shadow:none; }
+.results-page .step.has-result { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(36px,5vw,78px); padding:44px 0 70px; align-items:start; }
+.results-page .step-copy { grid-column:2; grid-row:1; min-width:0; }
+.results-page .step-top { align-items:center; gap:16px; border-bottom:1px solid #ddcfe6; padding-bottom:17px; margin-bottom:19px; }
+.results-page .step-no { width:auto; height:auto; border:0; border-radius:0; background:none; box-shadow:none; color:#51247a; font:500 47px/.9 var(--serif-en); font-style:italic; }
+.results-page .step-h h3 { color:#281a35; font-size:clamp(22px,2vw,28px); line-height:1.28; }
+.results-page .step-h h3 .en { font-size:.64em; color:#766585; margin-top:4px; }
+.results-page .step .goal { font-size:15px; line-height:1.65; color:#3a2d43; margin:0 0 21px; }
+.results-page .step .goal b { color:#51247a; }
+.results-page .step .goal .en { color:#75667f; font-size:13px; line-height:1.55; margin-top:5px; }
+.results-page .prompt-box { background:#2b1e38; border-left:3px solid #c5a776; border-radius:2px; padding:19px 20px 20px; margin:0 0 22px; }
+.results-page .prompt-box .plabel { color:#d4b985; font-size:11px; }
+.results-page .prompt-box pre { font-size:13px; line-height:1.6; }
+.results-page .copy-btn { border-radius:2px; font-size:11px; }
+.results-page .step.has-result .step-grid { grid-template-columns:1fr; gap:17px; }
+.results-page .cell .h { color:#51247a; font-size:10px; font-weight:700; }
+.results-page .verify li { font-size:13px; }
+.results-page .verify li .en { color:#7b6e83; }
+.results-page .under { background:#e9dfef; border-radius:2px; }
+.results-page .under b { color:#51247a; }
+.results-page .step-result { grid-column:1; grid-row:1; position:sticky; top:154px; align-self:start; min-width:0; margin:0; padding:12px 12px 0; background:#fff; border:1px solid #ded2e6; box-shadow:0 26px 52px -38px #291835; }
+.results-page .step-result a { display:block; background:#faf6f0; line-height:0; }
+.results-page .step-result a:focus-visible { outline:3px solid #51247a; outline-offset:4px; }
+.results-page .step-result img { display:block; width:100%; height:auto; max-height:650px; object-fit:contain; }
+.results-page .step-result figcaption { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:5px 12px; padding:11px 4px 14px; }
+.results-page .step-result figcaption span { color:#51247a; font:700 10px/1.4 var(--mono); letter-spacing:.08em; }
+.results-page .step-result figcaption small { color:#6c5d78; font-size:11px; line-height:1.5; }
+.results-page #closing { padding-top:80px; padding-bottom:80px; background:#281934; }
+.results-page .closing-layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr); gap:clamp(48px,7vw,110px); align-items:center; }
+.results-page #closing h2 { font-size:clamp(28px,3vw,42px); }
+.results-page #closing .closing-side { border-left:1px solid #665375; padding-left:clamp(28px,4vw,56px); }
+.results-page .closing-count { display:block; color:#d8b985; font:400 70px/.9 var(--serif-en); margin-bottom:25px; }
+.results-page #closing .hero-actions { display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-top:0; }
+.results-page #closing .pill-link { border-radius:2px; }
+.results-page #troubleshooting { background:#fffdfd; padding-top:82px; padding-bottom:92px; scroll-margin-top:76px; }
+.results-page .troubleshooting-heading { display:grid; grid-template-columns:210px minmax(0,1fr); gap:30px; align-items:start; margin-bottom:30px; }
+.results-page .troubleshooting-heading .eyebrow { grid-column:1; color:#51247a; font:700 11px/1.5 var(--mono); letter-spacing:.08em; margin:7px 0 0; }
+.results-page .troubleshooting-heading h2 { grid-column:2; color:#281a36; font:800 clamp(30px,3.3vw,44px)/1.2 var(--serif-cn); }
+.results-page .troubleshooting-heading h2 span { display:block; color:#75667f; font:italic 22px/1.3 var(--serif-en); margin-top:7px; }
+.results-page .troubleshooting-heading p { grid-column:2; max-width:850px; color:#65586f; font-size:13px; line-height:1.7; }
+.results-page .failure-head,.results-page .failure-row { display:grid; grid-template-columns:minmax(230px,.33fr) minmax(0,1fr); gap:32px; }
+.results-page .failure-head { padding:12px 0; border-top:2px solid #51247a; color:#51247a; font:700 10px/1.4 var(--mono); letter-spacing:.09em; }
+.results-page .failure-list { margin:0; }
+.results-page .failure-row { padding:20px 0; border-top:1px solid #ded2e6; }
+.results-page .failure-row:last-child { border-bottom:1px solid #ded2e6; }
+.results-page .failure-row dt { color:#281a36; font:700 15px/1.45 var(--sans-cn); }
+.results-page .failure-row dt span { display:block; color:#7a6b84; font:500 12px/1.5 var(--sans-en); margin-top:3px; }
+.results-page .failure-row dd { min-width:0; color:#372a41; font-size:13.5px; line-height:1.7; }
+.results-page .failure-row dd p + p { color:#74677d; font-size:12px; margin-top:5px; }
+.results-page .failure-row code,.results-page .escalation code { padding:1px 4px; background:#f0e9f4; color:#51247a; font:11px/1.5 var(--mono); overflow-wrap:anywhere; }
+.results-page .escalation { display:grid; grid-template-columns:210px minmax(0,1fr); gap:18px 30px; margin-top:43px; padding:28px 30px 30px; border-left:3px solid #5b8c7e; background:#f2ecf5; }
+.results-page .escalation-label { color:#436b5f; font:700 10px/1.5 var(--mono); letter-spacing:.08em; }
+.results-page .escalation h3 { color:#281a36; font:800 22px/1.35 var(--serif-cn); margin-top:10px; }
+.results-page .escalation h3 span { display:block; color:#71627b; font:italic 18px/1.35 var(--serif-en); margin-top:7px; }
+.results-page .escalation ol { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:19px 25px; margin:0; padding:0; list-style:none; counter-reset:recovery; }
+.results-page .escalation li { position:relative; counter-increment:recovery; min-width:0; padding-left:32px; }
+.results-page .escalation li::before { content:counter(recovery,decimal-leading-zero); position:absolute; left:0; top:1px; color:#51247a; font:700 11px/1.5 var(--mono); }
+.results-page .escalation li strong { display:block; color:#34233f; font:700 13px/1.5 var(--sans-cn); }
+.results-page .escalation li p { color:#695a73; font-size:12px; line-height:1.55; margin-top:5px; }
+.results-page .escalation-rule { grid-column:2; padding-top:15px; border-top:1px solid #d8c9e3; color:#4d3a5c; font-size:13px; line-height:1.6; }
+.results-page .escalation-rule span { display:block; color:#74677d; font-size:12px; }
+.results-page footer { background:#1f1329; }
+.results-page .foot-inner { display:grid; grid-template-columns:minmax(0,1fr) 270px; align-items:end; gap:40px; }
+.results-page .foot-brand { color:#fffaf5; font:italic 400 clamp(42px,4.2vw,62px)/1.04 Georgia,"Times New Roman",serif; letter-spacing:-.056em; white-space:nowrap; }
+.results-page .foot-brand em { display:block; color:#d8b886; font-weight:400; }
+.results-page .foot-links { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:8px 18px; padding-bottom:8px; text-align:right; }
+.results-page .copy-btn:focus-visible,.results-page .pill-link:focus-visible,.results-page .lesson-nav a:focus-visible,.results-page .school-lockup:focus-visible { outline:3px solid #a77ac9; outline-offset:3px; }
+.results-page [id^="step-"] { scroll-margin-top:152px; }
+@media (max-width:1050px) { .results-page .school-course small { display:none; } .results-page .lesson-nav a span { display:none; } .results-page .hero-layout { gap:36px; grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); } .results-page .hero-art { height:400px; } .results-page .step.has-result { gap:28px; } }
+@media (max-width:760px) { .results-page .lesson-header-inner { flex-wrap:wrap; } .results-page .hero-layout,.results-page .step.has-result,.results-page .closing-layout { grid-template-columns:1fr; } .results-page .hero-art { height:420px; } .results-page .note-card ul { grid-template-columns:1fr; } .results-page .note-card li,.results-page .note-card li + li { border-left:0; border-top:1px solid #e1d6e8; margin:0; padding:52px 0 20px; } .results-page .note-card li + li::before { left:0; } .results-page .step-copy,.results-page .step-result { grid-column:1; } .results-page .step-result { grid-row:1; position:relative; top:auto; } .results-page .step-copy { grid-row:2; } .results-page .phase-break,.results-page .preflight-heading,.results-page .troubleshooting-heading,.results-page .escalation { grid-template-columns:1fr; } .results-page .preflight-heading p,.results-page .troubleshooting-heading p,.results-page .troubleshooting-heading h2,.results-page .escalation-rule { grid-column:1; } .results-page .failure-head,.results-page .failure-row { grid-template-columns:1fr; gap:7px; } .results-page .failure-head span:last-child { display:none; } .results-page .escalation ol { grid-template-columns:1fr; } }
+@media (max-width:760px) { .results-page .foot-inner { grid-template-columns:1fr; gap:26px; } .results-page .foot-brand { white-space:normal; } .results-page .foot-links { justify-content:flex-start; text-align:left; } }
+@media print { .results-page .lesson-header,.results-page .progress,.results-page .stage-index,.results-page footer { display:none; } .results-page .step.has-result { grid-template-columns:1fr 1fr; } .results-page .step-result { position:static; } .results-page .step-result img { max-height:400px; } }
+</style>
+</head>
+<body class="results-page">
+<div class="progress" id="progress"></div>
+<header class="lesson-header">
+  <div class="lesson-header-inner">
+    <a class="school-lockup" href="index.html" aria-label="The University of Queensland School of Music course home / 昆士兰大学音乐学院课程首页">
+      <img src="assets/uq-logo.png" alt="The University of Queensland" width="742" height="205">
+      <span class="school-course"><strong>School of Music · 音乐学院</strong><small>AI MUSIC VISUALISATION / AI 音乐可视化</small></span>
+    </a>
+    <nav class="lesson-nav" aria-label="Page navigation / 页面导航">
+      <a href="#steps">11 步图文 <span>Steps</span></a>
+      <a href="#troubleshooting">故障排查 <span>Fixes</span></a>
+      <a href="ink-wash-ring.html?v=three-ring-wave-2" target="_blank" rel="noopener">运行成品 <span>Live demo ↗</span></a>
+      <a href="index.html">课程首页 <span>Course home ↗</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- =================== HERO =================== -->
+<section class="hero" id="top">
+  <div class="container hero-layout">
+    <div class="hero-copy">
+      <div class="eyebrow reveal">UQ SCHOOL OF MUSIC / CASE A · 11 STAGES</div>
+      <h1 class="reveal">从一笔墨，<br><em>到一件会听的作品。</em><span class="en">From one brush ring to an interactive music visualiser.</span></h1>
+      <p class="lead reveal">十一条提示词，把宣纸上的一笔墨，逐步变成能回应音乐、声音和身体动作的网页作品。每一步都有目标、可复制提示词、验收点和课堂截图。</p>
+      <p class="lead cn reveal">Eleven prompts turn one ink ring into a page that responds to music, voice and movement. Each stage pairs the goal, a copyable prompt and a verification checklist with its classroom capture.</p>
+      <div class="hero-actions reveal">
+        <a class="pill-link solid" href="#steps">从第 1 步开始 <span>Start at Step 01 ↓</span></a>
+        <a class="pill-link" href="ink-wash-ring.html?v=three-ring-wave-2" target="_blank" rel="noopener">运行成品 <span>Open live demo ↗</span></a>
+      </div>
+      <p class="hero-proof reveal">01 / 画面成形　→　04 / 声音驱动　→　11 / 身体交互</p>
+    </div>
+    <div class="hero-art reveal" aria-label="Step 1 and Step 11 classroom screenshots / 第 1 步和第 11 步课堂截图">
+      <figure class="hero-preview hero-preview-start"><img src="steps/1.png?v=6324dd2113" alt="Step 1 result: a single dark ink ring on a pale background" width="1209" height="923"><figcaption>01 <span>START VIEW / 起始画面</span></figcaption></figure>
+      <figure class="hero-preview hero-preview-finish"><img src="steps/11.png?v=f9199e937d" alt="Step 11 result: concentric ink rings with palette, audio, Mic and Webcam controls; an arrow points to Webcam" width="1209" height="918"><figcaption>11 <span>INTERACTIVE / 可交互</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="preflight" aria-labelledby="preflight-title">
+  <div class="container">
+    <div class="preflight-heading reveal"><span>BEFORE YOU BUILD / 动手之前</span><h2 id="preflight-title">准备好，再开始。</h2><p>Three things to prepare before opening Google AI Studio Build.</p></div>
+    <div class="note-card reveal">
+      <ul>
+        <li><b>Google AI Studio Build</b> — 登录后选择 Build 和网页应用，逐条粘贴下方提示词。<span class="en">Sign in, choose Build and a web app, then paste the prompts below one at a time.</span></li>
+        <li><b>用 localhost 打开</b> — 麦克风、摄像头在 <code>file://</code> 会被浏览器拦掉；课前用 <code>python3 -m http.server</code> 起一个本地服务器，再开 <code>localhost</code>。<span class="en">Mic and webcam are blocked on <code>file://</code> — serve with <code>python3 -m http.server</code> and open <code>localhost</code>.</span></li>
+        <li><b>一段音乐（可选）</b> — 准备自己创作或获授权的音频；没有也行，第 11 步提供点击播放后才启动的内置合成器。<span class="en">Bring your own or rights-cleared audio, or press Play for the built-in synth added in Step 11.</span></li>
+      </ul>
+      <p class="loop-line">每一步都跑同一个循环：<b>描述 → 预览 → 验证 → 迭代</b>。每次跑通，先存一份再往下改——「上一个能跑的版本」是你最好的安全网。</p>
+      <p class="loop-line" style="font-style:normal; font-family:var(--sans-cn); font-size:13px; color:var(--mute); margin-top:6px;">Every step runs the same loop: <i>describe → preview → verify → iterate</i>. Save each working version before you change it — your last working copy is your safety net.</p>
+    </div>
+    <aside class="uq-adaptation reveal" aria-label="UQ teaching edition adaptation note"><strong>桌面教室提示 / Desktop classroom note</strong>　本教学版面向桌面浏览器。请使用自己创作或获授权的音频。Google AI Studio Build 也可能生成多文件 React 应用；如果如此，请保留能正常运行的项目结构。<span>This edition is designed for desktop browsers. Use audio you created or have permission to use. If Build generates a multi-file React app, keep its working project structure.</span></aside>
+    <aside class="creative-brief reveal" aria-labelledby="creative-brief-title">
+      <span class="creative-brief-label">OPEN BRIEF / 自由创作</span>
+      <div>
+        <h3 id="creative-brief-title">每一步，都可以加入你的想法。</h3>
+        <p lang="zh-CN">下面的 11 步帮助大家了解每个环节的作用和制作过程。你可以在任何一步加入自己想到的创意、素材或交互，让作品呈现你的表达。</p>
+        <p lang="en">These 11 steps help you understand what each stage does and how it works. Add any ideas, materials or interactions you imagine at any stage, and make the work your own.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- =================== STEPS =================== -->
+<section id="steps">
+  <div class="container">
+    <div class="ladder-title reveal">从宣纸到可交互作品<span class="en">Eleven prompts · eleven captured stages</span></div>
+    <p class="ladder-sub reveal">Step 1 builds the shell. Continue Steps 2–11 in the <b>same Gemini chat</b>. The eleven supplied screenshots are displayed in filename order, 1–11; click any image for its full size. 第 1 步搭骨架，第 2–11 步在<b>同一个对话</b>中继续。提供的十一张截图按文件名 1–11 排列，点击可看原图。</p>
+
+    <nav class="stage-index" aria-label="Stage image index / 阶段截图索引"><span>STAGE CAPTURES / 阶段截图</span><a href="#step-1" aria-label="Jump to step 1 / 跳至第 1 步">01</a><a href="#step-2" aria-label="Jump to step 2 / 跳至第 2 步">02</a><a href="#step-3" aria-label="Jump to step 3 / 跳至第 3 步">03</a><a href="#step-4" aria-label="Jump to step 4 / 跳至第 4 步">04</a><a href="#step-5" aria-label="Jump to step 5 / 跳至第 5 步">05</a><a href="#step-6" aria-label="Jump to step 6 / 跳至第 6 步">06</a><a href="#step-7" aria-label="Jump to step 7 / 跳至第 7 步">07</a><a href="#step-8" aria-label="Jump to step 8 / 跳至第 8 步">08</a><a href="#step-9" aria-label="Jump to step 9 / 跳至第 9 步">09</a><a href="#step-10" aria-label="Jump to step 10 / 跳至第 10 步">10</a><a href="#step-11" aria-label="Jump to step 11 / 跳至第 11 步">11</a></nav>
+
+    <div class="step-list">
+
+      <div class="phase-break"><span>01—03 / FOUNDATION</span><strong>让画面站起来</strong><small>Build the canvas and bring in sound</small></div>
+
+      <!-- STEP 1 -->
+      <article id="step-1" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">1</div>
+          <div class="step-h"><h3>宣纸与第一道墨环<span class="en">Rice paper + one brush ring</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 一张暖色宣纸，正中一道手绘感的墨环。先证明「一句话变出一个页面」。<span class="en">Goal — a warm rice-paper canvas with one hand-brushed ink ring in the centre. Prove that one sentence becomes a page.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 复制粘贴给 Gemini</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Build a single self-contained HTML file — one full-screen canvas,
+vanilla JavaScript, no libraries. Fill it with a warm rice-paper
+cream colour (#FAF6F0). In the exact centre, draw one soft black
+ink-wash ring: a circle whose edge is slightly irregular and
+wobbly, like a single brush stroke, not a perfect geometric circle.
+Leave lots of calm empty space around it. Make it elegant and minimal.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>正中一道墨环，边缘像毛笔画的、不是完美圆。<span class="en">A centred ring with a hand-drawn, imperfect edge.</span></li>
+            <li>底色是暖米白，不是纯白。<span class="en">Background is warm cream, not pure white.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>沿圆周加一点正弦扰动</b>，半径不再恒定，边缘就「毛」了。<span class="en">A little sine wobble added around the circumference makes the radius vary — that is the brushy edge (≈100 segments).</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/1.png?v=6324dd2113" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 1 / 查看第 1 步完整截图"><img src="steps/1.png?v=6324dd2113" width="1209" height="923" alt="Step 1 result: a single dark ink ring on a pale background" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 01 / 第 1 步结果</span><small>Click to inspect the complete capture / 点击查看完整截图</small></figcaption>
+        </figure>
+      </article>
+
+      <!-- STEP 2 -->
+      <article id="step-2" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">2</div>
+          <div class="step-h"><h3>让它呼吸 + 墨痕拖尾<span class="en">Make it breathe + silky ink trails</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 墨环缓缓起伏；画面不每帧清空，让运动留下渐渐渗进纸里的拖尾。<span class="en">Goal — the ring breathes slowly; the canvas is not fully cleared each frame, so motion leaves trails that soak into the paper.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Now animate it, in the same file. Make the ring breathe forever —
+its radius and edge gently wobble and pulse, slowly. And here is the
+key trick: do NOT clear the whole canvas each frame. Instead, paint a
+near-transparent rice-paper-coloured rectangle over everything each
+frame (about 8% opacity), so moving ink leaves soft silky trails that
+fade into the paper. If the visitor has prefers-reduced-motion turned
+on, calm the motion right down.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>墨环慢慢起伏，像在呼吸。<span class="en">The ring slowly pulses, as if breathing.</span></li>
+            <li>运动留下会淡去的墨痕，而不是干净清空。<span class="en">Motion leaves fading trails, not a clean wipe.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>「拖尾」= 每帧铺一层 8% 的纸色</b>，旧画面被慢慢盖住而非抹掉。<span class="en">The trail is a per-frame <code>fillRect</code> of paper colour at ~8% alpha — old frames fade instead of being erased.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/2.png?v=23d38a247d" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 2 / 查看第 2 步完整截图"><img src="steps/2.png?v=23d38a247d" width="1209" height="923" alt="Step 2 result: a dark ink ring with the local MP3 control bar highlighted by an arrow" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 02 / 第 2 步结果</span><small>Click to inspect the complete capture / 点击查看完整截图</small></figcaption>
+        </figure>
+      </article>
+
+      <!-- STEP 3 -->
+      <article id="step-3" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">3</div>
+          <div class="step-h"><h3>放进音乐<span class="en">Load the music</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 一个播放/暂停键 + 选本地 mp3，用 Web Audio 读出声音的频率。安全键从第一刻就在。<span class="en">Goal — a play/pause button + a local-mp3 picker; read the sound with the Web Audio API. Safety controls present from minute one.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Add audio. Put a small, tasteful play/pause button and a "choose a
+local audio file" picker at the bottom. Load the chosen mp3 into an
+audio element and read it with the Web Audio API — create an
+AnalyserNode with fftSize 256, so we can read the sound's frequencies
+every frame. Keep a visible Pause and a Mute control at all times,
+and never auto-blast sound.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>选一段 mp3，能播；暂停键真的能停。<span class="en">Pick an mp3 — it plays; Pause actually stops it.</span></li>
+            <li>暂停键真的能停；并按 prompt 要求保留「静音」键。<span class="en">Pause actually stops it; keep a Mute control too, as the prompt asks.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>AnalyserNode 是「听诊器」</b>,<code>fftSize 256</code> 把声音切成 128 个频率格子供每帧读取。<span class="en">The AnalyserNode is the stethoscope; <code>fftSize 256</code> gives 128 frequency bins to read each frame.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/3.png?v=2c56e146e9" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 3 / 查看第 3 步完整截图"><img src="steps/3.png?v=2c56e146e9" width="1209" height="918" alt="Step 3 result: a thick ink ring with audio controls beneath it" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 03 / 第 3 步结果</span><small>Screenshot shows the controls; test audio playback in the live preview. / 截图展示控件，播放功能需在预览中验证。</small></figcaption>
+        </figure>
+      </article>
+
+      <div class="phase-break"><span>04—07 / RESPONSE</span><strong>让声音驱动画面</strong><small>Map the music to motion and ink</small></div>
+
+      <!-- STEP 4 -->
+      <article id="step-4" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">4</div>
+          <div class="step-h"><h3>随低音起伏<span class="en">Make the ring follow the bass</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 把墨环接到声音上：低音越重，环越大越粗；安静时收住。这是整个页面的「核心耦合」。<span class="en">Goal — couple ring to sound: heavy bass swells and thickens it, quiet calms it. This coupling is the heart of the page.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Now couple the ring to the music. Every frame, read the
+low-frequency (bass) energy from the analyser — just the lowest few
+frequency bins — and smooth it over time. Drive the ring's size and
+line thickness with that bass value: loud bass makes the ring swell
+and thicken; in quiet passages it settles and calms. Keep the motion
+organic, not jumpy.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>低音一来，环就胀大变粗。<span class="en">On the bass, the ring swells and thickens.</span></li>
+            <li>安静段落它平稳下来，不抖。<span class="en">Quiet parts settle smoothly, no jitter.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>只取最低 3 个频格当「低音」</b>，再做平滑（lerp 0.15）避免突跳。<span class="en">Only the lowest ~3 bins are read as "bass", then smoothed (lerp ≈0.15) so it glides instead of snapping.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/4.png?v=670a702c33" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 4 / 查看第 4 步完整截图"><img src="steps/4.png?v=670a702c33" width="1209" height="918" alt="Step 4 result: radial ink marks burst inside a dark ring" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 04 / 第 4 步结果</span><small>Click to inspect the complete capture / 点击查看完整截图</small></figcaption>
+        </figure>
+      </article>
+
+      <!-- STEP 5 -->
+      <article id="step-5" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">5</div>
+          <div class="step-h"><h3>重拍泼墨<span class="en">Splash ink on the beat</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 检测强低音（自适应阈值，会自调），每一拍泼出一团墨点：飞出、变慢、扩散、渗进纸里。<span class="en">Goal — detect strong bass with an adaptive threshold; each hit bursts ink droplets that fly, slow, spread and dry into the paper.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Add splashing ink on the beat. Detect strong bass hits with an
+ADAPTIVE threshold — after each hit raise the bar, then let it slowly
+decay — so it self-tunes to any track instead of using a fixed number.
+On each detected hit, burst about 30 ink droplets outward from the
+centre: they fly out, slow down with friction, and as they slow they
+spread bigger and dry/fade into the paper over roughly one second.
+Make most droplets black ink, a few jade or bronze, a rare pale gold.
+Cap it with a short cooldown of a few frames so it can't fire on
+every single frame.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>强拍泼墨，墨点扩散后干进纸里。<span class="en">Strong beats throw ink that spreads, then dries in.</span></li>
+            <li>安静处不乱泼；绝不频闪。<span class="en">Quiet parts stay calm; it never strobes.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>自适应阈值 + 冷却帧</b>，让它跟着歌自调、又不会狂泼；墨点变慢时才「长大变淡」=渗墨。<span class="en">Adaptive threshold + a short cooldown self-tune the firing; droplets grow & fade only as they slow — that is the diffusion.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/5.png?v=02de557cad" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 5 / 查看第 5 步完整截图"><img src="steps/5.png?v=02de557cad" width="1209" height="918" alt="Step 5 result: three softly blurred concentric ink rings" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 05 / 第 5 步结果</span><small>Click to inspect the complete capture / 点击查看完整截图</small></figcaption>
+        </figure>
+      </article>
+
+      <!-- STEP 6 -->
+      <article id="step-6" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">6</div>
+          <div class="step-h"><h3>三层墨环 + 鼠标视差<span class="en">Three rings + mouse parallax</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 把一道环变三层（外淡、中实、内锐），跟着鼠标以不同速度位移，做出景深。<span class="en">Goal — one ring becomes three depth layers that follow the mouse at different speeds for parallax depth.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Make it feel deep. Use THREE concentric ink rings at different sizes
+and opacities — a faint big outer wash, a strong middle stroke, and a
+small sharp inner accent. Then follow the mouse: shift the three rings
+by different amounts — the inner ring moves most, the outer least — to
+create parallax depth. Add a soft lag (about a third of a second) so
+they drift smoothly toward the cursor rather than snapping to it.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>看得出三层环，深浅不同。<span class="en">Three layered rings at different depths.</span></li>
+            <li>移动鼠标，三层以不同速度滑动，有迟滞。<span class="en">Mouse moves them at different speeds, with lag.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>视差 = 同一中心、不同位移倍数</b>（内层乘得最大）；迟滞用每帧 lerp 实现。<span class="en">Parallax = same centre, different offset multipliers (inner largest); the lag is a per-frame lerp toward the target.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/6.png?v=f0164cea30" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 6 / 查看第 6 步完整截图"><img src="steps/6.png?v=f0164cea30" width="1209" height="918" alt="Step 6 result: ripple lines spread across the page around three ink rings" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 06 / 第 6 步结果</span><small>Click to inspect the complete capture / 点击查看完整截图</small></figcaption>
+        </figure>
+      </article>
+
+      <!-- STEP 7 -->
+      <article id="step-7" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">7</div>
+          <div class="step-h"><h3>冲击波扭曲<span class="en">Shockwave warp</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 每个强拍（和点击）从中心放出一圈冲击波，所过之处把画面轻轻推开、扭曲，再淡去。<span class="en">Goal — each strong beat (and click) sends an expanding ring that warps everything it passes, then fades.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Add a shockwave. On every strong beat — and whenever I click — send
+an expanding ring outward from the centre that warps and distorts
+everything it passes through: push points outward as the wave front
+reaches them, then let it fade as it grows. Keep the distortion subtle
+and elegant, like a ripple moving through wet ink.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>强拍/点击送出一圈涟漪，墨随之弯曲。<span class="en">Beats/clicks send a ripple that bends the ink.</span></li>
+            <li>扭曲克制、优雅，不刺眼。<span class="en">The warp is subtle, not harsh.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>所有要画的点都先过一道「位移函数」</b>：落在波front附近就被推开，于是整幅画被同一只手扭。<span class="en">Every point to be drawn passes through one displacement function; points near the wave-front get pushed — so the whole image warps together.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/7.png?v=92d5fdaa81" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 7 / 查看第 7 步完整截图"><img src="steps/7.png?v=92d5fdaa81" width="1209" height="918" alt="Step 7 result: concentric ink rings, four palette swatches, and arrows pointing to the page edges" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 07 / 第 7 步结果</span><small>Click to inspect the complete capture / 点击查看完整截图</small></figcaption>
+        </figure>
+      </article>
+
+      <div class="phase-break"><span>08—11 / INTERACTION</span><strong>让观众进入作品</strong><small>Invite gestures, voice and movement</small></div>
+
+      <!-- STEP 8 -->
+      <article id="step-8" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">8</div>
+          <div class="step-h"><h3>拖动作画<span class="en">Drag to paint your own strokes</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 让人能直接在宣纸上按住拖动，留下自己的墨笔触，慢慢渗开淡去。<span class="en">Goal — let the visitor press and drag to lay their own ink brush strokes that soak in and fade.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Let me paint. When I press and drag on the paper with a mouse,
+lay down a trail of soft ink brush dots along my path that
+wobble slightly and slowly soak in and fade, like a wet brush on rice
+paper. They should take on the current ink colour.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>按住拖动，留下会渗开淡去的笔触。<span class="en">Drag leaves a stroke that soaks in and fades.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>每个落点存进一个数组</b>，各自带透明度逐帧衰减 + 抖动 → 自然的「湿笔」。<span class="en">Each mouse position is stored with its own fading alpha + wobble — that gives the wet-brush feel.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/8.png?v=535745789f" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 8 / 查看第 8 步完整截图"><img src="steps/8.png?v=535745789f" width="1209" height="918" alt="Step 8 result: a black brush stroke extends from the ink rings, with palette and audio controls below" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 08 / 第 8 步结果</span><small>Click to inspect the complete capture / 点击查看完整截图</small></figcaption>
+        </figure>
+      </article>
+
+      <!-- STEP 9 -->
+      <article id="step-9" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">9</div>
+          <div class="step-h"><h3>滚轮调色 + 中轴线<span class="en">Scroll to recolor + the central axis</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 滚轮在「青」与「铜」之间调色，整幅画一起变；再添一条贯穿上下的淡淡中轴线——画面的脊。<span class="en">Goal — scroll shifts the palette jade↔bronze for everything; add a faint vertical central axis line — the spine of the piece.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Add colour control by scroll wheel. Scrolling up warms the whole
+palette toward bronze; scrolling down cools it toward jade green.
+Interpolate one "tone" value between cool jade and warm bronze, and
+use it to colour the rings, the ink splatters, the brush strokes, and
+a faint vertical "central axis" line down the middle of the page. That
+axis line is the spine of the piece — the 中轴线.</pre>
+        </div>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>上滚转暖（铜），下滚转冷（青），整体同步。<span class="en">Scroll up warms (bronze), down cools (jade), all together.</span></li>
+            <li>中间多了一条淡淡的竖轴。<span class="en">A faint vertical axis line appears down the middle.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>一个 0→1 的 tone 值</b>在青（91,140,126）与铜（176,141,87）之间插值，一处改、处处变。<span class="en">One 0→1 tone value lerps between jade and bronze RGB; change it once, everything recolours.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/9.png?v=d982ef8068" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 9 / 查看第 9 步完整截图"><img src="steps/9.png?v=d982ef8068" width="1209" height="923" alt="Step 9 result: three ink rings with a faint vertical central axis; a red arrow points to the axis" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 09 / 第 9 步结果</span><small>Click to inspect the complete capture / 点击查看完整截图</small></figcaption>
+        </figure>
+      </article>
+
+      <!-- STEP 10 -->
+      <article id="step-10" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">10</div>
+          <div class="step-h"><h3>用你的声音 · 麦克风<span class="en">Your voice — the microphone</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 加一个麦克风开关：你越大声，中心那团光芯越亮（颜色随当前青↔铜色调）；拍一下手（音量骤起）就炸出一团墨。<span class="en">Goal — a Mic toggle: your volume brightens a glowing core (in the current jade↔bronze tone); a clap (a volume spike) throws an ink explosion.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Add a microphone toggle, labelled "Mic". When switched on, ask for
+permission and read the mic with its own analyser. Let my voice volume
+grow a glowing gold core in the centre — the louder I speak or sing,
+the brighter and bigger it blooms. And detect a clap — a sudden spike
+in volume — and make it throw an ink explosion. (Reminder: the mic
+only works over localhost or https, not from a file:// page.)</pre>
+        </div>
+        <p class="goal" style="font-size:13px;color:var(--mute);">AI Studio Build 预览设备输入时，还要在 <code>metadata.json</code> 的 <code>requestFramePermissions</code> 中加入 <code>microphone</code>，并确认预览权限提示。<span class="en">For the AI Studio Build preview, add <code>microphone</code> to <code>requestFramePermissions</code> in <code>metadata.json</code> and accept the preview acknowledgement.</span></p>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>说话/唱，中心光芯随音量发光长大。<span class="en">Speak/sing — the glowing core blooms with volume.</span></li>
+            <li>拍手，炸出一团墨。在 localhost 下测。<span class="en">Clap → an ink burst. Test over localhost.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>「拍手」= 音量的突然跳变</b>（这一帧比上一帧猛涨且够响）就触发爆发，而不是看绝对音量。<span class="en">A clap is detected as a sudden jump in volume (this frame far above the last, and loud enough), not by absolute level.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/10.png?v=d5d1b8e205" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 10 / 查看第 10 步完整截图"><img src="steps/10.png?v=d5d1b8e205" width="1766" height="1314" alt="Step 10 result: three concentric ink rings with palette and audio controls; a red arrow points to the Mic button" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 10 / 第 10 步结果</span><small>Mic control is visible; test microphone permission and sound response in the live preview. / 截图可见麦克风按钮，权限与声音响应需在预览中验证。</small></figcaption>
+        </figure>
+      </article>
+
+      <!-- STEP 11 -->
+      <article id="step-11" class="step reveal has-result">
+        <div class="step-copy">
+        <div class="step-top">
+          <div class="step-no">11</div>
+          <div class="step-h"><h3>收尾：摄像头<br>内置合成器 · 安全控件<span class="en">Final layer: webcam · built-in synth · safety</span></h3></div>
+        </div>
+        <p class="goal"><b>目标</b> — 最后一层。让身体参与互动；没有音频文件时点击播放也能启动合成器；并把「计分的安全规则」一次性加进去。<span class="en">Goal — the final layer: interact with body movement, start a synth by pressing Play when no file is loaded, and add the graded safety rules.</span></p>
+        <p class="goal" style="font-size:13px;color:var(--mute);"><b style="color:var(--bronze-d);">课堂提醒</b> — 运行成品展示了交互方向；在你自己的作品中，静音、减弱动效、温和闪光与暂停仍是需要逐项实现和验证的<b style="color:var(--bronze-d);">计分</b>要求。<span class="en">Classroom note — the live example demonstrates these interactions. In your own build, implement and test the GRADED safety controls: Mute, reduced motion, gentle flashes and Pause.</span></p>
+        <div class="prompt-box">
+          <span class="plabel">Prompt · 同一个对话，继续说（这条最长，可分两次发）</span>
+          <button class="copy-btn" type="button">复制 Copy</button>
+<pre>Final layer, three things, in the same file.
+(1) Add a "Webcam" toggle: with permission, compare each camera frame
+    to the previous one to find where the motion is, and use the
+    horizontal position of that motion to shift the rings' parallax —
+    lean or wave left and right and the ink drifts with you.
+(2) If no audio file is loaded, let the visitor press Play to start a
+    built-in calm 50-BPM ambient synth — a soft bass pulse plus occasional
+    sustained pentatonic tones. Do not autoplay audio when the page opens.
+(3) Safety, and it is graded: keep every flash gentle (never more than
+    about three per second, never a full-screen white strobe), disable
+    the screen-shake when prefers-reduced-motion is on, and keep the
+    Pause and Mute controls visible the whole time.</pre>
+        </div>
+        <p class="goal" style="font-size:13px;color:var(--mute);">若在 AI Studio Build 预览摄像头，还要在 <code>metadata.json</code> 的 <code>requestFramePermissions</code> 中加入 <code>camera</code>，并确认预览权限提示。<span class="en">For the AI Studio Build webcam preview, add <code>camera</code> to <code>requestFramePermissions</code> in <code>metadata.json</code> and accept the preview acknowledgement.</span></p>
+        <div class="step-grid">
+          <div class="cell verify"><div class="h">✓ 验证 Verify</div><ul>
+            <li>对着摄像头左右动，墨随之漂移。<span class="en">Move left/right on webcam — the ink drifts with you.</span></li>
+            <li>不放文件时点击播放也能发声；闪光温和；开了「减弱动效」后抖动应停；暂停/静音键都在。<span class="en">With no file, Play starts the synth; flashes stay gentle; with reduced-motion on the shake should stop; Pause and Mute both remain visible.</span></li>
+          </ul></div>
+          <div class="cell"><div class="h">底层揭秘 Under the hood</div><div class="under"><b>摄像头不做人脸识别</b>，只把「这一帧和上一帧哪里不一样」的重心算出来当方向——便宜、稳、够用。<span class="en">The webcam does no face recognition — it just finds where this frame differs from the last and uses that centroid as a direction. Cheap, robust, enough.</span></div></div>
+        </div>
+        </div>
+        <figure class="step-result">
+          <a href="steps/11.png?v=f9199e937d" target="_blank" rel="noopener" aria-label="Open full-size result image for Step 11 / 查看第 11 步完整截图"><img src="steps/11.png?v=f9199e937d" width="1209" height="918" alt="Step 11 result: concentric ink rings with palette, audio, Mic and Webcam controls; an arrow points to Webcam" loading="lazy" decoding="async"></a>
+          <figcaption><span>RESULT AFTER STEP 11 / 第 11 步结果</span><small>Webcam and built-in synth controls are visible; test permission, playback and safety controls in the live preview. / 截图可见摄像头与内置合成器控件，权限、播放及安全控制仍需在预览中验证。</small></figcaption>
+        </figure>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== CLOSING =================== -->
+<section id="closing">
+  <div class="container closing-layout">
+    <div class="closing-copy">
+      <div class="eyebrow reveal">YOU BUILT CASE A / 你做出了案例 A</div>
+      <h2 class="reveal">十一句话，<br>一件会回应你的作品。<span class="en">Eleven prompts. One responsive artwork.</span></h2>
+      <p class="reveal">You moved from a blank sheet to a page that listens to music, paints on the beat and responds to gestures, voice and movement. Save your working version, then make its behaviour your own.</p>
+      <p class="cn reveal">从空白宣纸到能听音乐、随节拍泼墨、回应手势和声音的网页。保存能运行的版本，再把音乐与交互改成你自己的表达。</p>
+    </div>
+    <div class="closing-side reveal">
+      <span class="closing-count">11 / 11</span>
+      <div class="hero-actions">
+        <a class="pill-link solid" href="courses.html#visual">下一步：发布它 <span>Next — ship it</span></a>
+        <a class="pill-link" href="ink-wash-ring.html?v=three-ring-wave-2" target="_blank" rel="noopener">对照运行成品 <span>Live demo ↗</span></a>
+        <a class="pill-link" href="visualizers.html">看其它示例 <span>More examples ↗</span></a>
+      </div>
+      <p class="cn" style="margin-top:22px; font-size:13px;">在第 3 步可换成自己创作或获授权的录音。<br>Use your own or rights-cleared track in Step 3.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== TROUBLESHOOTING =================== -->
+<section id="troubleshooting" aria-labelledby="troubleshooting-title">
+  <div class="container">
+    <div class="troubleshooting-heading">
+      <p class="eyebrow">AFTER THE BUILD / 完成后排查</p>
+      <h2 id="troubleshooting-title">常见报错与急救<span>Common failures &amp; fixes</span></h2>
+      <p>对照这件水墨音乐可视化作品，先找到症状，再一次只修一个环节。AR 是额外拓展，不属于本课必做内容。 / Find the symptom in this ink-wash visualiser, then fix one part at a time. AR is an optional extension, not a required part of this lesson.</p>
+    </div>
+    <div class="failure-head" aria-hidden="true"><span>SYMPTOM / 现象</span><span>CHECK &amp; FIX / 检查与修复</span></div>
+    <dl class="failure-list">
+      <div class="failure-row">
+        <dt>点击播放没有声音<span lang="en">Silent on play</span></dt>
+        <dd><p lang="zh-CN">浏览器限制自动播放：在用户点击 <code>Play</code> 的处理函数中创建或恢复 <code>AudioContext</code>；当 <code>state === 'suspended'</code> 时调用 <code>resume()</code>，不要在页面加载时启动声音。</p><p lang="en">Browsers restrict autoplay. Create or resume the AudioContext inside the Play click; call <code>resume()</code> whenever its state is <code>suspended</code>. Do not start audio on page load.</p></dd>
+      </div>
+      <div class="failure-row">
+        <dt>麦克风／摄像头被拒<span lang="en">Mic / webcam denied</span></dt>
+        <dd><p lang="zh-CN"><code>getUserMedia</code> 需要 HTTPS 或 <code>localhost</code>，不能直接用 <code>file://</code>。用 <code>try/catch</code> 显示授权失败原因，并把 Mic／Webcam 开关复位。</p><p lang="en"><code>getUserMedia</code> needs HTTPS or <code>localhost</code>, not <code>file://</code>. Catch permission errors, explain them, and reset the Mic or Webcam toggle.</p></dd>
+      </div>
+      <div class="failure-row">
+        <dt><code>createMediaElementSource</code> 报错<span lang="en">Audio source creation error</span></dt>
+        <dd><p lang="zh-CN">每个 <code>&lt;audio&gt;</code> 元素只创建一次 <code>MediaElementAudioSourceNode</code>。复用已建立的 <code>AudioContext</code> 和 source，不要每次点击播放都重新调用 <code>createMediaElementSource()</code>。</p><p lang="en">Create one MediaElementAudioSourceNode per <code>&lt;audio&gt;</code> element. Reuse the AudioContext and source instead of calling <code>createMediaElementSource()</code> on every Play click.</p></dd>
+      </div>
+      <div class="failure-row">
+        <dt>课堂电脑／投影掉帧<span lang="en">Frame drops</span></dt>
+        <dd><p lang="zh-CN">限制墨环与粒子数量；摄像头帧差分析可缩到约 <code>40×30</code>；复用一个 <code>Uint8Array</code>。性能不足时减轻抖动和 <code>shadowBlur</code>。</p><p lang="en">Cap ring and particle counts, analyse webcam motion on a small frame-difference canvas (about <code>40×30</code>), and reuse one Uint8Array. Reduce shake and <code>shadowBlur</code> on slower computers.</p></dd>
+      </div>
+      <div class="failure-row">
+        <dt>声音叠加后爆裂<span lang="en">Audio crackle / clipping</span></dt>
+        <dd><p lang="zh-CN">多个合成音同时响起时，降低每个声音的增益，并在输出到 <code>destination</code> 前插入 <code>DynamicsCompressorNode</code>，避免峰值削波。</p><p lang="en">When synthesised voices overlap, lower each voice's gain and insert a DynamicsCompressorNode before <code>destination</code> to tame peaks.</p></dd>
+      </div>
+      <div class="failure-row">
+        <dt>可选拓展：AR 在桌面无反应<span lang="en">Optional AR does not respond on desktop</span></dt>
+        <dd><p lang="zh-CN"><code>WebXR</code>／<code>Quick Look</code> 通常需要受支持的手机与 HTTPS。把 AR 当作额外体验，不要把它设为这件水墨音乐作品的必做功能或评分前提。</p><p lang="en">WebXR and Quick Look usually need a supported phone over HTTPS. Treat AR as an optional enhancement, never a requirement for this ink-wash music work.</p></dd>
+      </div>
+    </dl>
+
+    <aside class="escalation" aria-labelledby="escalation-title">
+      <div>
+        <span class="escalation-label">GEMINI RECOVERY / 反复报错时</span>
+        <h3 id="escalation-title">同一个问题三次修不好，就换打法。<span>Three failed attempts? Change tactics.</span></h3>
+      </div>
+      <ol>
+        <li><strong>原样贴回报错</strong><p>Paste the exact error into Gemini and ask for the complete corrected file or files. / 请它返回修正后的完整文件。</p></li>
+        <li><strong>缩小修改范围</strong><p>Say: <code>Only change the audio part; keep the rest identical.</code> / 只改音频，其他保持不变。</p></li>
+        <li><strong>回滚，再加一小步</strong><p>Return to the last working version, then request one small change. / 从上一版能运行的项目重新出发。</p></li>
+        <li><strong>找人帮忙或简化交互</strong><p>Ask your teacher or a classmate, or choose a simpler interaction. / 不必一直死磕同一种实现。</p></li>
+      </ol>
+      <p class="escalation-rule"><strong>铁律：</strong>每一轮都保留上一版能运行的文件或项目，再继续改。<span>Always keep a last-known-good copy. Rolling back and describing the problem again is part of the skill.</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer id="footer">
+  <div class="foot-inner">
+    <div class="foot-brand">Music becomes visible.<em>Musicians decide how.</em></div>
+    <div class="foot-links">
+      <a href="index.html">总览 Overview</a>
+      <a href="courses.html#visual">课程模块 Course modules</a>
+      <a href="visualizers.html">示例 Examples</a>
+      <a href="ink-wash-ring.html?v=three-ring-wave-2" target="_blank" rel="noopener">运行此例 Run it</a>
+    </div>
+  </div>
+  <div class="foot-bottom">Prepared for The University of Queensland School of Music · 2026 — AI 音乐可视化案例 A / Music visualisation Case A</div>
+</footer>
+
+<script>
+  // progress bar
+  const progress = document.getElementById('progress');
+  function onScroll() {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+    progress.style.width = (scrolled * 100) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // copy-to-clipboard on prompt boxes
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pre = btn.closest('.prompt-box').querySelector('pre');
+      const text = pre.innerText;
+      const done = () => { const old = btn.textContent; btn.textContent = '已复制 Copied ✓'; setTimeout(() => { btn.textContent = old; }, 1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(() => fallback(text, done));
+      } else { fallback(text, done); }
+    });
+  });
+  function fallback(text, done) {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+</script>
+</body>
+</html>
