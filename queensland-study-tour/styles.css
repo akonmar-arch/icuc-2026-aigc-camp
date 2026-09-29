@@ -180,6 +180,7 @@
   .timeline { border-top: 1px solid rgba(255,255,255,.3); }
   .timeline article { display: grid; grid-template-columns: minmax(120px, .22fr) minmax(0, 1fr) minmax(260px, .42fr); align-items: center; gap: clamp(22px, 3vw, 42px); padding: 29px 0 32px; border-bottom: 1px solid rgba(255,255,255,.25); }
   .timeline .era { color: var(--aqua); font: 700 12px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+  .timeline .era-date { white-space: nowrap; }
   .timeline h3 { font: 750 clamp(22px, 2.1vw, 30px)/1.2 var(--display); letter-spacing: -.03em; }
   .timeline h3 small { margin-left: 12px; color: #d0c4da; font: 400 15px/1.5 "Microsoft YaHei", var(--body); }
   .timeline p { max-width: 1000px; margin-top: 13px; font-size: 14px; line-height: 1.7; }
