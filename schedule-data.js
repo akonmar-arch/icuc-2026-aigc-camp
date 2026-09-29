@@ -28,7 +28,7 @@ window.courseCatalog = {
     "order": 3,
     "shortName": "智能视频生成",
     "fullName": "AI智能视频生成",
-    "teacher": "吴潇"
+    "teacher": "袁敏"
   },
   "music": {
     "order": 4,
