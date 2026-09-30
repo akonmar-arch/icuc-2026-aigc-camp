@@ -18,7 +18,8 @@
     .site-head{background:#fff;border-bottom:1px solid var(--line)}
     .head-inner{max-width:1440px;min-height:84px;margin:auto;padding:13px clamp(20px,4vw,60px);display:flex;align-items:center;justify-content:space-between;gap:20px}
     .identity{display:flex;align-items:center;gap:18px;text-decoration:none;min-width:0}
-    .identity img{display:block;width:154px;height:auto;flex:none}
+    .identity img{display:block;width:auto;height:42px;flex:none}
+    .identity img.cuc-logo{filter:invert(1)}
     .identity span{border-left:1px solid var(--line);padding-left:17px;display:grid;gap:2px;color:var(--deep);line-height:1.15}
     .identity strong{font-size:15px;font-weight:800}
     .identity small{font-size:10px}
@@ -71,7 +72,8 @@
     .footer-inner{max-width:1320px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     footer a{color:#fff}
     @media(max-width:1040px){.experience{grid-template-columns:1fr}.guide{display:grid;grid-template-columns:210px 1fr;gap:10px 25px}.guide ol{margin:0}.guide-note{grid-column:1/-1}}
-    @media(max-width:700px){.head-inner{align-items:flex-start;flex-direction:column}.identity img{width:120px}.identity strong{font-size:13px}.identity small{font-size:9px}.head-links{justify-content:flex-start}.intro-inner{grid-template-columns:1fr;gap:24px}.intro-copy{max-width:580px}.viewer iframe{height:600px;min-height:0}.viewer-top,.viewer-bottom{align-items:flex-start;flex-direction:column}.guide{display:block}.guide ol{margin:22px 0}.readout{grid-template-columns:1fr}.readout article,.readout article+article{padding:19px 0;border-left:0}.readout article+article{border-top:1px solid var(--line)}}
+    @media(max-width:700px){.head-inner{align-items:flex-start;flex-direction:column}.identity img{height:34px}.identity strong{font-size:13px}.identity small{font-size:9px}.head-links{justify-content:flex-start}.intro-inner{grid-template-columns:1fr;gap:24px}.intro-copy{max-width:580px}.viewer iframe{height:600px;min-height:0}.viewer-top,.viewer-bottom{align-items:flex-start;flex-direction:column}.guide{display:block}.guide ol{margin:22px 0}.readout{grid-template-columns:1fr}.readout article,.readout article+article{padding:19px 0;border-left:0}.readout article+article{border-top:1px solid var(--line)}}
+    @media(max-width:480px){.identity{gap:8px;flex-wrap:wrap}.identity img{height:28px}.identity span{flex-basis:100%;border-left:0;padding-left:0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}
   </style>
 </head>
@@ -81,6 +83,7 @@
     <div class="head-inner">
       <a class="identity" href="index.html" aria-label="UQ School of Music course home">
         <img src="assets/uq-logo.png" width="742" height="205" alt="The University of Queensland logo">
+        <img class="cuc-logo" src="assets/cuc-media-logo.png" width="8166" height="1616" alt="中国传媒大学国际传媒教育学院 logo">
         <span><strong>School of Music</strong><small>The University of Queensland · 昆士兰大学音乐学院</small></span>
       </a>
       <nav class="head-links" aria-label="Course navigation">

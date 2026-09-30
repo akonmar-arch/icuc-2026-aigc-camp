@@ -173,6 +173,7 @@
 }
 .uq-context-bar .uq-context-identity { display: flex; align-items: center; gap: 14px; min-width: 0; }
 .uq-context-bar img { display: block; width: auto; height: 26px; max-width: none; flex: none; }
+.uq-context-bar .cuc-logo { filter: invert(1); }
 .uq-context-bar .uq-context-label { display: block; min-width: 0; }
 .uq-context-bar a { color: #32135c; flex: none; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .uq-context-bar a:hover { color: #60389c; }
@@ -196,6 +197,8 @@
 .results-page .lesson-header-inner { max-width:1500px; margin:auto; padding:13px var(--pad-x); display:flex; align-items:center; justify-content:space-between; gap:30px; }
 .results-page .school-lockup { display:flex; align-items:center; gap:17px; min-width:0; color:#281a35; text-decoration:none; }
 .results-page .school-lockup img { display:block; width:auto; height:38px; flex:none; }
+.results-page .school-lockup img.cuc-logo { filter:invert(1); }
+@media (max-width:600px) { .results-page .school-lockup { gap:9px; } .results-page .school-lockup img { height:28px; } .results-page .school-course { display:none; } }
 .results-page .school-course { display:flex; flex-direction:column; justify-content:center; gap:2px; padding-left:17px; border-left:1px solid #d6c8df; white-space:nowrap; }
 .results-page .school-course strong { font:700 13px/1.3 var(--sans-en),var(--sans-cn); }
 .results-page .school-course small { color:#765c88; font:600 9px/1.4 var(--mono); letter-spacing:.07em; }
@@ -350,6 +353,7 @@
   <div class="lesson-header-inner">
     <a class="school-lockup" href="index.html" aria-label="The University of Queensland School of Music course home / 昆士兰大学音乐学院课程首页">
       <img src="assets/uq-logo.png" alt="The University of Queensland" width="742" height="205">
+      <img class="cuc-logo" src="assets/cuc-media-logo.png" alt="中国传媒大学国际传媒教育学院 logo" width="8166" height="1616">
       <span class="school-course"><strong>School of Music · 音乐学院</strong><small>AI MUSIC VISUALISATION / AI 音乐可视化</small></span>
     </a>
     <nav class="lesson-nav" aria-label="Page navigation / 页面导航">
