@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ICUC 2026秋季学期AIGC实训营上课时间与课程安排，2026年10月11日至2027年1月10日">
-  <title>上课时间｜ICUC 2026秋季学期 AIGC实训营</title>
+  <meta name="description" content="Class timetable for the ICUC Fall 2026 AIGC Bootcamp, October 11, 2026 to January 10, 2027.">
+  <title>Class Timetable | ICUC Fall 2026 AIGC Bootcamp</title>
   <style>
     :root { --paper:#ecebf1; --surface:#f8f7fb; --ink:#191641; --muted:#5d5a78; --line:#c9c5da; }
     * { box-sizing:border-box; }
@@ -16,12 +16,12 @@
     .brand { font-size:26px; font-weight:800; letter-spacing:.04em; text-decoration:none; }
     .topbar-actions { display:flex; align-items:center; gap:18px; }
     .topbar-actions a { font-size:13px; text-decoration:none; }
+    .language-switch { display:inline-flex; align-items:center; gap:2px; padding:3px; border:1px solid #ccc7e8; border-radius:999px; white-space:nowrap; }
+    .language-switch a, .language-switch span { display:inline-block; padding:4px 9px; border-radius:999px; font-size:12px; line-height:1.4; }
+    .language-switch [aria-current] { color:#191641; background:#8bebd5; font-weight:800; }
+    .language-switch a:hover { color:#8bebd5; }
     .topbar-actions button { padding:8px 15px; border:1px solid #ccc7e8; border-radius:999px; color:#fff; background:transparent; font-size:13px; }
     .topbar-actions button:hover { color:#191641; background:#8bebd5; }
-    .language-switch { display:flex; align-items:center; flex:none; gap:2px; padding:3px; border:1px solid #ccc7e8; border-radius:999px; }
-    .language-switch :is(a,span) { display:grid; place-items:center; min-width:42px; min-height:32px; padding:0 9px; border-radius:999px; color:#d8d4f3; font-size:12px; font-weight:700; text-decoration:none; white-space:nowrap; }
-    .language-switch [aria-current="page"] { color:#191641; background:#8bebd5; }
-    .language-switch a:hover { color:#8bebd5; }
     main { width:min(1280px,calc(100% - 10vw)); margin:0 auto; padding:64px 0 100px; }
     .eyebrow { display:inline-block; margin:0 0 20px; padding:7px 16px; border-radius:999px; color:#fff; background:#d44f70; font-size:12px; font-weight:800; letter-spacing:.12em; }
     h1 { margin:0; font-size:clamp(38px,5vw,72px); font-weight:900; line-height:1.08; letter-spacing:-.05em; }
@@ -48,9 +48,10 @@
     @media (max-width:680px) {
       main { width:calc(100% - 36px); padding:42px 0 70px; }
       .topbar { flex-wrap:wrap; padding-inline:18px; }
-      .brand { max-width:none; font-size:20px; line-height:1.3; }
-      .topbar-actions { width:100%; justify-content:space-between; gap:8px; }
+      .brand { width:100%; font-size:20px; line-height:1.3; }
+      .topbar-actions { width:100%; justify-content:space-between; gap:10px; }
       .topbar-actions > a { display:none; }
+      .language-switch a, .language-switch span { padding:4px 7px; }
       .topbar-actions button { padding:7px 10px; }
       .summary { grid-template-columns:1fr; gap:9px; margin:30px 0; }
       .summary div { padding:15px 20px; }
@@ -82,47 +83,44 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="index.html">ICUC 2026秋季学期 AIGC实训营</a>
+    <a class="brand" href="index-en.html">ICUC Fall 2026 AIGC Bootcamp</a>
     <div class="topbar-actions">
-      <a href="index.html#schedule">返回课程安排</a>
-      <button type="button" onclick="window.print()">打印 / PDF</button>
-      <div class="language-switch" role="group" aria-label="语言选择">
-        <span lang="zh-CN" aria-current="page">中文</span>
-        <a href="timetable-en.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a>
-      </div>
+      <a href="index-en.html#schedule">Back to course schedule</a>
+      <button type="button" onclick="window.print()">Print / PDF</button>
+      <nav class="language-switch" aria-label="Language"><span aria-current="page">EN</span><a href="完整课程时间表.html" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a></nav>
     </div>
   </header>
   <main>
     <p class="eyebrow">ICUC 2026 / COURSE TIMETABLE</p>
-    <h1>你的上课时间</h1>
-    <p class="intro">2026年10月11日至2027年1月10日，共15个教学日。下方可以对照查看每天上午、下午的课程；最后一天仅安排上午课程。授课采用线下＋线上方式；线下授课仅面向中国传媒大学本校生。</p>
-    <div class="summary" aria-label="课程总览">
-      <div><strong>15</strong><span>教学日 · 13个周六与2个周日</span></div>
-      <div><strong>29</strong><span>教学单元 · 每单元3小时</span></div>
-      <div><strong>5</strong><span>门课程 · 围绕一个创作项目</span></div>
+    <h1>Your Class Timetable</h1>
+    <p class="intro">October 11, 2026 to January 10, 2027: 15 teaching days in total. Check the morning and afternoon classes below; the final day has a morning class only. Classes are offered both in person and online. In-person attendance is available only to students enrolled at the Communication University of China.</p>
+    <div class="summary" aria-label="Course overview">
+      <div><strong>15</strong><span>Teaching days · 13 Saturdays and 2 Sundays</span></div>
+      <div><strong>29</strong><span>Class sessions · 3 hours each</span></div>
+      <div><strong>5</strong><span>Courses · one creative project</span></div>
     </div>
     <div class="table-wrap">
-      <table aria-label="2026年10月11日至2027年1月10日完整课程时间表">
-        <thead><tr><th scope="col">日期</th><th scope="col">星期</th><th scope="col">上午 09:00–12:00</th><th scope="col">下午 14:00–17:00</th></tr></thead>
+      <table aria-label="Complete course timetable, October 11, 2026 to January 10, 2027">
+        <thead><tr><th scope="col">Date</th><th scope="col">Day</th><th scope="col">Morning 09:00–12:00</th><th scope="col">Afternoon 14:00–17:00</th></tr></thead>
         <tbody id="timetable-body"></tbody>
       </table>
     </div>
-    <p class="source-note">课程如有调整，请以学院正式通知为准。</p>
+    <p class="source-note">If the timetable changes, please refer to the Faculty's official announcements.</p>
   </main>
-  <footer>中国传媒大学国际传媒教育学院 · ICUC 2026秋季学期 AIGC实训营</footer>
-  <script src="schedule-data.js?v=20260929-yuanmin"></script>
+  <footer>Faculty of International Media, Communication University of China · ICUC Fall 2026 AIGC Bootcamp</footer>
+  <script src="schedule-data-en.js?v=20261003-en"></script>
   <script>
-    const week = ['周日','周一','周二','周三','周四','周五','周六'];
+    const dateFormat = new Intl.DateTimeFormat('en-US', { month:'short', day:'numeric', year:'numeric', timeZone:'UTC' });
+    const weekdayFormat = new Intl.DateTimeFormat('en-US', { weekday:'long', timeZone:'UTC' });
     const courseCell = session => session
       ? `<span class="course" data-course="${session.course}">${window.courseCatalog[session.course].shortName}</span>`
-      : '<span class="empty">— 无课程</span>';
+      : '<span class="empty">— No class</span>';
     document.querySelector('#timetable-body').innerHTML = window.courseSchedule.map(day => {
-      const [year, month, date] = day.date.split('-').map(Number);
-      const weekday = week[new Date(`${day.date}T00:00:00Z`).getUTCDay()];
-      return `<tr><td><time datetime="${day.date}">${year}.${String(month).padStart(2,'0')}.${String(date).padStart(2,'0')}</time></td>
-        <td>${weekday}</td>
-        <td data-label="上午 09:00–12:00">${courseCell(day.sessions.find(s => s.time === '09:00–12:00'))}</td>
-        <td data-label="下午 14:00–17:00">${courseCell(day.sessions.find(s => s.time === '14:00–17:00'))}</td></tr>`;
+      const date = new Date(`${day.date}T00:00:00Z`);
+      return `<tr><td><time datetime="${day.date}">${dateFormat.format(date)}</time></td>
+        <td>${weekdayFormat.format(date)}</td>
+        <td data-label="Morning 09:00–12:00">${courseCell(day.sessions.find(s => s.time === '09:00–12:00'))}</td>
+        <td data-label="Afternoon 14:00–17:00">${courseCell(day.sessions.find(s => s.time === '14:00–17:00'))}</td></tr>`;
     }).join('');
   </script>
 </body>

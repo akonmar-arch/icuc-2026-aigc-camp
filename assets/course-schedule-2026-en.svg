@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1840" height="1310" viewBox="0 0 1840 1310" role="img" aria-labelledby="title desc">
+<title id="title">ICUC 2026 Fall AIGC Training Camp Course Schedule</title>
+<desc id="desc">October 11, 2026 to January 10, 2027: 15 class days and 29 sessions. Morning and afternoon classes are shown for each date.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#191641"/><stop offset=".58" stop-color="#211b58"/><stop offset="1" stop-color="#17194e"/></linearGradient><linearGradient id="shine" x2="1" y2="0"><stop stop-color="#d44f70"/><stop offset=".45" stop-color="#6743ce"/><stop offset="1" stop-color="#288e82"/></linearGradient></defs>
+<rect x="0" y="0" width="1840" height="1310" rx="0" fill="url(#bg)" />
+<rect x="0" y="0" width="1840" height="8" rx="0" fill="url(#shine)" />
+<circle cx="1740" cy="98" r="270" fill="#7352d0" opacity=".09"/>
+<circle cx="60" cy="1250" r="230" fill="#d44f70" opacity=".07"/>
+<rect x="72" y="55" width="278" height="42" rx="21" fill="#d44f70" />
+<text x="95" y="84" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="800" letter-spacing="2">ICUC 2026 · FALL</text>
+<text x="72" y="177" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="76" font-weight="900" letter-spacing="-2">AIGC Training Camp</text>
+<text x="945" y="173" fill="#bdb5e7" font-family="Arial, Segoe UI, sans-serif" font-size="36" font-weight="650" >Course Schedule</text>
+<text x="74" y="226" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="500" >Oct 11, 2026  —  Jan 10, 2027     /     Weekends · On-site + Online</text>
+<text x="1518" y="158" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="112" font-weight="900" >15</text>
+<text x="1685" y="147" fill="#bdb5e7" font-family="Arial, Segoe UI, sans-serif" font-size="22" font-weight="650" >class days</text>
+<text x="1685" y="186" fill="#8bebd5" font-family="Arial, Segoe UI, sans-serif" font-size="22" font-weight="750" >29 sessions</text>
+<rect x="72" y="256" width="1696" height="2" rx="0" fill="#695f9f" />
+<rect x="72" y="286" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="73" y="287" width="322" height="78" rx="27" fill="#49306e" />
+<rect x="73" y="341" width="322" height="25" rx="0" fill="#49306e" />
+<text x="94" y="336" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Oct 11</text>
+<text x="303" y="331" fill="#ff9db7" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Sunday</text>
+<text x="96" y="357" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  01</text>
+<rect x="90" y="381" width="288" height="75" rx="17" fill="#6743ce" />
+<text x="106" y="407" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="106" y="438" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Agent</text>
+<rect x="90" y="468" width="288" height="75" rx="17" fill="#6743ce" />
+<text x="106" y="494" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="106" y="525" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Agent</text>
+<rect x="414" y="286" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="415" y="287" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="415" y="341" width="322" height="25" rx="0" fill="#38306f" />
+<text x="436" y="336" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Oct 17</text>
+<text x="645" y="331" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="438" y="357" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  02</text>
+<rect x="432" y="381" width="288" height="75" rx="17" fill="#d44f70" />
+<text x="448" y="407" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="448" y="438" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Research &amp; Analysis</text>
+<rect x="432" y="468" width="288" height="75" rx="17" fill="#d44f70" />
+<text x="448" y="494" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="448" y="525" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Research &amp; Analysis</text>
+<rect x="756" y="286" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="757" y="287" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="757" y="341" width="322" height="25" rx="0" fill="#38306f" />
+<text x="778" y="336" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Oct 24</text>
+<text x="987" y="331" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="780" y="357" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  03</text>
+<rect x="774" y="381" width="288" height="75" rx="17" fill="#d44f70" />
+<text x="790" y="407" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="790" y="438" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Research &amp; Analysis</text>
+<rect x="774" y="468" width="288" height="75" rx="17" fill="#d44f70" />
+<text x="790" y="494" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="790" y="525" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Research &amp; Analysis</text>
+<rect x="1098" y="286" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="1099" y="287" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="1099" y="341" width="322" height="25" rx="0" fill="#38306f" />
+<text x="1120" y="336" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Oct 31</text>
+<text x="1329" y="331" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="1122" y="357" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  04</text>
+<rect x="1116" y="381" width="288" height="75" rx="17" fill="#d44f70" />
+<text x="1132" y="407" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="1132" y="438" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Research &amp; Analysis</text>
+<rect x="1116" y="468" width="288" height="75" rx="17" fill="#3349c4" />
+<text x="1132" y="494" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="1132" y="525" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >3D Digital Heritage</text>
+<rect x="1440" y="286" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="1441" y="287" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="1441" y="341" width="322" height="25" rx="0" fill="#38306f" />
+<text x="1462" y="336" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Nov 7</text>
+<text x="1671" y="331" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="1464" y="357" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  05</text>
+<rect x="1458" y="381" width="288" height="75" rx="17" fill="#8549bc" />
+<text x="1474" y="407" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="1474" y="438" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Music Visualization</text>
+<rect x="1458" y="468" width="288" height="75" rx="17" fill="#3349c4" />
+<text x="1474" y="494" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="1474" y="525" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >3D Digital Heritage</text>
+<rect x="72" y="591" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="73" y="592" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="73" y="646" width="322" height="25" rx="0" fill="#38306f" />
+<text x="94" y="641" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Nov 14</text>
+<text x="303" y="636" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="96" y="662" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  06</text>
+<rect x="90" y="686" width="288" height="75" rx="17" fill="#218d85" />
+<text x="106" y="712" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="106" y="743" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Video Generation</text>
+<rect x="90" y="773" width="288" height="75" rx="17" fill="#3349c4" />
+<text x="106" y="799" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="106" y="830" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >3D Digital Heritage</text>
+<rect x="414" y="591" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="415" y="592" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="415" y="646" width="322" height="25" rx="0" fill="#38306f" />
+<text x="436" y="641" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Nov 21</text>
+<text x="645" y="636" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="438" y="662" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  07</text>
+<rect x="432" y="686" width="288" height="75" rx="17" fill="#218d85" />
+<text x="448" y="712" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="448" y="743" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Video Generation</text>
+<rect x="432" y="773" width="288" height="75" rx="17" fill="#8549bc" />
+<text x="448" y="799" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="448" y="830" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Music Visualization</text>
+<rect x="756" y="591" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="757" y="592" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="757" y="646" width="322" height="25" rx="0" fill="#38306f" />
+<text x="778" y="641" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Nov 28</text>
+<text x="987" y="636" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="780" y="662" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  08</text>
+<rect x="774" y="686" width="288" height="75" rx="17" fill="#8549bc" />
+<text x="790" y="712" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="790" y="743" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Music Visualization</text>
+<rect x="774" y="773" width="288" height="75" rx="17" fill="#3349c4" />
+<text x="790" y="799" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="790" y="830" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >3D Digital Heritage</text>
+<rect x="1098" y="591" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="1099" y="592" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="1099" y="646" width="322" height="25" rx="0" fill="#38306f" />
+<text x="1120" y="641" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Dec 5</text>
+<text x="1329" y="636" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="1122" y="662" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  09</text>
+<rect x="1116" y="686" width="288" height="75" rx="17" fill="#6743ce" />
+<text x="1132" y="712" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="1132" y="743" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Agent</text>
+<rect x="1116" y="773" width="288" height="75" rx="17" fill="#218d85" />
+<text x="1132" y="799" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="1132" y="830" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Video Generation</text>
+<rect x="1440" y="591" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="1441" y="592" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="1441" y="646" width="322" height="25" rx="0" fill="#38306f" />
+<text x="1462" y="641" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Dec 12</text>
+<text x="1671" y="636" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="1464" y="662" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  10</text>
+<rect x="1458" y="686" width="288" height="75" rx="17" fill="#218d85" />
+<text x="1474" y="712" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="1474" y="743" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Video Generation</text>
+<rect x="1458" y="773" width="288" height="75" rx="17" fill="#218d85" />
+<text x="1474" y="799" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="1474" y="830" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Video Generation</text>
+<rect x="72" y="896" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="73" y="897" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="73" y="951" width="322" height="25" rx="0" fill="#38306f" />
+<text x="94" y="946" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Dec 19</text>
+<text x="303" y="941" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="96" y="967" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  11</text>
+<rect x="90" y="991" width="288" height="75" rx="17" fill="#3349c4" />
+<text x="106" y="1017" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="106" y="1048" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >3D Digital Heritage</text>
+<rect x="90" y="1078" width="288" height="75" rx="17" fill="#8549bc" />
+<text x="106" y="1104" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="106" y="1135" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Music Visualization</text>
+<rect x="414" y="896" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="415" y="897" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="415" y="951" width="322" height="25" rx="0" fill="#38306f" />
+<text x="436" y="946" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Dec 26</text>
+<text x="645" y="941" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="438" y="967" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2026  /  12</text>
+<rect x="432" y="991" width="288" height="75" rx="17" fill="#6743ce" />
+<text x="448" y="1017" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="448" y="1048" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Agent</text>
+<rect x="432" y="1078" width="288" height="75" rx="17" fill="#218d85" />
+<text x="448" y="1104" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="448" y="1135" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Video Generation</text>
+<rect x="756" y="896" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="757" y="897" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="757" y="951" width="322" height="25" rx="0" fill="#38306f" />
+<text x="778" y="946" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Jan 2</text>
+<text x="987" y="941" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="780" y="967" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2027  /  13</text>
+<rect x="774" y="991" width="288" height="75" rx="17" fill="#218d85" />
+<text x="790" y="1017" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="790" y="1048" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Video Generation</text>
+<rect x="774" y="1078" width="288" height="75" rx="17" fill="#3349c4" />
+<text x="790" y="1104" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="790" y="1135" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >3D Digital Heritage</text>
+<rect x="1098" y="896" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="1099" y="897" width="322" height="78" rx="27" fill="#38306f" />
+<rect x="1099" y="951" width="322" height="25" rx="0" fill="#38306f" />
+<text x="1120" y="946" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Jan 9</text>
+<text x="1329" y="941" fill="#c9c4e6" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Saturday</text>
+<text x="1122" y="967" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2027  /  14</text>
+<rect x="1116" y="991" width="288" height="75" rx="17" fill="#6743ce" />
+<text x="1132" y="1017" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="1132" y="1048" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >AI Agent</text>
+<rect x="1116" y="1078" width="288" height="75" rx="17" fill="#3349c4" />
+<text x="1132" y="1104" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">PM  14:00—17:00</text>
+<text x="1132" y="1135" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >3D Digital Heritage</text>
+<rect x="1440" y="896" width="324" height="282" rx="28" fill="#30295f" stroke="#665b9b" stroke-width="1.5"/>
+<rect x="1441" y="897" width="322" height="78" rx="27" fill="#49306e" />
+<rect x="1441" y="951" width="322" height="25" rx="0" fill="#49306e" />
+<text x="1462" y="946" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="37" font-weight="850" >Jan 10</text>
+<text x="1671" y="941" fill="#ff9db7" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="700" >Sunday</text>
+<text x="1464" y="967" fill="#a79fd0" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">2027  /  15</text>
+<rect x="1458" y="991" width="288" height="75" rx="17" fill="#8549bc" />
+<text x="1474" y="1017" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" opacity=".82">AM  09:00—12:00</text>
+<text x="1474" y="1048" fill="#ffffff" font-family="Arial, Segoe UI, sans-serif" font-size="23" font-weight="800" >Music Visualization</text>
+<rect x="1458" y="1078" width="288" height="75" rx="17" fill="#282457" stroke="#5b5489" stroke-dasharray="6 6"/>
+<text x="1474" y="1105" fill="#aaa4cb" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="650" >PM  14:00—17:00</text>
+<text x="1474" y="1134" fill="#c0bbd7" font-family="Arial, Segoe UI, sans-serif" font-size="22" font-weight="700" >—  No class</text>
+<rect x="72" y="1213" width="1696" height="2" rx="0" fill="#695f9f" />
+<text x="72" y="1253" fill="#bdb5e7" font-family="Arial, Segoe UI, sans-serif" font-size="19" font-weight="500" >Class times: AM 09:00—12:00 / PM 14:00—17:00</text>
+<text x="72" y="1282" fill="#aaa4cb" font-family="Arial, Segoe UI, sans-serif" font-size="18" font-weight="500" >Oct 11 is Sunday; the final day is morning only. On-site classes are for Communication University of China students; check school notices for updates.</text>
+<text x="1768" y="1269" fill="#8bebd5" font-family="Arial, Segoe UI, sans-serif" font-size="20" font-weight="800" text-anchor="end" letter-spacing="1">ICUC / 2026</text>
+</svg>

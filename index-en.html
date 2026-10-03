@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="了解ICUC 2026秋季学期AIGC实训营的上课时间、五门课程、创作路径与期末作品。">
-  <title>ICUC 2026秋季学期 AIGC实训营｜学生课程指南</title>
+  <meta name="description" content="Explore the schedule, five courses, creative journey, and final project for the ICUC Fall 2026 AIGC Bootcamp.">
+  <title>ICUC Fall 2026 AIGC Bootcamp | Student Course Guide</title>
   <style>
     :root {
       --paper: #ecebf1;
@@ -89,30 +89,34 @@
     .topbar nav a:hover,
     .topbar nav a:focus-visible { color: #87efd6; }
     .language-switch {
-      display: flex;
+      flex: 0 0 auto;
+      display: inline-flex;
       align-items: center;
-      flex: none;
       gap: 2px;
-      margin-left: 16px;
+      min-height: 36px;
       padding: 3px;
-      border: 1px solid rgba(255, 255, 255, .32);
+      border: 1px solid rgba(255, 255, 255, .35);
       border-radius: 999px;
-    }
-    .language-switch :is(a, span) {
-      display: grid;
-      place-items: center;
-      min-width: 42px;
-      min-height: 32px;
-      padding: 0 9px;
-      border-radius: 999px;
-      color: #d8d4f3;
       font-size: 12px;
       font-weight: 700;
-      text-decoration: none;
+      line-height: 1;
       white-space: nowrap;
     }
-    .language-switch [aria-current="page"] { color: #191641; background: #8bebd5; }
-    .language-switch a:hover { color: #8bebd5; }
+    .language-switch a,
+    .language-switch span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 28px;
+      padding: 0 8px;
+      border-radius: 999px;
+      color: #d8d4f3;
+      text-decoration: none;
+    }
+    .language-switch span[aria-current="page"] { color: var(--ink); background: #8bebd5; }
+    .language-switch a:hover,
+    .language-switch a:focus-visible { color: #87efd6; }
     .copy-button {
       min-height: 44px;
       padding: 0 18px;
@@ -186,14 +190,13 @@
       overflow: hidden;
       background: #a4a4ac;
     }
-    .hero-visual video {
+    .hero-visual .hero-static {
       width: 100%;
       height: 100%;
       max-height: calc(100vh - 68px);
       object-fit: contain;
       display: block;
     }
-    .hero-print-poster { display: none; }
 
     main { overflow: hidden; }
     .section {
@@ -698,12 +701,15 @@
     .closing .copy-button:hover { color: var(--ink); background: #8bebd5; }
     footer { color: #dcd8f4; background: #191641; }
 
+    @media (max-width: 1200px) {
+      .topbar nav a { display: none; }
+    }
     @media (max-width: 900px) {
       .topbar nav a { display: none; }
       .hero { grid-template-columns: 1fr; }
       .hero-copy { padding: 38px 7vw 64px; }
       .hero-visual { order: -1; min-height: 0; height: min(70vh, 650px); }
-      .hero-visual video { max-height: 100%; }
+      .hero-visual .hero-static { max-height: 100%; }
       .output-focus { padding: 84px 6vw 92px; }
       .output-head { grid-template-columns: 1fr; gap: 10px; }
       .output-equation { grid-template-columns: 1fr 1fr; }
@@ -743,8 +749,10 @@
     }
 
     @media (max-width: 560px) {
-      .brand { max-width: none; white-space: normal; line-height: 1.25; }
-      .language-switch { margin-left: 10px; }
+      .brand { max-width: none; font-size: 17px; white-space: normal; line-height: 1.25; }
+      .topbar { gap: 8px; }
+      .language-switch { font-size: 11px; }
+      .language-switch a, .language-switch span { min-width: 34px; padding: 0 6px; }
       .hero-copy { padding: 32px 6vw 64px; }
       h1 { font-size: 44px; }
       .hero-meta { margin-top: 36px; }
@@ -786,8 +794,7 @@
       .hero { min-height: 260mm; grid-template-columns: 1.08fr .92fr; break-after: page; }
       .hero-copy { padding: 24mm 12mm; }
       .hero-visual { min-height: 260mm; }
-      .hero-visual video { display: none; }
-      .hero-print-poster { display: block; width: 100%; height: 100%; object-fit: contain; }
+      .hero-visual .hero-static { max-height: none; }
       .section { width: 100%; padding: 18mm 0; }
       .section-head { margin-bottom: 12mm; }
       .schedule-art-frame { overflow: visible; box-shadow: none; }
@@ -810,75 +817,71 @@
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">跳到主要内容</a>
+  <a class="skip" href="#main">Skip to main content</a>
   <div class="progress" aria-hidden="true"></div>
 
   <header class="topbar">
-    <div class="brand">ICUC 2026秋季学期 AIGC实训营</div>
-    <nav aria-label="页面导航">
-      <a href="#objectives">你将学会</a>
-      <a href="#final-output">期末作品</a>
-      <a href="#schedule">上课时间</a>
-      <a href="#courses">课程内容</a>
-      <a href="#report">作品展示</a>
-      <a href="#evaluation">结业说明</a>
+    <div class="brand">ICUC Fall 2026 AIGC Bootcamp</div>
+    <nav aria-label="Page navigation">
+      <a href="#objectives">What You Will Learn</a>
+      <a href="#final-output">Final Project</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#courses">Courses</a>
+      <a href="#report">Showcase</a>
+      <a href="#evaluation">Completion</a>
     </nav>
-    <div class="language-switch" role="group" aria-label="语言选择">
-      <span lang="zh-CN" aria-current="page">中文</span>
-      <a href="index-en.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a>
+    <div class="language-switch" role="group" aria-label="Language">
+      <a href="index.html" lang="zh-CN" hreflang="zh-CN" aria-label="Switch to Chinese">中文</a>
+      <span lang="en" aria-current="page">EN</span>
     </div>
   </header>
 
   <main id="main">
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-copy">
-        <p class="eyebrow">中国传媒大学国际传媒教育学院 · 2026秋季学期</p>
-        <h1 id="page-title">用五门课，把一个创意做成完整作品</h1>
-        <p class="hero-lede">从寻找资料、构思故事，到设计角色、制作影像与声音，再把作品放进自己的网站。每一次练习，都在为期末作品添上一块拼图。</p>
+        <p class="eyebrow">Faculty of International Media, Communication University of China · Fall 2026</p>
+        <h1 id="page-title">Turn One Idea into a Complete Project in Five Courses</h1>
+        <p class="hero-lede">Research a topic, shape a story, design characters, produce moving images and sound, and present the result on your own website. Each exercise adds another piece to your final project.</p>
         <div class="hero-meta">
           <span>2026.10.11—2027.01.10</span>
-          <span>13个周六 + 2个周日 · 线下＋线上</span>
-          <span>五门课程 · 一个完整项目</span>
+          <span>13 Saturdays + 2 Sundays · In person + online</span>
+          <span>Five courses · One complete project</span>
         </div>
       </div>
       <div class="hero-visual">
-        <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/ICUC_2026_video_poster.jpg" aria-label="ICUC 2026 彩色立体模块循环动画">
-          <source src="assets/ICUC_2026_reference_rebuild_v5.mp4" type="video/mp4">
-          您的浏览器不支持视频播放。
-        </video>
-        <img class="hero-print-poster" src="assets/ICUC_2026_video_poster.jpg" alt="ICUC 2026 红、紫、深蓝与薄荷绿立体模块">
+        <img class="hero-static" src="assets/ICUC_2026_video_poster_en.png" alt="Colorful ICUC 2026 three-dimensional modules labeled AIGC Bootcamp" width="1122" height="1402">
       </div>
     </section>
 
-    <section class="thesis" aria-label="课程介绍">
-      <blockquote>会用 AI，只是起点。成为能实现想法的超级个体，才是目标。</blockquote>
-      <p>文案、图像、音乐和视频，都是表达想法的工具。五门课将带你学习如何提出问题、判断方向、组织创作，并把每一份课堂练习积累成最终作品，让 AI 真正放大你的创造力。</p>
+    <section class="thesis" aria-label="Course introduction">
+      <blockquote>Knowing how to use AI is only the beginning. The goal is to become a versatile creator who can bring ideas to life.</blockquote>
+      <p>Writing, images, music, and video are all tools for expressing ideas. Across five courses, you will learn to ask questions, choose a direction, organize your creative work, and build each class exercise into a final project that truly extends your creativity with AI.</p>
     </section>
 
     <section class="section" id="objectives" aria-labelledby="objectives-title">
       <header class="section-head">
         <span class="section-index">01 / OBJECTIVE</span>
         <div>
-          <h2 class="section-title" id="objectives-title">你将学会什么</h2>
-          <p class="section-intro">这门实训营会带你走过一个完整的创作过程：研究主题、讲好故事、建立视觉风格、完成影像与声音，并把作品发布出来。</p>
+          <h2 class="section-title" id="objectives-title">What Will You Learn?</h2>
+          <p class="section-intro">This bootcamp takes you through a complete creative process: research a topic, tell a story, establish a visual style, produce video and sound, and publish your work.</p>
         </div>
       </header>
 
       <div class="objective-layout">
         <article class="objective-positioning">
-          <h3>从一个想法出发，做出<em>真正属于你的作品</em>。</h3>
-          <p>你会练习提出问题、筛选资料、组织故事、统一画面与声音，并在制作中判断AI生成内容是否准确、合适。工具可以帮你加速，但主题、审美和最后的选择仍由你决定。</p>
-          <div class="objective-result">你将练习：研究 × 叙事 × 视听创作 × 互动发布</div>
+          <h3>Start with an idea and create <em>work that is truly your own</em>.</h3>
+          <p>You will practice asking questions, evaluating sources, structuring a story, and bringing visuals and sound together. You will also judge whether AI-generated material is accurate and appropriate. Tools can help you move faster, but the theme, aesthetic, and final decisions remain yours.</p>
+          <div class="objective-result">You will practice: Research × Storytelling × Audiovisual Creation × Interactive Publishing</div>
         </article>
 
-        <ol class="objective-capabilities" aria-label="七项核心培养能力">
-          <li><span class="ability-no">01</span><b>找到值得做的主题</b><span>学习检索与分析资料，判断信息是否可靠，并把研究发现转化为清晰的创作方向。</span></li>
-          <li><span class="ability-no">02</span><b>把故事变成画面</b><span>从文字设定出发，设计角色、场景、道具和视觉风格，让不同媒介中的作品保持一致。</span></li>
-          <li><span class="ability-no">03</span><b>让影像和声音协作</b><span>尝试分镜、视频生成、配音、音乐和音效，让观众看得懂、听得进你的故事。</span></li>
-          <li><span class="ability-no">04</span><b>用AI辅助，而不放弃判断</b><span>学习拆解任务、选择工具、核查事实和修改结果，同时记录素材来源与AI的使用方式。</span></li>
-          <li><span class="ability-no">05</span><b>整理并展示作品</b><span>把创作过程与最终成果放进个人网站或作品集，清楚地向别人介绍你的项目。</span></li>
-          <li><span class="ability-no">06</span><b>成为能实现想法的超级个体</b><span>连接文案、图像、音乐、视频与网站等创作能力，借助 AI 把自己的想法一步步推进为完整作品。</span></li>
-          <li><span class="ability-no">07</span><b>用 AI 驱动 Blender 进行 3D 创作</b><span>学习借助 AI 控制 Blender 完成建模、场景搭建与动画，并将 3D 内容用于宣传片、游戏和趣味视频。</span></li>
+        <ol class="objective-capabilities" aria-label="Seven core skills">
+          <li><span class="ability-no">01</span><b>Find a meaningful topic</b><span>Search for and analyze sources, assess their reliability, and turn your findings into a clear creative direction.</span></li>
+          <li><span class="ability-no">02</span><b>Turn a story into visuals</b><span>Design characters, settings, props, and a visual style from your written concept so the work stays consistent across media.</span></li>
+          <li><span class="ability-no">03</span><b>Bring image and sound together</b><span>Explore storyboarding, video generation, voice work, music, and sound effects so audiences can see and hear your story clearly.</span></li>
+          <li><span class="ability-no">04</span><b>Use AI while keeping your judgment</b><span>Break down tasks, choose tools, check facts, revise results, and document sources and how you used AI.</span></li>
+          <li><span class="ability-no">05</span><b>Organize and present your work</b><span>Bring your process and final results into a personal website or portfolio, and explain your project clearly to others.</span></li>
+          <li><span class="ability-no">06</span><b>Become a versatile creator</b><span>Connect writing, imagery, music, video, and web skills, using AI to develop your idea step by step into a complete work.</span></li>
+          <li><span class="ability-no">07</span><b>Create 3D work in Blender with AI</b><span>Use AI to guide Blender modeling, scene building, and animation, then apply your 3D work to promotional videos, games, and short creative pieces.</span></li>
         </ol>
       </div>
     </section>
@@ -888,54 +891,54 @@
         <header class="output-head">
           <span class="section-index">FINAL<br>OUTPUT</span>
           <div>
-            <h2 id="final-output-title">一学期，完成一个贯穿五门课的作品</h2>
-            <p>你会围绕同一个主题持续创作。每门课都贡献新的内容，期末再把文字、视觉、3D、影像、声音和网站整理成一个完整项目。</p>
+            <h2 id="final-output-title">One Semester, One Project Across Five Courses</h2>
+            <p>You will keep developing one theme throughout the semester. Each course adds something new, and by the end you will bring writing, visuals, 3D, video, sound, and a website together into a complete project.</p>
           </div>
         </header>
 
-        <div class="output-equation" aria-label="一个项目、五门课程、七类作品成果与持续迭代">
-          <article class="output-token"><strong>1</strong><b>个创作主题</b><span>用一个主题串起整个学期的练习与作品</span></article>
-          <article class="output-token"><strong>5</strong><b>门课程</b><span>研究、文博视觉、视频、音乐与程序开发共同推进</span></article>
-          <article class="output-token"><strong>7</strong><b>类作品成果</b><span>让剧本、视觉、3D、影像、声音、网站与衍生设计相互连接</span></article>
-          <article class="output-token"><strong>N</strong><b>次修改与成长</b><span>保留草稿、反馈和版本，看到自己的作品如何变好</span></article>
+        <div class="output-equation" aria-label="One project, five courses, seven types of creative output, and ongoing iteration">
+          <article class="output-token"><strong>1</strong><b> creative theme</b><span>Connect a semester of exercises and work through one theme</span></article>
+          <article class="output-token"><strong>5</strong><b> courses</b><span>Research, cultural heritage visuals, video, music, and programming all move the project forward</span></article>
+          <article class="output-token"><strong>7</strong><b> types of output</b><span>Link the script, visuals, 3D, video, sound, website, and related designs</span></article>
+          <article class="output-token"><strong>N</strong><b> rounds of revision and growth</b><span>Keep drafts, feedback, and versions to see your work improve</span></article>
         </div>
 
         <div class="output-answer">
           <article class="output-panel">
             <p class="output-kicker">YOUR WORK</p>
-            <h3>你的项目可以包含什么</h3>
+            <h3>What Your Project Can Include</h3>
             <ol class="output-list">
-              <li><div><b>创作策划与完整剧本</b><span>研究基础、世界观、角色小传、场景描述和剧本。</span></div></li>
-              <li><div><b>角色、场景与道具视觉</b><span>形成风格统一、能够进入影像制作的视觉资产。</span></div></li>
-              <li><div><b>Blender 3D宣传片与游戏内容</b><span>借助 AI 完成建模、场景与动画，制作 3D 宣传片、游戏素材或趣味视频。</span></div></li>
-              <li><div><b>AI短视频或微电影</b><span>从分镜和镜头测试逐步完成成片；时长建议2—5分钟。</span></div></li>
-              <li><div><b>配音、音乐与音效系统</b><span>完成声音设计、混音，并真实应用于最终作品。</span></div></li>
-              <li><div><b>个人及作品展示网站</b><span>集中呈现个人介绍、制作过程、作品播放和项目说明。</span></div></li>
-              <li><div><b>IP或文博衍生设计</b><span>包含设计理念、应用场景、效果图和延展方案。</span></div></li>
+              <li><div><b>Creative plan and complete script</b><span>Research, worldbuilding, character profiles, scene descriptions, and a script.</span></div></li>
+              <li><div><b>Character, setting, and prop visuals</b><span>A coherent set of visual assets ready for video production.</span></div></li>
+              <li><div><b>Blender 3D promotional video and game content</b><span>Use AI to create models, scenes, and animation for a 3D promotional video, game assets, or entertaining short videos.</span></div></li>
+              <li><div><b>AI short video or microfilm</b><span>Develop a finished film through storyboards and shot tests; suggested length: 2–5 minutes.</span></div></li>
+              <li><div><b>Voice, music, and sound design</b><span>Complete the sound design and mix, then use them in your final work.</span></div></li>
+              <li><div><b>Personal and project website</b><span>Present your profile, production process, playable work, and project description in one place.</span></div></li>
+              <li><div><b>IP or cultural heritage inspired design</b><span>Include the design concept, use cases, mockups, and ideas for extension.</span></div></li>
             </ol>
           </article>
 
           <article class="output-panel">
             <p class="output-kicker">YOUR PROCESS</p>
-            <h3>作品会怎样一步步完成</h3>
+            <h3>How Your Project Takes Shape</h3>
             <ol class="output-list">
-              <li><div><b>确定主题与故事</b><span>用资料研究找到方向，形成世界观、角色和剧本。</span></div></li>
-              <li><div><b>建立视觉资产</b><span>设计角色、场景、道具和统一的画面风格。</span></div></li>
-              <li><div><b>用 AI 控制 Blender 制作 3D</b><span>把视觉设定转为模型、场景与动画，用于宣传片、游戏和趣味视频。</span></div></li>
-              <li><div><b>制作影像与声音</b><span>完成分镜、镜头、配音、音乐、音效与剪辑。</span></div></li>
-              <li><div><b>发布并介绍作品</b><span>把成果整理到网站，准备展示与讲述自己的创作选择。</span></div></li>
+              <li><div><b>Define the theme and story</b><span>Use research to find a direction and develop the world, characters, and script.</span></div></li>
+              <li><div><b>Build visual assets</b><span>Design characters, settings, props, and a consistent visual style.</span></div></li>
+              <li><div><b>Create 3D work in Blender with AI</b><span>Turn visual concepts into models, scenes, and animation for promotional videos, games, and short creative pieces.</span></div></li>
+              <li><div><b>Produce video and sound</b><span>Complete storyboards, shots, voice work, music, sound effects, and editing.</span></div></li>
+              <li><div><b>Publish and present your work</b><span>Organize your work on a website and prepare to present it and explain your creative choices.</span></div></li>
             </ol>
-            <p class="archive-note">建议从第一节课起保存草稿、反馈、素材来源和修改记录。它们能帮你复盘，也能成为作品集的一部分。</p>
+            <p class="archive-note">Save drafts, feedback, source materials, and revision records from the first class. They will help you reflect on your progress and can become part of your portfolio.</p>
           </article>
         </div>
 
         <div class="report-run">
-          <div class="report-run-head"><h3>怎样向别人介绍你的作品</h3><span>SHOW YOUR WORK</span></div>
+          <div class="report-run-head"><h3>How to Present Your Work</h3><span>SHOW YOUR WORK</span></div>
           <ol class="run-list">
-            <li><span class="run-time">01 · 起点</span><b>说清你的主题</b><p>你关注什么问题，为什么选择这个故事或方向？</p></li>
-            <li><span class="run-time">02 · 过程</span><b>展示关键选择</b><p>让观众看到你如何从资料走向角色、场景与视听风格。</p></li>
-            <li><span class="run-time">03 · 作品</span><b>播放与演示</b><p>展示成片、声音、网站以及最能代表你想法的设计。</p></li>
-            <li><span class="run-time">04 · 回看</span><b>讲讲你的收获</b><p>分享修改过什么、解决了什么问题，以及下一步想继续做什么。</p></li>
+            <li><span class="run-time">01 · START</span><b>Explain your theme</b><p>What question matters to you, and why did you choose this story or direction?</p></li>
+            <li><span class="run-time">02 · PROCESS</span><b>Show key decisions</b><p>Show how your research led to characters, settings, and an audiovisual style.</p></li>
+            <li><span class="run-time">03 · WORK</span><b>Play and demonstrate</b><p>Present the finished video, sound, website, and designs that best express your idea.</p></li>
+            <li><span class="run-time">04 · REFLECT</span><b>Share what you learned</b><p>Explain what you changed, which problems you solved, and what you want to do next.</p></li>
           </ol>
         </div>
       </div>
@@ -945,25 +948,25 @@
       <header class="section-head">
         <span class="section-index">02 / SYSTEM</span>
         <div>
-          <h2 class="section-title">从每次练习到期末作品</h2>
-          <p class="section-intro">你不用等到最后一周才开始做大项目。课堂练习会逐步积累成阶段成果，再组合成完整作品。</p>
+          <h2 class="section-title">From Each Exercise to the Final Project</h2>
+          <p class="section-intro">You do not need to wait until the last week to begin a major project. Class exercises build into milestones, which then come together as a complete work.</p>
         </div>
       </header>
       <div class="levels">
         <article class="level">
           <span class="level-no">01</span>
-          <h3>每次课：完成一小步<small>WEEKLY OUTPUT</small></h3>
-          <p>可能是一段研究摘要、一张角色草图、一次镜头测试、一段配音或一个网页模块。先把这一小步做好，再带到下一节课继续用。</p>
+          <h3>Each class: make one small step<small>WEEKLY OUTPUT</small></h3>
+          <p>It might be a research summary, character sketch, shot test, voice recording, or website module. Complete that step, then build on it in the next class.</p>
         </article>
         <article class="level">
           <span class="level-no">02</span>
-          <h3>每门课：形成阶段成果<small>MODULE PACKAGE</small></h3>
-          <p>把这一门课的练习整理起来，留下初稿、修改稿和最终稿。你会更清楚地看见自己的想法如何成形。</p>
+          <h3>Each course: create a milestone<small>MODULE PACKAGE</small></h3>
+          <p>Collect the exercises from each course and keep the first draft, revisions, and final version. You will see how your ideas take shape.</p>
         </article>
         <article class="level">
           <span class="level-no">03</span>
-          <h3>期末：展示完整作品<small>CAPSTONE PROJECT</small></h3>
-          <p>把同一主题下的剧本、角色与场景、影像、声音、网站及衍生设计整理成一个可以向别人完整介绍的项目。</p>
+          <h3>At the end: present a complete project<small>CAPSTONE PROJECT</small></h3>
+          <p>Bring the script, characters, settings, video, sound, website, and related designs for one theme into a project you can present in full.</p>
         </article>
       </div>
     </section>
@@ -972,28 +975,28 @@
       <header class="section-head">
         <span class="section-index">03 / FLOW</span>
         <div>
-          <h2 class="section-title">你的创作会怎样推进</h2>
-          <p class="section-intro">同一个主题会在五门课里不断长大：先找到内容，再建立画面、声音和互动呈现。</p>
+          <h2 class="section-title">How Your Creative Work Progresses</h2>
+          <p class="section-intro">One theme grows across five courses: find the content first, then develop the visuals, sound, and interactive presentation.</p>
         </div>
       </header>
       <figure class="flow-figure">
-        <div class="flow-art" role="img" aria-label="红、紫、蓝、薄荷绿与深蓝五个立体模块，依次代表研究叙事、视觉系统、动态影像、声音表达和互动发布">
+        <div class="flow-art" role="img" aria-label="Five three-dimensional modules in red, purple, blue, mint green, and navy represent research and storytelling, visual design, moving images, sound, and interactive publishing">
           <div class="flow-art-track" aria-hidden="true">
-            <span class="flow-art-module"><small>01 / RESEARCH</small><b>研究叙事</b></span>
-            <span class="flow-art-module"><small>02 / DESIGN</small><b>视觉系统</b></span>
-            <span class="flow-art-module"><small>03 / MOTION</small><b>动态影像</b></span>
-            <span class="flow-art-module"><small>04 / SOUND</small><b>声音表达</b></span>
-            <span class="flow-art-module"><small>05 / RELEASE</small><b>互动发布</b></span>
+            <span class="flow-art-module"><small>01 / RESEARCH</small><b>Research & story</b></span>
+            <span class="flow-art-module"><small>02 / DESIGN</small><b>Visual design</b></span>
+            <span class="flow-art-module"><small>03 / MOTION</small><b>Moving image</b></span>
+            <span class="flow-art-module"><small>04 / SOUND</small><b>Sound design</b></span>
+            <span class="flow-art-module"><small>05 / RELEASE</small><b>Interactive publishing</b></span>
           </div>
         </div>
-        <figcaption>同一个故事可以从文字走向视觉、影像、声音与网站，让不同课程的成果彼此连接。</figcaption>
+        <figcaption>A story can move from words to visuals, video, sound, and a website, connecting the outcomes of different courses.</figcaption>
       </figure>
-      <div class="flow-steps" aria-label="五阶段课程路径">
-        <div class="flow-step"><b>研究与叙事</b><span>资料、主题、世界观、角色小传、场景描述与剧本</span></div>
-        <div class="flow-step"><b>视觉系统</b><span>角色、场景、道具、IP视觉、3D与文博衍生设计</span></div>
-        <div class="flow-step"><b>动态影像</b><span>分镜、镜头测试、粗剪和AI短视频或微电影</span></div>
-        <div class="flow-step"><b>声音表达</b><span>配音、音乐、音效、混音及音乐可视化</span></div>
-        <div class="flow-step"><b>互动与发布</b><span>个人网站、作品平台、互动体验、游戏或WebXR</span></div>
+      <div class="flow-steps" aria-label="Five-stage course pathway">
+        <div class="flow-step"><b>Research & storytelling</b><span>Sources, theme, worldbuilding, character profiles, scene descriptions, and script</span></div>
+        <div class="flow-step"><b>Visual design</b><span>Characters, settings, props, IP visuals, 3D, and cultural heritage inspired design</span></div>
+        <div class="flow-step"><b>Moving image</b><span>Storyboards, shot tests, rough cuts, and an AI short video or microfilm</span></div>
+        <div class="flow-step"><b>Sound design</b><span>Voice work, music, sound effects, mixing, and music visualization</span></div>
+        <div class="flow-step"><b>Interaction & publishing</b><span>Personal website, portfolio platform, interactive experience, game, or WebXR</span></div>
       </div>
     </section>
 
@@ -1001,92 +1004,92 @@
       <header class="section-head">
         <span class="section-index">04 / SCHEDULE</span>
         <div>
-          <h2 class="section-title">什么时候上课</h2>
-          <p class="section-intro">课程计划从2026年10月11日（周日）开始，到2027年1月10日（周日）结束，共15个教学日、29个教学单元。授课采用线下＋线上方式；线下授课仅面向中国传媒大学本校生。具体日期与课程可以在下方课表中查看。</p>
+          <h2 class="section-title">When Are the Classes?</h2>
+          <p class="section-intro">Classes are scheduled from Sunday, October 11, 2026, through Sunday, January 10, 2027, with 15 teaching days and 29 sessions. Teaching combines in-person and online formats. In-person attendance is available only to students enrolled at Communication University of China. See the timetable below for dates and courses.</p>
         </div>
       </header>
-      <div class="schedule-overview" aria-label="课程时间概览">
-        <div><b>2026.10.11—2027.01.10</b><span>课程周期</span></div>
-        <div><b>13个周六 + 2个周日</b><span>共15个教学日</span></div>
-        <div><b>09:00–12:00 / 14:00–17:00</b><span>上课时段</span></div>
-        <div><b>线下＋线上</b><span>授课方式</span></div>
+      <div class="schedule-overview" aria-label="Schedule overview">
+        <div><b>2026.10.11—2027.01.10</b><span>Course period</span></div>
+        <div><b>13 Saturdays + 2 Sundays</b><span>15 teaching days in total</span></div>
+        <div><b>09:00–12:00 / 14:00–17:00</b><span>Class times</span></div>
+        <div><b>In person + online</b><span>Teaching format</span></div>
       </div>
-      <div class="schedule-art-frame"><img class="schedule-art" src="assets/course-schedule-2026.svg?v=20260929-hybrid" alt="ICUC 2026秋季学期AIGC实训营课程时间表：15个教学日，上午及下午共29个教学单元；线下授课仅面向中国传媒大学本校生" width="1840" height="1310"></div>
-      <p class="schedule-source">手机上可左右滑动查看完整课表。后续如有调整，请以学院正式通知为准。</p>
-      <div class="visually-hidden" id="schedule-list" aria-label="完整课程时间表"></div>
+      <div class="schedule-art-frame"><img class="schedule-art" src="assets/course-schedule-2026-en.svg?v=20261003-en" alt="ICUC Fall 2026 AIGC Bootcamp timetable: 15 teaching days and 29 morning or afternoon sessions; in-person classes are open only to students enrolled at Communication University of China" width="1840" height="1310"></div>
+      <p class="schedule-source">On a phone, swipe left or right to view the full timetable. For any later changes, follow official faculty notices.</p>
+      <div class="visually-hidden" id="schedule-list" aria-label="Full class timetable"></div>
     </section>
 
     <section class="section" id="courses">
       <header class="section-head">
         <span class="section-index">05 / COURSES</span>
         <div>
-          <h2 class="section-title">五门课，你会学什么</h2>
-          <p class="section-intro">点击课程名称，看看每门课会做什么、可以形成哪些作品，以及对应的上课日期与主题。</p>
+          <h2 class="section-title">What Will You Learn in Five Courses?</h2>
+          <p class="section-intro">Select a course to explore its activities, possible outcomes, class dates, and topics.</p>
         </div>
       </header>
       <div class="courses">
         <details open>
           <summary>
             <span class="course-no">01</span>
-            <span class="course-title">AIGC文献收集与智能分析</span>
-            <span class="course-teacher">Vincenzo De Masi教授 · 2学分</span>
-            <span class="course-toggle" aria-hidden="true">＋</span>
+            <span class="course-title">AIGC Literature Research and Intelligent Analysis</span>
+            <span class="course-teacher">Prof. Vincenzo De Masi · 2 credits</span>
+            <span class="course-toggle" aria-hidden="true">+</span>
           </summary>
           <div class="course-content">
-            <div><h4>这门课会做什么</h4><p>学习寻找和分析资料，确定创作主题，再把研究发现变成故事与角色的起点。</p></div>
-            <div><h4>阶段成果示例</h4><ul><li>研究资料包与主题说明</li><li>剧本、世界观、角色小传与场景描述</li><li>AI使用记录及资料来源</li></ul></div>
+            <div><h4>What you will do</h4><p>Find and analyze sources, choose a creative theme, and turn your research into the starting point for a story and characters.</p></div>
+            <div><h4>Examples of course outcomes</h4><ul><li>Research portfolio and theme statement</li><li>Script, worldbuilding, character profiles, and scene descriptions</li><li>AI use log and source list</li></ul></div>
             <div class="teacher-plan" data-course-plan="literature"></div>
           </div>
         </details>
         <details>
           <summary>
             <span class="course-no">02</span>
-            <span class="course-title">AI+IP设计、场景道具设计与3D数字文博应用</span>
-            <span class="course-teacher">马屹锴 · 3学分</span>
-            <span class="course-toggle" aria-hidden="true">＋</span>
+            <span class="course-title">AI + IP Design, Scene and Prop Design, and 3D Digital Heritage</span>
+            <span class="course-teacher">Ma Yikai · 3 credits</span>
+            <span class="course-toggle" aria-hidden="true">+</span>
           </summary>
           <div class="course-content">
-            <div><h4>这门课会做什么</h4><p>从IP设计原理出发，用AI设计角色、场景和道具，进一步尝试文创衍生品、3D制作与Vibe Coding网站设计。</p></div>
-            <div><h4>阶段成果示例</h4><ul><li>IP角色、场景与道具设计</li><li>文创衍生品方案与3D作品</li><li>个人作品展示网站原型</li></ul></div>
+            <div><h4>What you will do</h4><p>Start with IP design principles, use AI to create characters, settings, and props, then explore cultural products, 3D production, and Vibe Coding for websites.</p></div>
+            <div><h4>Examples of course outcomes</h4><ul><li>IP character, setting, and prop designs</li><li>Cultural product concepts and 3D work</li><li>Prototype personal portfolio website</li></ul></div>
             <div class="teacher-plan" data-course-plan="heritage"></div>
           </div>
         </details>
         <details>
           <summary>
             <span class="course-no">03</span>
-            <span class="course-title">AI智能视频生成</span>
-            <span class="course-teacher">袁敏 · 3学分</span>
-            <span class="course-toggle" aria-hidden="true">＋</span>
+            <span class="course-title">Intelligent AI Video Generation</span>
+            <span class="course-teacher">Yuan Min · 3 credits</span>
+            <span class="course-toggle" aria-hidden="true">+</span>
           </summary>
           <div class="course-content">
-            <div><h4>这门课会做什么</h4><p>从分镜和镜头测试开始，把剧本、角色与场景做成能播放的动态影像。</p></div>
-            <div><h4>阶段成果示例</h4><ul><li>分镜表与镜头测试</li><li>粗剪版本和修改记录</li><li>2—5分钟AI短视频、动画或微电影</li></ul></div>
+            <div><h4>What you will do</h4><p>Begin with storyboards and shot tests, then turn scripts, characters, and settings into moving images.</p></div>
+            <div><h4>Examples of course outcomes</h4><ul><li>Storyboards and shot tests</li><li>Rough cut and revision records</li><li>2–5 minute AI short video, animation, or microfilm</li></ul></div>
             <div class="teacher-plan" data-course-plan="video"></div>
           </div>
         </details>
         <details>
           <summary>
             <span class="course-no">04</span>
-            <span class="course-title">AI音乐可视化及创作</span>
-            <span class="course-teacher">吴孟娇 · 2学分</span>
-            <span class="course-toggle" aria-hidden="true">＋</span>
+            <span class="course-title">AI Music Visualization and Creation</span>
+            <span class="course-teacher">Wu Mengjiao · 2 credits</span>
+            <span class="course-toggle" aria-hidden="true">+</span>
           </summary>
           <div class="course-content">
-            <div><h4>这门课会做什么</h4><p>学习音乐可视化、AI配音、音效与配乐：用Gemini制作互动网页，再为动画片段完成声音设计与综合Demo。</p></div>
-            <div><h4>阶段成果示例</h4><ul><li>音乐节与文博主题音乐可视化网页及录屏</li><li>角色配音、旁白和场景音效</li><li>AI配乐与1—2个动画短片Demo</li></ul></div>
+            <div><h4>What you will do</h4><p>Explore music visualization, AI voice work, sound effects, and scoring. Build interactive pages with Gemini, then design sound and a combined demo for animated clips.</p></div>
+            <div><h4>Examples of course outcomes</h4><ul><li>Music festival and cultural heritage themed visualization pages and screen recordings</li><li>Character voices, narration, and scene sound effects</li><li>AI scoring and one or two animated short demos</li></ul></div>
             <div class="teacher-plan" data-course-plan="music"></div>
           </div>
         </details>
         <details>
           <summary>
             <span class="course-no">05</span>
-            <span class="course-title">AI程序开发</span>
-            <span class="course-teacher">张宇辰 · 2学分</span>
-            <span class="course-toggle" aria-hidden="true">＋</span>
+            <span class="course-title">AI Programming</span>
+            <span class="course-teacher">Zhang Yuchen · 2 credits</span>
+            <span class="course-toggle" aria-hidden="true">+</span>
           </summary>
           <div class="course-content">
-            <div><h4>这门课会做什么</h4><p>学习借助AI完成网页与互动功能，把前面课程的作品整合进个人展示网站。</p></div>
-            <div><h4>阶段成果示例</h4><ul><li>个人及作品展示网站</li><li>项目介绍、过程记录与作品播放模块</li><li>可访问链接或完整离线部署包</li></ul></div>
+            <div><h4>What you will do</h4><p>Use AI to build web pages and interactive features, then bring work from earlier courses together on a personal portfolio website.</p></div>
+            <div><h4>Examples of course outcomes</h4><ul><li>Personal and project website</li><li>Project introduction, process journal, and media player</li><li>Accessible link or complete offline deployment package</li></ul></div>
             <div class="teacher-plan" data-course-plan="agent"></div>
           </div>
         </details>
@@ -1097,17 +1100,17 @@
       <header class="section-head">
         <span class="section-index">06 / CAPSTONE</span>
         <div>
-          <h2 class="section-title">你的期末作品可以包含什么</h2>
-          <p class="section-intro">下面六类内容可以帮助你整理一个完整项目。建议围绕同一个主题创作，让故事、画面、声音和展示方式彼此呼应。</p>
+          <h2 class="section-title">What Can Your Final Project Include?</h2>
+          <p class="section-intro">These six types of work can help you assemble a complete project. Build around one theme so the story, visuals, sound, and presentation reinforce each other.</p>
         </div>
       </header>
       <div class="deliverables">
-        <article class="deliverable"><span class="deliverable-no">01</span><div><h3>创作策划与剧本</h3><p>研究基础、故事梗概、世界观、角色小传、场景描述和完整剧本。</p></div></article>
-        <article class="deliverable"><span class="deliverable-no">02</span><div><h3>角色与场景视觉</h3><p>主要角色、关键场景、必要道具及视觉风格说明。</p></div></article>
-        <article class="deliverable"><span class="deliverable-no">03</span><div><h3>AI影像作品</h3><p>建议为2—5分钟的短视频、动画短片或微电影，并保留分镜和版本过程。</p></div></article>
-        <article class="deliverable"><span class="deliverable-no">04</span><div><h3>声音系统</h3><p>配音、主题音乐、音效和最终混音，并真正应用于影像或互动作品。</p></div></article>
-        <article class="deliverable"><span class="deliverable-no">05</span><div><h3>个人与作品网站</h3><p>集中展示个人介绍、创作过程、阶段成果、最终作品和项目说明。</p></div></article>
-        <article class="deliverable"><span class="deliverable-no">06</span><div><h3>IP或文博衍生设计</h3><p>设计理念、应用场景、效果图，以及它与整体项目的关系。</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">01</span><div><h3>Creative plan and script</h3><p>Research, synopsis, worldbuilding, character profiles, scene descriptions, and a complete script.</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">02</span><div><h3>Character and setting visuals</h3><p>Main characters, key settings, essential props, and a description of the visual style.</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">03</span><div><h3>AI video work</h3><p>A 2–5 minute short video, animation, or microfilm is suggested. Keep storyboards and version history.</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">04</span><div><h3>Sound design</h3><p>Voice work, theme music, sound effects, and final mix, used in the video or interactive work.</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">05</span><div><h3>Personal and project website</h3><p>Present your profile, creative process, milestones, final work, and project description in one place.</p></div></article>
+        <article class="deliverable"><span class="deliverable-no">06</span><div><h3>IP or cultural heritage inspired design</h3><p>Show the design idea, use cases, mockups, and how it connects to the overall project.</p></div></article>
       </div>
     </section>
 
@@ -1115,16 +1118,16 @@
       <header class="section-head">
         <span class="section-index">07 / SHOWCASE</span>
         <div>
-          <h2 class="section-title">让你的作品被看见</h2>
-          <p class="section-intro">完成作品之后，还要让别人看懂它。把同一个项目整理成影像、网站和图文作品集，可以在不同场景中介绍自己的创作。</p>
+          <h2 class="section-title">Let Your Work Be Seen</h2>
+          <p class="section-intro">Finishing your work is only part of the story. Help others understand it by presenting the same project through video, a website, and a visual portfolio.</p>
         </div>
       </header>
       <div class="report-package">
-        <div class="formula">1 → ∞<small>一个创作主题<br>多种展示方式<br>持续更新的作品</small></div>
+        <div class="formula">1 → ∞<small>One creative theme<br>Multiple ways to present it<br>Work that keeps evolving</small></div>
         <div>
-          <article class="report-item"><span class="report-key">01</span><div><h3>一个完整的个人项目</h3><p>用统一的主题、故事和视觉风格把五门课的成果连接起来，让观众看到你的创作想法。</p></div></article>
-          <article class="report-item"><span class="report-key">02</span><div><h3>多种展示方式</h3><p>用作品视频吸引观众，用个人网站集中展示，用图文作品集讲清研究与制作过程。</p></div></article>
-          <article class="report-item"><span class="report-key">03</span><div><h3>继续延展的可能</h3><p>你可以继续完善角色与世界观，把作品用于个人作品集、线上分享或后续创作。</p></div></article>
+          <article class="report-item"><span class="report-key">01</span><div><h3>One complete personal project</h3><p>Connect the five courses through a consistent theme, story, and visual style so audiences can see your creative thinking.</p></div></article>
+          <article class="report-item"><span class="report-key">02</span><div><h3>Multiple presentation formats</h3><p>Draw people in with a project video, gather the work on your website, and explain your research and process in a visual portfolio.</p></div></article>
+          <article class="report-item"><span class="report-key">03</span><div><h3>Room to keep growing</h3><p>Continue developing your characters and world, and use the work in your portfolio, online sharing, or future projects.</p></div></article>
         </div>
       </div>
     </section>
@@ -1133,37 +1136,37 @@
       <header class="section-head">
         <span class="section-index">08 / COMPLETION</span>
         <div>
-          <h2 class="section-title">怎样完成课程与结业</h2>
-          <p class="section-intro">按时参加课程、完成各门课的正式作业与期末项目。下方列出证书和学分的评分构成；最终要求以学院正式通知为准。</p>
+          <h2 class="section-title">How to Complete the Bootcamp</h2>
+          <p class="section-intro">Attend classes on time and complete the formal assignments and final project for each course. The certificate and credit grading breakdown appears below; final requirements are subject to official faculty notices.</p>
         </div>
       </header>
       <div class="rubric-wrap">
         <div>
-          <div class="certificate-gate" role="note" aria-label="证书与学分获得条件">
+          <div class="certificate-gate" role="note" aria-label="Requirements for certificate and credits">
             <span class="gate-mark">PASS</span>
-            <div><strong>拿证、拿学分需要满足什么</strong><p>按当前课程方案，总评达到60分及以上，所有正式作业须最迟于2027年2月21日提交，并经审核有效。截止日期之后提交的作业无效。最终以学院正式通知为准。</p></div>
+            <div><strong>What is required for the certificate and credits?</strong><p>Under the current plan, you need an overall score of at least 60, and every formal assignment must be submitted by February 21, 2027, and pass review. Submissions after the deadline are invalid. Official faculty notices take precedence.</p></div>
           </div>
-          <div class="rubric-bar" role="img" aria-label="证书与学分评分：考勤25%，文献课程15%，文博课程15%，音乐课程15%，Agent课程15%，视频课程15%">
-            <span>考勤<br>25%</span><span>文献<br>15%</span><span>文博<br>15%</span><span>音乐<br>15%</span><span>Agent<br>15%</span><span>视频<br>15%</span>
+          <div class="rubric-bar" role="img" aria-label="Certificate and credit grading: attendance 25 percent; literature, cultural heritage, music, Agent, and video courses 15 percent each">
+            <span>Attendance<br>25%</span><span>Literature<br>15%</span><span>Heritage<br>15%</span><span>Music<br>15%</span><span>Agent<br>15%</span><span>Video<br>15%</span>
           </div>
-          <p class="rubric-note">评分权重合计100%：考勤25%，五门课程各15%。正式作业全部提交是独立于总分之外的结业条件。</p>
-          <div class="deadline-note" role="note" aria-label="全部作业最终提交截止日期">
-            <time datetime="2027-02-21">2027年2月21日</time>
-            <strong>全部作业最终提交截止日</strong>
-            <p>请最迟于这一天提交所有正式作业；2027年2月21日之后提交的作业无效。</p>
+          <p class="rubric-note">The weights total 100%: attendance is 25%, and each of the five courses is 15%. Submitting all formal assignments is a separate completion requirement in addition to the overall score.</p>
+          <div class="deadline-note" role="note" aria-label="Final deadline for all assignments">
+            <time datetime="2027-02-21">February 21, 2027</time>
+            <strong>Final deadline for all assignments</strong>
+            <p>Submit every formal assignment by this date. Work submitted after February 21, 2027, is invalid.</p>
           </div>
         </div>
         <div class="learning-checklist">
-          <h3>学习时可以问问自己</h3>
-          <ul class="metric-list" aria-label="个人学习自查清单">
-            <li><b>我的主题是否清楚？</b><span>选题</span></li>
-            <li><b>资料来源可靠吗？</b><span>研究</span></li>
-            <li><b>角色与场景风格一致吗？</b><span>视觉</span></li>
-            <li><b>影像能讲清故事吗？</b><span>视频</span></li>
-            <li><b>声音有帮助表达吗？</b><span>音乐</span></li>
-            <li><b>网站能正常打开吗？</b><span>发布</span></li>
-            <li><b>我保存了修改过程吗？</b><span>复盘</span></li>
-            <li><b>素材与AI使用有记录吗？</b><span>规范</span></li>
+          <h3>Questions to Ask Yourself</h3>
+          <ul class="metric-list" aria-label="Personal learning checklist">
+            <li><b>Is my theme clear?</b><span>Topic</span></li>
+            <li><b>Are my sources reliable?</b><span>Research</span></li>
+            <li><b>Do the characters and settings share one style?</b><span>Visuals</span></li>
+            <li><b>Does the video tell the story clearly?</b><span>Video</span></li>
+            <li><b>Does the sound support the story?</b><span>Music</span></li>
+            <li><b>Does the website open correctly?</b><span>Publishing</span></li>
+            <li><b>Did I save the revision process?</b><span>Reflection</span></li>
+            <li><b>Did I document sources and AI use?</b><span>Responsible use</span></li>
           </ul>
         </div>
       </div>
@@ -1173,18 +1176,18 @@
       <header class="section-head">
         <span class="section-index">09 / PROCESS</span>
         <div>
-          <h2 class="section-title">你的创作过程也很重要</h2>
-          <p class="section-intro">别只保存最后的成片。一路上的参考资料、草稿、测试与修改，既能帮你回顾学习，也能让作品集更有说服力。</p>
+          <h2 class="section-title">Your Creative Process Matters Too</h2>
+          <p class="section-intro">Do not save only the final video. Sources, drafts, tests, and revisions help you reflect on what you learned and make your portfolio more convincing.</p>
         </div>
       </header>
       <table class="evidence-table">
-        <thead><tr><th>建议保存</th><th>它能帮你做什么</th></tr></thead>
+        <thead><tr><th>Keep</th><th>How it helps</th></tr></thead>
         <tbody>
-          <tr><td>选题与参考资料</td><td>回看最初的想法，说明你的故事、角色与视觉方向从哪里来。</td></tr>
-          <tr><td>草稿与测试</td><td>展示你怎样尝试不同方案，并从中找到更适合的表达方式。</td></tr>
-          <tr><td>反馈与修改版本</td><td>记录解决问题的过程，让别人看到作品是怎样一步步变好的。</td></tr>
-          <tr><td>素材来源与AI使用</td><td>清楚说明使用了哪些资料、素材和工具，方便检查引用与使用权限。</td></tr>
-          <tr><td>最终文件与链接</td><td>把成片、图像、声音、网站地址和备份放在一起，方便展示与继续更新。</td></tr>
+          <tr><td>Topic and reference sources</td><td>Revisit your initial idea and explain where the story, characters, and visual direction came from.</td></tr>
+          <tr><td>Drafts and tests</td><td>Show how you tried different approaches and found the most effective way to express your idea.</td></tr>
+          <tr><td>Feedback and revisions</td><td>Record how you solved problems so others can see your work improve step by step.</td></tr>
+          <tr><td>Sources and AI use</td><td>Show which sources, assets, and tools you used so citations and usage rights can be checked.</td></tr>
+          <tr><td>Final files and links</td><td>Keep the finished video, images, sound, website address, and backups together for presentation and future updates.</td></tr>
         </tbody>
       </table>
     </section>
@@ -1193,46 +1196,46 @@
       <header class="section-head">
         <span class="section-index">10 / NEXT STEPS</span>
         <div>
-          <h2 class="section-title">从开课到结业，可以这样准备</h2>
-          <p class="section-intro">先熟悉课表，再用每周的小练习推进项目。为作品留出整理、修改和展示的时间。</p>
+          <h2 class="section-title">From First Class to Completion</h2>
+          <p class="section-intro">Start by getting to know the timetable. Move your project forward with small weekly exercises, and leave time to organize, revise, and present your work.</p>
         </div>
       </header>
       <div class="action-list">
-        <div class="action"><b>开课前</b><span>记下上课日期与时间，想一想自己感兴趣的主题，准备好存放资料和作品的文件夹。</span></div>
-        <div class="action"><b>每周课程</b><span>完成当次练习，及时保存源文件、参考资料和老师的反馈。</span></div>
-        <div class="action"><b>阶段节点</b><span>检查故事、视觉、影像和声音能否相互对应，发现问题就尽早修改。</span></div>
-        <div class="action"><b>最后两周</b><span>整理完整项目，测试网站与视频播放，准备好向别人介绍作品。</span></div>
-        <div class="action"><b>结课之后</b><span>保留可访问的作品链接和备份，把这次创作继续扩展成自己的作品集。</span></div>
+        <div class="action"><b>Before classes begin</b><span>Note the class dates and times, consider a topic that interests you, and create a folder for sources and project files.</span></div>
+        <div class="action"><b>Each week</b><span>Complete the class exercise and save source files, references, and your teacher's feedback promptly.</span></div>
+        <div class="action"><b>At each milestone</b><span>Check that the story, visuals, video, and sound work together, and revise early when you find a problem.</span></div>
+        <div class="action"><b>In the last two weeks</b><span>Organize the complete project, test the website and video playback, and prepare to present your work.</span></div>
+        <div class="action"><b>After the course</b><span>Keep a working link and backup, and continue growing this project into your own portfolio.</span></div>
       </div>
     </section>
 
     <section class="closing">
-      <p id="report-copy">从一个主题出发，用五门课程完成研究、视觉、影像、声音与网站，把创意做成可以展示的作品。</p>
-      <button class="copy-button" type="button" data-copy="#report-copy">复制课程介绍</button>
+      <p id="report-copy">Starting from one theme, five courses bring together research, visuals, video, sound, and a website to turn an idea into a work you can present.</p>
+      <button class="copy-button" type="button" data-copy="#report-copy">Copy course introduction</button>
     </section>
   </main>
 
   <footer>
-    <span>中国传媒大学国际传媒教育学院 · 数字创意与创作AIGC微专业课程</span>
-    <span>本页帮助你了解课程与作品方向；具体授课、考核及结业要求以学院正式通知为准。</span>
+    <span>Faculty of International Media, Communication University of China · AIGC Micro-credential in Digital Creativity and Creation</span>
+    <span>This page introduces the course and possible project directions. Official faculty notices govern teaching, assessment, and completion requirements.</span>
   </footer>
 
-  <script src="schedule-data.js?v=20260929-yuanmin"></script>
+  <script src="schedule-data-en.js?v=20261003-en"></script>
   <script>
     const catalog = window.courseCatalog;
     const schedule = window.courseSchedule;
     const allSessions = schedule.flatMap(day => day.sessions.map(session => ({ ...session, date: day.date })));
     const dateParts = date => {
       const [year, month, day] = date.split('-');
-      const weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'][new Date(`${date}T00:00:00Z`).getUTCDay()];
-      return { year, month, day, weekday, full: `${Number(month)}月${Number(day)}日` };
+      const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date(`${date}T00:00:00Z`).getUTCDay()];
+      return { year, month, day, weekday, full: `${Number(month)}/${Number(day)}` };
     };
 
     document.querySelector('#schedule-list').innerHTML = schedule.map((day, index) => {
       const parts = dateParts(day.date);
       const sessions = day.sessions.map((session, sessionIndex) => {
         const course = catalog[session.course];
-        const period = sessionIndex === 0 ? '上午' : '下午';
+        const period = sessionIndex === 0 ? 'Morning' : 'Afternoon';
         return `<article class="schedule-session" data-course="${session.course}">
           <span class="session-time">${period} · ${session.time}</span>
           <b>${course.shortName}</b>
@@ -1241,7 +1244,7 @@
         </article>`;
       }).join('');
       return `<article class="schedule-day">
-        <time class="schedule-date" datetime="${day.date}"><strong>${parts.day}</strong><span>${parts.year}.${parts.month}<br>${parts.weekday} · 第${String(index + 1).padStart(2, '0')}教学日</span></time>
+        <time class="schedule-date" datetime="${day.date}"><strong>${parts.day}</strong><span>${parts.year}.${parts.month}<br>${parts.weekday} · Day ${String(index + 1).padStart(2, '0')}</span></time>
         ${sessions}
       </article>`;
     }).join('');
@@ -1250,27 +1253,20 @@
       const courseKey = plan.dataset.coursePlan;
       const sessions = allSessions.filter(session => session.course === courseKey);
       plan.innerHTML = `<div class="teacher-plan-head">
-        <h4>上课日期与课堂主题</h4>
-        <p>共${sessions.length}个教学单元 · 课堂主题供参考，实际内容以任课教师通知为准</p>
+        <h4>Class Dates and Topics</h4>
+        <p>${sessions.length} sessions · Topics are for reference; follow your teacher's announcements for actual class content.</p>
       </div>
       <ol class="teacher-sessions">${sessions.map(session => {
         const parts = dateParts(session.date);
         return `<li class="teacher-session">
           <time datetime="${session.date}">${parts.full} · ${parts.weekday}<br><span>${session.time}</span></time>
-          <div><b>${session.focus}</b>${session.studentDescription ? `<p>${session.studentDescription}</p>` : ''}${session.studentTask ? `<p><strong>课后任务：</strong>${session.studentTask}</p>` : ''}</div>
+          <div><b>${session.focus}</b>${session.studentDescription ? `<p>${session.studentDescription}</p>` : ''}${session.studentTask ? `<p><strong>After-class task: </strong>${session.studentTask}</p>` : ''}</div>
         </li>`;
       }).join('')}</ol>`;
     });
 
     const progress = document.querySelector('.progress');
     const copyButton = document.querySelector('[data-copy]');
-    const heroVideo = document.querySelector('#hero-video');
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-    if (reducedMotion.matches) heroVideo.pause();
-    reducedMotion.addEventListener('change', () => {
-      if (reducedMotion.matches) heroVideo.pause();
-    });
-
     addEventListener('scroll', () => {
       const max = document.documentElement.scrollHeight - innerHeight;
       progress.style.width = `${max > 0 ? scrollY / max * 100 : 0}%`;
@@ -1293,7 +1289,7 @@
         helper.remove();
       }
       const original = copyButton.textContent;
-      copyButton.textContent = '已复制';
+      copyButton.textContent = 'Copied';
       setTimeout(() => { copyButton.textContent = original; }, 1600);
     });
 
