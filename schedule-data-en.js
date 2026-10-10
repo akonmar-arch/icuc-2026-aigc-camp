@@ -2,8 +2,8 @@
   Dates, time slots, and course titles follow the second AIGC microcredential
   timetable beginning October 11, 2026. The first date is a Sunday; the
   weekday label in the source spreadsheet is incorrect.
-  Focus topics for Ma Yikai's course follow the seven-session plan supplied
-  by the user. Other topics retain the website's suggested outline.
+  Focus topics for Ma Yikai's course and the five literature sessions follow
+  plans supplied by the user. Other topics retain the website's suggested outline.
   Instructor deliverables are supporting descriptions; instructors' notices
   take precedence.
 */
@@ -65,14 +65,16 @@ window.courseSchedule = [
       {
         "time": "09:00–12:00",
         "course": "literature",
-        "focus": "Research direction, problem definition, and source standards",
-        "teacherDelivery": "Research brief, search guidelines, and a source log template."
+        "focus": "Lesson 1 – Storytelling in the Age of AI",
+        "studentDescription": "This session introduces the fundamentals of storytelling and the role of artificial intelligence in creative production. Students explore narrative structure, story development, conflict, and the relationship between storytelling and digital media. Practical exercises demonstrate how AI can support creative thinking and the development of original ideas.",
+        "teacherDelivery": "Storytelling fundamentals, narrative structure, conflict, and AI-supported creative exercises."
       },
       {
         "time": "14:00–17:00",
         "course": "literature",
-        "focus": "AI-assisted research, building a reference library, and classification",
-        "teacherDelivery": "Sample reference library, search prompts, and a literature classification sheet."
+        "focus": "Lesson 2 – Worldbuilding and IP Development",
+        "studentDescription": "This session focuses on creating fictional worlds and developing original intellectual properties (IP). Students learn how to design narrative environments, establish the rules and atmosphere of a story, and develop concepts that can expand into films, animation, video games, and XR experiences.",
+        "teacherDelivery": "Fictional worldbuilding, story rules and atmosphere, and cross-media IP concepts."
       }
     ]
   },
@@ -82,14 +84,16 @@ window.courseSchedule = [
       {
         "time": "09:00–12:00",
         "course": "literature",
-        "focus": "Literature analysis, theme development, and fact-checking",
-        "teacherDelivery": "Analysis matrix, citation guidelines, and classroom feedback."
+        "focus": "Lesson 3 – Character, Emotion, and Visual Storytelling",
+        "studentDescription": "Students explore character development, emotional engagement, and narrative voice. Through examples from cinema and animation, the session examines how characters, visual composition, movement, sound, and atmosphere contribute to effective storytelling and audience engagement.",
+        "teacherDelivery": "Cinema and animation examples covering characters, composition, movement, sound, and atmosphere."
       },
       {
         "time": "14:00–17:00",
         "course": "literature",
-        "focus": "Turning research into a story world, characters, and settings",
-        "teacherDelivery": "Templates and examples for worldbuilding, character profiles, and setting descriptions."
+        "focus": "Lesson 4 – Scriptwriting for Video, Animation, and XR",
+        "studentDescription": "This session introduces the principles of screenwriting for audiovisual and immersive media. Students learn how to transform narrative concepts into structured scripts, organize scenes, develop conflicts, and integrate dialogue, visual storytelling, and sound. AI tools are introduced as creative assistants during the writing process.",
+        "teacherDelivery": "Screenwriting principles for audiovisual and immersive media, with AI-assisted writing practice."
       }
     ]
   },
@@ -99,8 +103,9 @@ window.courseSchedule = [
       {
         "time": "09:00–12:00",
         "course": "literature",
-        "focus": "Organizing research findings and the script for visual design",
-        "teacherDelivery": "Milestone review, script approval checklist, and handoff sheet for the visual design course."
+        "focus": "Lesson 5 – Screenplay Development and Finalization",
+        "studentDescription": "The final session is a practical workshop dedicated to developing and refining an original screenplay. Students analyze examples of short films, improve narrative structure, characters, dialogue, and emotional progression, and finalize a screenplay for a 2–5 minute short film or animation, preparing the project for storyboarding and production.",
+        "teacherDelivery": "Short-film analysis and a screenplay workshop leading to a finalized 2–5 minute film or animation script."
       },
       {
         "time": "14:00–17:00",
