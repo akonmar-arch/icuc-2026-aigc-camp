@@ -8,8 +8,8 @@
 window.courseCatalog = {
   "agent": {
     "order": 5,
-    "shortName": "AI Agent",
-    "fullName": "AI程序开发",
+    "shortName": "AI 原理与实践",
+    "fullName": "AI 原理与实践",
     "teacher": "张宇辰"
   },
   "literature": {

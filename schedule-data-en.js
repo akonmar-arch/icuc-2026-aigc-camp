@@ -11,8 +11,8 @@
 window.courseCatalog = {
   "agent": {
     "order": 5,
-    "shortName": "AI Agent",
-    "fullName": "AI Application Development",
+    "shortName": "AI Principles and Practice",
+    "fullName": "AI Principles and Practice",
     "teacher": "Zhang Yuchen"
   },
   "literature": {
