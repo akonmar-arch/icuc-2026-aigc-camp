@@ -1,7 +1,8 @@
 /*
   Dates, time slots, and course assignments follow the timetable image supplied
   by the user on October 30, 2026. October 11 is a Sunday despite the image's
-  Saturday label. Course names retain the latest user-approved wording.
+  Saturday label. The December 12 morning cultural product session follows the
+  user's later correction. Course names retain the latest user-approved wording.
   Focus topics for Ma Yikai's course and the five literature sessions follow
   plans supplied by the user. Other topics retain the website's suggested outline.
   Instructor deliverables are supporting descriptions; instructors' notices
@@ -185,9 +186,9 @@ window.courseSchedule = [
       {
         "time": "14:00–17:00",
         "course": "heritage",
-        "focus": "Project critique and cultural product design",
-        "studentDescription": "Present your work in progress. Discuss clarity of theme, visual consistency, and possible applications, then leave with an actionable revision list. Turn the IP visual system into a poster, package, or cultural product. Consider the audience, context of use, and production materials to create a presentable product concept.",
-        "teacherDelivery": "Interim project critique, issue review, and revision suggestions; cultural product examples, application suggestions, and concept feedback."
+        "focus": "Project critique",
+        "studentDescription": "Present your work in progress. Discuss clarity of theme, visual consistency, and possible applications, then leave with an actionable revision list.",
+        "teacherDelivery": "Interim project critique, issue review, and revision suggestions."
       }
     ]
   },
@@ -213,9 +214,10 @@ window.courseSchedule = [
     "sessions": [
       {
         "time": "09:00–12:00",
-        "course": "video",
-        "focus": "Generating key scenes and producing principal shots",
-        "teacherDelivery": "Mid-production review, shot issue list, and revision guidance."
+        "course": "heritage",
+        "focus": "Cultural product design",
+        "studentDescription": "Turn the IP visual system into a poster, package, or cultural product. Consider the audience, context of use, and production materials to create a presentable product concept.",
+        "teacherDelivery": "Cultural product examples, application suggestions, and concept feedback."
       },
       {
         "time": "14:00–17:00",

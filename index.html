@@ -1011,7 +1011,7 @@
         <div><b>09:00–12:00 / 14:00–17:00</b><span>上课时段</span></div>
         <div><b>线下＋线上</b><span>授课方式</span></div>
       </div>
-      <div class="schedule-art-frame"><img class="schedule-art" src="assets/course-schedule-2026.svg?v=20261030-timetable" alt="ICUC 2026秋季学期AIGC实训营课程时间表：15个教学日，上午及下午共29个教学单元；线下授课仅面向中国传媒大学本校生" width="1840" height="1310"></div>
+      <div class="schedule-art-frame"><img class="schedule-art" src="assets/course-schedule-2026.svg?v=20261030-dec12" alt="ICUC 2026秋季学期AIGC实训营课程时间表：15个教学日，上午及下午共29个教学单元；线下授课仅面向中国传媒大学本校生" width="1840" height="1310"></div>
       <p class="schedule-source">手机上可左右滑动查看完整课表。后续如有调整，请以学院正式通知为准。</p>
       <div class="visually-hidden" id="schedule-list" aria-label="完整课程时间表"></div>
     </section>
@@ -1217,7 +1217,7 @@
     <span>本页帮助你了解课程与作品方向；具体授课、考核及结业要求以学院正式通知为准。</span>
   </footer>
 
-  <script src="schedule-data.js?v=20261030-timetable"></script>
+  <script src="schedule-data.js?v=20261030-dec12"></script>
   <script>
     const catalog = window.courseCatalog;
     const schedule = window.courseSchedule;
@@ -1297,7 +1297,7 @@
       setTimeout(() => { copyButton.textContent = original; }, 1600);
     });
 
-    const expectedCourseCounts = { agent: 5, literature: 5, heritage: 6, video: 8, music: 5 };
+    const expectedCourseCounts = { agent: 5, literature: 5, heritage: 7, video: 7, music: 5 };
     const actualCourseCounts = allSessions.reduce((counts, session) => {
       counts[session.course] = (counts[session.course] || 0) + 1;
       return counts;
