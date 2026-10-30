@@ -1,7 +1,7 @@
 /*
-  日期、时段和课程名称依据：第二期AIGC微专业课程课程时间表_2026年10月11日起.xlsx。
-  首日按用户确认采用2026-10-11（周日）；源表该格的“周六”是星期标注错误。
-  马屹锴课程七节课与文献课程五节课的 focus 按用户提供的计划更新；其他课程主题仍沿用网站原建议。
+  日期、时段和课程安排依据用户2026-10-30提供的课程表图片；课程名称沿用网站已确认版本。
+  首日2026-10-11实际为周日；图片中的“周六”为星期标注错误。
+  马屹锴课程与文献课程五节课的 focus 按用户提供的计划更新；其他课程主题仍沿用网站原建议。
   teacherDelivery 为配套说明，实际内容以任课教师通知为准。
 */
 
@@ -118,18 +118,16 @@ window.courseSchedule = [
     "sessions": [
       {
         "time": "09:00–12:00",
-        "course": "music",
-        "focus": "AI音频视觉创作导论",
-        "studentDescription": "赏析影视与动画案例，认识音乐可视化、配音、音效与配乐的完整链路，了解Gemini、MiniMax、Suno等工具及结业作品要求。",
-        "studentTask": "搜集1—2个喜欢的音乐可视化或动画配音案例，记录观感。",
-        "teacherDelivery": "工具全景、课程任务与案例赏析。"
-      },
-      {
-        "time": "14:00–17:00",
         "course": "heritage",
         "focus": "如何用AI做IP设计",
         "studentDescription": "从角色定位和关键词出发，借助AI探索造型、色彩与表情，筛选方案并形成风格统一的IP角色设定。",
         "teacherDelivery": "IP角色设计方法、AI工具示范和课堂方案反馈。"
+      },
+      {
+        "time": "14:00–17:00",
+        "course": "video",
+        "focus": "AI视频流程与工具入门",
+        "teacherDelivery": "视频工作流示范和生成参数记录表。"
       }
     ]
   },
@@ -138,16 +136,16 @@ window.courseSchedule = [
     "sessions": [
       {
         "time": "09:00–12:00",
-        "course": "video",
-        "focus": "AI视频流程与视觉一致性测试",
-        "teacherDelivery": "视频工作流示范、镜头测试模板和生成参数记录表。"
-      },
-      {
-        "time": "14:00–17:00",
         "course": "heritage",
         "focus": "如何用AI做场景和道具设计",
         "studentDescription": "把角色放进具体的故事情境，用AI推敲场景结构、材质、光线与关键道具，让画面元素彼此呼应。",
         "teacherDelivery": "场景与道具设计方法、风格统一检查和练习反馈。"
+      },
+      {
+        "time": "14:00–17:00",
+        "course": "video",
+        "focus": "视觉一致性与镜头测试",
+        "teacherDelivery": "视觉一致性测试、镜头测试模板和生成参数记录表。"
       }
     ]
   },
@@ -163,10 +161,10 @@ window.courseSchedule = [
       {
         "time": "14:00–17:00",
         "course": "music",
-        "focus": "Gemini音乐可视化：音乐节风格",
-        "studentDescription": "认识频率、振幅与频谱，学习提示词结构；用Gemini制作可上传音频、带粒子效果与交互控制的音乐节风格网页。",
-        "studentTask": "提交HTML文件、录屏和简短创作说明。",
-        "teacherDelivery": "音乐节风格网页示范、提示词模板和调试要点。"
+        "focus": "AI音频视觉创作导论",
+        "studentDescription": "赏析影视与动画案例，认识音乐可视化、配音、音效与配乐的完整链路，了解Gemini、MiniMax、Suno等工具及结业作品要求。",
+        "studentTask": "搜集1—2个喜欢的音乐可视化或动画配音案例，记录观感。",
+        "teacherDelivery": "工具全景、课程任务与案例赏析。"
       }
     ]
   },
@@ -176,17 +174,17 @@ window.courseSchedule = [
       {
         "time": "09:00–12:00",
         "course": "music",
-        "focus": "Gemini音乐可视化：文博叙事",
-        "studentDescription": "把文物造型、国风色彩与民乐节奏融入粒子动画，完成文博主题网页，并练习排查音频、性能与交互问题。",
-        "studentTask": "提交HTML文件、录屏、创作说明和问题记录。",
-        "teacherDelivery": "文博主题网页示范、故障排查与导出规范。"
+        "focus": "Gemini音乐可视化：音乐节风格",
+        "studentDescription": "认识频率、振幅与频谱，学习提示词结构；用Gemini制作可上传音频、带粒子效果与交互控制的音乐节风格网页。",
+        "studentTask": "提交HTML文件、录屏和简短创作说明。",
+        "teacherDelivery": "音乐节风格网页示范、提示词模板和调试要点。"
       },
       {
         "time": "14:00–17:00",
         "course": "heritage",
-        "focus": "作业点评",
-        "studentDescription": "展示阶段作业，围绕主题清晰度、视觉一致性和应用可能性交流，带走一份可执行的修改清单。",
-        "teacherDelivery": "阶段作业点评、问题梳理与修改建议。"
+        "focus": "作业点评与文创衍生品设计",
+        "studentDescription": "展示阶段作业，围绕主题清晰度、视觉一致性和应用可能性交流，带走一份可执行的修改清单；再把IP视觉转化为海报、包装或文创产品，考虑受众、使用场景与制作材质，完成可展示的衍生设计方案。",
+        "teacherDelivery": "阶段作业点评、问题梳理与修改建议；衍生品设计案例、应用场景建议和方案反馈。"
       }
     ]
   },
@@ -229,10 +227,11 @@ window.courseSchedule = [
     "sessions": [
       {
         "time": "09:00–12:00",
-        "course": "heritage",
-        "focus": "文创衍生品设计",
-        "studentDescription": "把IP视觉转化为海报、包装或文创产品，考虑受众、使用场景与制作材质，完成可展示的衍生设计方案。",
-        "teacherDelivery": "衍生品设计案例、应用场景建议和方案反馈。"
+        "course": "music",
+        "focus": "Gemini音乐可视化：文博叙事",
+        "studentDescription": "把文物造型、国风色彩与民乐节奏融入粒子动画，完成文博主题网页，并练习排查音频、性能与交互问题。",
+        "studentTask": "提交HTML文件、录屏、创作说明和问题记录。",
+        "teacherDelivery": "文博主题网页示范、故障排查与导出规范。"
       },
       {
         "time": "14:00–17:00",

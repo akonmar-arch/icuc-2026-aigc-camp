@@ -1014,7 +1014,7 @@
         <div><b>09:00–12:00 / 14:00–17:00</b><span>Class times</span></div>
         <div><b>In person + online</b><span>Teaching format</span></div>
       </div>
-      <div class="schedule-art-frame"><img class="schedule-art" src="assets/course-schedule-2026-en.svg?v=20261010-ai-principles" alt="ICUC Fall 2026 AIGC Bootcamp timetable: 15 teaching days and 29 morning or afternoon sessions; in-person classes are open only to students enrolled at Communication University of China" width="1840" height="1310"></div>
+      <div class="schedule-art-frame"><img class="schedule-art" src="assets/course-schedule-2026-en.svg?v=20261030-timetable" alt="ICUC Fall 2026 AIGC Bootcamp timetable: 15 teaching days and 29 morning or afternoon sessions; in-person classes are open only to students enrolled at Communication University of China" width="1840" height="1310"></div>
       <p class="schedule-source">On a phone, swipe left or right to view the full timetable. For any later changes, follow official faculty notices.</p>
       <div class="visually-hidden" id="schedule-list" aria-label="Full class timetable"></div>
     </section>
@@ -1220,7 +1220,7 @@
     <span>This page introduces the course and possible project directions. Official faculty notices govern teaching, assessment, and completion requirements.</span>
   </footer>
 
-  <script src="schedule-data-en.js?v=20261010-ai-principles"></script>
+  <script src="schedule-data-en.js?v=20261030-timetable"></script>
   <script>
     const catalog = window.courseCatalog;
     const schedule = window.courseSchedule;
@@ -1293,7 +1293,7 @@
       setTimeout(() => { copyButton.textContent = original; }, 1600);
     });
 
-    const expectedCourseCounts = { agent: 5, literature: 5, heritage: 7, video: 7, music: 5 };
+    const expectedCourseCounts = { agent: 5, literature: 5, heritage: 6, video: 8, music: 5 };
     const actualCourseCounts = allSessions.reduce((counts, session) => {
       counts[session.course] = (counts[session.course] || 0) + 1;
       return counts;

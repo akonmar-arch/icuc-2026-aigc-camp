@@ -1,7 +1,7 @@
 /*
-  Dates, time slots, and course titles follow the second AIGC microcredential
-  timetable beginning October 11, 2026. The first date is a Sunday; the
-  weekday label in the source spreadsheet is incorrect.
+  Dates, time slots, and course assignments follow the timetable image supplied
+  by the user on October 30, 2026. October 11 is a Sunday despite the image's
+  Saturday label. Course names retain the latest user-approved wording.
   Focus topics for Ma Yikai's course and the five literature sessions follow
   plans supplied by the user. Other topics retain the website's suggested outline.
   Instructor deliverables are supporting descriptions; instructors' notices
@@ -121,18 +121,16 @@ window.courseSchedule = [
     "sessions": [
       {
         "time": "09:00–12:00",
-        "course": "music",
-        "focus": "Introduction to AI audio-visual creation",
-        "studentDescription": "Explore film and animation examples and the full workflow for music visualization, voice acting, sound effects, and scoring. Get to know tools such as Gemini, MiniMax, and Suno, along with the final project requirements.",
-        "studentTask": "Collect one or two music visualization or animation dubbing examples you like and note your impressions.",
-        "teacherDelivery": "Tool overview, course assignments, and case study discussion."
-      },
-      {
-        "time": "14:00–17:00",
         "course": "heritage",
         "focus": "Designing an IP character with AI",
         "studentDescription": "Start with character positioning and keywords. Use AI to explore form, color, and expressions, then select and refine a visually consistent IP character concept.",
         "teacherDelivery": "IP character design methods, AI tool demonstrations, and feedback on classroom concepts."
+      },
+      {
+        "time": "14:00–17:00",
+        "course": "video",
+        "focus": "AI video workflow and tool introduction",
+        "teacherDelivery": "Video workflow and tool demonstration, with a generation settings log."
       }
     ]
   },
@@ -141,16 +139,16 @@ window.courseSchedule = [
     "sessions": [
       {
         "time": "09:00–12:00",
-        "course": "video",
-        "focus": "AI video workflow and visual consistency tests",
-        "teacherDelivery": "Video workflow demonstration, shot test template, and generation settings log."
-      },
-      {
-        "time": "14:00–17:00",
         "course": "heritage",
         "focus": "Designing scenes and props with AI",
         "studentDescription": "Place the character in a specific story situation. Use AI to develop the scene structure, materials, lighting, and key props so the visual elements work together.",
         "teacherDelivery": "Scene and prop design methods, visual consistency checks, and exercise feedback."
+      },
+      {
+        "time": "14:00–17:00",
+        "course": "video",
+        "focus": "Visual consistency and shot testing",
+        "teacherDelivery": "Visual consistency checks and a shot test template based on generation settings."
       }
     ]
   },
@@ -166,10 +164,10 @@ window.courseSchedule = [
       {
         "time": "14:00–17:00",
         "course": "music",
-        "focus": "Music visualization with Gemini: festival style",
-        "studentDescription": "Learn about frequency, amplitude, spectra, and prompt structure. Use Gemini to make a festival-style webpage with audio upload, particle effects, and interactive controls.",
-        "studentTask": "Submit an HTML file, a screen recording, and a short creative statement.",
-        "teacherDelivery": "Festival-style webpage demo, prompt templates, and debugging tips."
+        "focus": "Introduction to AI audio-visual creation",
+        "studentDescription": "Explore film and animation examples and the full workflow for music visualization, voice acting, sound effects, and scoring. Get to know tools such as Gemini, MiniMax, and Suno, along with the final project requirements.",
+        "studentTask": "Collect one or two music visualization or animation dubbing examples you like and note your impressions.",
+        "teacherDelivery": "Tool overview, course assignments, and case study discussion."
       }
     ]
   },
@@ -179,17 +177,17 @@ window.courseSchedule = [
       {
         "time": "09:00–12:00",
         "course": "music",
-        "focus": "Music visualization with Gemini: cultural heritage storytelling",
-        "studentDescription": "Bring artifact forms, Chinese-inspired colors, and traditional music rhythms into particle animation. Build a cultural heritage webpage and practice troubleshooting audio, performance, and interaction issues.",
-        "studentTask": "Submit an HTML file, screen recording, creative statement, and issue log.",
-        "teacherDelivery": "Cultural heritage webpage demo, troubleshooting, and export guidelines."
+        "focus": "Music visualization with Gemini: festival style",
+        "studentDescription": "Learn about frequency, amplitude, spectra, and prompt structure. Use Gemini to make a festival-style webpage with audio upload, particle effects, and interactive controls.",
+        "studentTask": "Submit an HTML file, a screen recording, and a short creative statement.",
+        "teacherDelivery": "Festival-style webpage demo, prompt templates, and debugging tips."
       },
       {
         "time": "14:00–17:00",
         "course": "heritage",
-        "focus": "Project critique",
-        "studentDescription": "Present your work in progress. Discuss clarity of theme, visual consistency, and possible applications, then leave with an actionable revision list.",
-        "teacherDelivery": "Interim project critique, issue review, and revision suggestions."
+        "focus": "Project critique and cultural product design",
+        "studentDescription": "Present your work in progress. Discuss clarity of theme, visual consistency, and possible applications, then leave with an actionable revision list. Turn the IP visual system into a poster, package, or cultural product. Consider the audience, context of use, and production materials to create a presentable product concept.",
+        "teacherDelivery": "Interim project critique, issue review, and revision suggestions; cultural product examples, application suggestions, and concept feedback."
       }
     ]
   },
@@ -232,10 +230,11 @@ window.courseSchedule = [
     "sessions": [
       {
         "time": "09:00–12:00",
-        "course": "heritage",
-        "focus": "Cultural product design",
-        "studentDescription": "Turn the IP visual system into a poster, package, or cultural product. Consider the audience, context of use, and production materials to create a presentable product concept.",
-        "teacherDelivery": "Cultural product examples, application suggestions, and concept feedback."
+        "course": "music",
+        "focus": "Music visualization with Gemini: cultural heritage storytelling",
+        "studentDescription": "Bring artifact forms, Chinese-inspired colors, and traditional music rhythms into particle animation. Build a cultural heritage webpage and practice troubleshooting audio, performance, and interaction issues.",
+        "studentTask": "Submit an HTML file, screen recording, creative statement, and issue log.",
+        "teacherDelivery": "Cultural heritage webpage demo, troubleshooting, and export guidelines."
       },
       {
         "time": "14:00–17:00",
